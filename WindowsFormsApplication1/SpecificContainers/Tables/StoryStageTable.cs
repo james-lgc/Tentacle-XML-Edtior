@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace WindowsFormsApplication1
+{
+    public class StoryStageTable : UITable<StoryStage>
+    {
+        public StoryStageTable(Form1 form, CharacterBox characterBox, StoryStage[] storyStages)
+        {
+            base.SetUp(form, characterBox.container, storyStages.Length, 1, storyStages);
+            for (int i = 0; i < storyStages.Length; i++)
+            {
+                StoryStageBox storyStageBox = new StoryStageBox(form, this, i, storyStages[i]);
+            }
+        }
+    }
+}
