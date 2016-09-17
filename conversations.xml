@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ConversationListCollection>
+	<Conversations>
+		<Conversation name = "Grandpapa">
+			<StoryStages>
+				<StoryStage id = "0">
+					<StoryThread>"MainStory"</StoryThread>
+					<StageNumber>0</StageNumber>
+					<ConversationStages>
+						<ConversationStage id = "0">
+							<Lines>
+								<Line id = "0">
+									<LineText>Ah, there’s my favourite grandchild!</LineText>
+								</Line>
+								<Line id = "1">
+									<LineText>Come and help your old Grandpapa with his memory...</LineText>
+								</Line>
+								<Line id = "2">
+									<LineText>You young things all look the same.  Which are you, a boy or a girl?</LineText>
+									<Replies>
+										<Reply>[StoryPoint: NamePlayer]>Boy</Reply>
+										<Reply>[StoryPoint: NamePlayer]>Girl</Reply>
+									</Replies>
+									</Line>
+								<Line id = "3">
+									<LineText>Well playerName, I'm afraid the family has some bad news.</LineText>
+								</Line>
+								<Line id = "4">
+									<LineText>But I'm too old for this heartache.  It's best you go speak with your Father.</LineText>
+								</Line>
+							</Lines>
+						</ConversationStage>
+						<ConversationStage id = "1">
+							<Lines>
+								<Line id = "0">
+									<LineText>Run along now and speak with your father.</LineText>
+								</Line>
+							</Lines>
+						</ConversationStage>
+					</ConversationStages>
+				</StoryStage>
+			</StoryStages>
+		</Conversation>
+		<Conversation name = "Father">
+			<StoryStages>
+				<StoryStage id = "0">
+					<StoryThread>"MainStory"</StoryThread>
+					<StageNumber>0</StageNumber>
+					<ConversationStages>
+						<ConversationStage id = "0">
+							<Lines>
+								<Line id =  "0">
+									<LineText>Look darling.  There's our playerName now.</LineText>
+								</Line>
+								<Line id = "1">
+									<LineText>[Character: Mother]*Cough!* Oh, just look at playerHim. playerCapHe's all grown up.</LineText>
+								</Line>
+								<Line id = "2">
+									<LineText>Your Mother's right playerName.  But I'm afraid there has been a great misfortune in our family.</LineText>
+								</Line>
+								<Line id = "3">
+									<LineText>Your mother has...</LineText>
+								</Line>
+								<Line id = "4">
+									<LineText>[Character: Mother]*Wail!* Don't tell him!  playerCapHe's too young to hear it!</LineText>
+								</Line>
+								<Line id = "5">
+									<LineText>...  Your mother has broken her toe.</LineText>
+								</Line>
+								<Line id = "6">
+									<LineText>[Character: Mother]*Sob!*  I can feel the end closing in on me.</LineText>
+								</Line>
+								<Line id = "7">
+									<LineText>I'm sorry you had to find out this way playerName.</LineText>
+								</Line>
+								<Line id = "8">
+									<LineText>[StoryPoint: FirstConversation]"Run along to Bill's store in the middle of town.  See if he has anything to ease her suffering as she fades from this world.</LineText>
+								</Line>
+							</Lines>
+						</ConversationStage>
+						<ConversationStage id = "1">
+							<Lines>
+								<Line id = "0">
+									<LineText>Go on playerName, get out of here!</LineText>
+								</Line>
+							</Lines>
+						</ConversationStage>
+					</ConversationStages>
+				</StoryStage>
+			</StoryStages>
+		</Conversation>
+		<Conversation name = "Bill">
+			<StoryStages>
+				<StoryStage id = "0">
+					<StoryThread>"MainStory"</StoryThread>
+					<StageNumber>1</StageNumber>
+					<ConversationStages>
+						<ConversationStage id = "0">
+							<Lines>
+								<Line id = "0">
+									<LineText>Hello playerName.  How's your old Grandpapa?  What can I help you with today.</LineText>
+									<Replies>
+										<Reply>>My mother has broken her toe</Reply>
+									</Replies>
+								</Line>
+								<Line id = "1">
+									<LineText>My dear playerName...  I'm so sorry for your loss.</LineText>
+								</Line>
+								<Line id = "2">
+									<LineText>Unfortunately all of my medical supplies have just been bought up by the Pale Town Guards.</LineText>
+								</Line>
+								<Line id = "3">
+									<LineText>[StoryPoint: MetBill]My cousin in Soggsville keeps all kinds of potions and bandaids.  Maybe your Father could travel out to see him?</LineText>
+								</Line>
+							</Lines>
+						</ConversationStage>
+						<ConversationStage id = "1">
+								<Lines>
+									<Line id = "0">
+										<LineText>Run along now playerName</LineText>
+									</Line>
+								</Lines>
+						</ConversationStage>
+					</ConversationStages>
+				</StoryStage>
+			</StoryStages>
+		</Conversation>
+		<Conversation name = "Town Guard">
+			<StoryStages>
+				<StoryStage id = "0">
+					<StoryThread>"MainStory"</StoryThread>
+					<StageNumber>0</StageNumber>
+					<ConversationStages>
+						<ConversationStage id = "0">
+							<Lines>
+								<Line id = "0">
+									<LineText>Hello playerName.  Looking to head to Soggsville?</LineText>
+								</Line>
+								<Line id = "1">
+									<LineText>I can't let a playerName your age out alone!</LineText>
+								</Line>
+							</Lines>
+						</ConversationStage>
+					</ConversationStages>
+				</StoryStage>
+				<StoryStage id = "2">
+					<StoryThread>"MainStory"</StoryThread>
+					<StageNumber>2</StageNumber>
+					<ConversationStages>
+						<ConversationStage id = "0">
+							<Lines>
+								<Line id = "1">
+									<LineText>It's a scary world out there.  You look far too young to be venturing out alone.</LineText>
+								</Line>
+								<Line id = "2">
+									<LineText>[StoryPoint: SoggsvilleUnlocked]But Hey!  Who am I to judge?  Good luck out there playerName</LineText>
+								</Line>
+							</Lines>
+						</ConversationStage>
+						<ConversationStage id = "1">
+							<Lines>
+								<Line id = "1">
+									<LineText>Run along now playerName.</LineText>
+								</Line>
+							</Lines>
+						</ConversationStage>
+					</ConversationStages>
+				</StoryStage>
+			</StoryStages>
+		</Conversation>
+	</Conversations>
+</ConversationListCollection>
+
