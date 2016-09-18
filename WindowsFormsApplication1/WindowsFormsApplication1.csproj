@@ -46,9 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SpecificContainers\Boxes\LineBox.cs" />
     <Compile Include="SpecificContainers\Boxes\UIBox.cs" />
     <Compile Include="SpecificContainers\Tables\CharacterTable.cs" />
     <Compile Include="SpecificContainers\Boxes\DialogueBox.cs" />
+    <Compile Include="SpecificContainers\Tables\LineTable.cs" />
     <Compile Include="SpecificContainers\Tables\UITable.cs" />
     <Compile Include="SpecificContainers\Tables\DialogueTable.cs" />
     <Compile Include="MainDisplay.cs" />

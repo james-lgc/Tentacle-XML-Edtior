@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class DialogueTable : UITable<DialogueBox>
+    public class DialogueTable : UITable<ConversationStage>
     {
-        CollapsableTable table;
+        HeadedFixedContainer container;
         DialogueBox dialogueBox;
+
+        public DialogueTable(Form1 form, StoryStageBox storyStageBox, ConversationStage[] conversationStages)
+        {
+            base.SetUp(form, storyStageBox.dialogueContainer, conversationStages.Length, 1, conversationStages);
+            for (int i = 0; i < xArray.Length; i++)
+            {
+                DialogueBox dialogueBox = new DialogueBox(form, this, i, conversationStages[i]);
+            }
+            base.Expand();
+            cTable.panel.AutoScroll = true;
+        }
     }
 }

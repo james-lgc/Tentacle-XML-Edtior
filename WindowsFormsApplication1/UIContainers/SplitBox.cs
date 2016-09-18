@@ -12,6 +12,7 @@ namespace WindowsFormsApplication1
         public TableLayoutPanel panel;
         public Label label;
         public TextBox textBox;
+        public NumericUpDown numUpDown;
 
         public SplitBox(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText, string textBoxtext = null, int num =0)
         {
@@ -47,7 +48,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                NumericUpDown numUpDown = new NumericUpDown();
+                numUpDown = new NumericUpDown();
                 form.Controls.Add(numUpDown);
                 numUpDown.Parent = panel;
                 panel.SetColumn(numUpDown, 1);

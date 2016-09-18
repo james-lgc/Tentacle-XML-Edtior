@@ -17,12 +17,12 @@ public class Conversation{
 public class StoryStage{
 
 	[XmlAttribute("id")]
-	public int id;
+	public int id { get; set; }
 
-	[XmlElement("StoryThread")]
-	public string storyThread;
+    [XmlElement("StoryThread")]
+	public string storyThread { get; set; }
 
-	[XmlElement("StageNumber")]
+    [XmlElement("StageNumber")]
 	public int stageNumber { get; set; }
 
 

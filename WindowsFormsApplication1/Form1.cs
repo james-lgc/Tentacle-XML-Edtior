@@ -20,6 +20,7 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+            WindowState = FormWindowState.Maximized;
         }
 
         private void button1_Click(object sender, EventArgs e)
