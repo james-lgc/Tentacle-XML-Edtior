@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
             container = new HeadedFixedContainer(form, null, 0, "Conversations");
             container.panel.Dock = DockStyle.Fill;
             characterTable = new CharacterTable(form, this, cList.conversations);
+            container.panel.AutoScroll = true;
+            container.panel.Refresh();
         }
     }
 }

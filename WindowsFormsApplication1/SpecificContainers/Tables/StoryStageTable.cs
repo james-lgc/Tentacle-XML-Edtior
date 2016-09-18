@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
             {
                 StoryStageBox storyStageBox = new StoryStageBox(form, this, i, storyStages[i]);
             }
+            base.Expand();
         }
     }
 }

@@ -29,11 +29,11 @@ namespace WindowsFormsApplication1
             panel.Parent = parentPanel;
             parentPanel.SetRow(panel, rowNum);
             parentPanel.SetColumn(panel, 0);
-            panel.BackColor = System.Drawing.Color.Green;
-            panel.AutoSizeMode = AutoSizeMode.GrowOnly;
-            panel.Size = new System.Drawing.Size(70, 20);
+            //panel.BackColor = System.Drawing.Color.Green;
+            panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            //panel.Size = new System.Drawing.Size(70, 20);
             panel.RowStyles.Clear();
-            panel.RowStyles.Add(new RowStyle(SizeType.Percent));
+            //panel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             panel.BringToFront();
             panel.Show();
 

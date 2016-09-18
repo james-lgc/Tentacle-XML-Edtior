@@ -14,19 +14,20 @@ namespace WindowsFormsApplication1
         protected void SetUp(Form1 form, TableLayoutPanel parentPanel, int rowNum)
         {
             panel = new TableLayoutPanel();
+            //panel.AutoScroll = true;
             panel.Dock = DockStyle.Fill;
             panel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
             form.Controls.Add(panel);
             panel.ColumnCount = 1;
             panel.RowCount = 2;
-            panel.AutoSizeMode = AutoSizeMode.GrowOnly;
-            panel.Size = new System.Drawing.Size(70, 20);
-            panel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            //panel.Size = new System.Drawing.Size(70, 20);
+            //panel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             panel.BringToFront();
-            panel.RowStyles.Clear();
+            //panel.RowStyles.Clear();
             panel.Show();
-            panel.RowStyles.Add(new RowStyle(SizeType.Percent)); ;
-            panel.BackColor = System.Drawing.Color.Blue;
+            //panel.RowStyles.Add(new RowStyle(SizeType.Percent)); ;
+            //panel.BackColor = System.Drawing.Color.Blue;
             if (parentPanel != null)
             {
                 panel.Parent = parentPanel;

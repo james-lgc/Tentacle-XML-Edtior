@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 public class Conversation{
 
 	[XmlAttribute("name")]
-	public string name;
+    public string name { get; set; }
 
 	[XmlArray("StoryStages")]
 	[XmlArrayItem("StoryStage")]
@@ -23,10 +23,10 @@ public class StoryStage{
 	public string storyThread;
 
 	[XmlElement("StageNumber")]
-	public int stageNumber;
+	public int stageNumber { get; set; }
 
 
-	[XmlArray("ConversationStages")]
+    [XmlArray("ConversationStages")]
 	[XmlArrayItem("ConversationStage")]
 	public ConversationStage[] conversationStages;
 
@@ -36,9 +36,9 @@ public class StoryStage{
 public class ConversationStage{
 
 	[XmlElementAttribute("id")]
-	public int id;
+	public int id { get; set; }
 
-	[XmlArray("Lines")]
+    [XmlArray("Lines")]
 	[XmlArrayItem("Line")]
 	public Line[] lines;
 
@@ -48,13 +48,13 @@ public class ConversationStage{
 public class Line{
 
 	[XmlElementAttribute("id")]
-	public int id;
+	public int id { get; set; }
 
-	[XmlElement("LineText")]
-	public string lineText;
+    [XmlElement("LineText")]
+	public string lineText { get; set; }
 
-	[XmlArray("Replies")]
+    [XmlArray("Replies")]
 	[XmlArrayItem("Reply")]
-	public string[] replies;
+	public string[] replies { get; set; }
 
 }

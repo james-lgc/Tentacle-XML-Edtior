@@ -11,10 +11,10 @@ namespace WindowsFormsApplication1
     {
         public SplitBox splitBox;
 
-        public HeadedEditableContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText, string textBoxText)
+        public HeadedEditableContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText, string textBoxText, int upDownNum)
         {
             base.SetUp(form, parentPanel, rowNum);
-            splitBox = new SplitBox(form, panel, 0, labelText, textBoxText);
+            splitBox = new SplitBox(form, panel, 0, labelText, textBoxText, upDownNum);
         }
     }
 }

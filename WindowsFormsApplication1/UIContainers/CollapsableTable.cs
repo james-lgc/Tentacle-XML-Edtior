@@ -15,16 +15,17 @@ namespace WindowsFormsApplication1
         {
             panel = new TableLayoutPanel();
             panel.Dock = DockStyle.Fill;
+            //panel.AutoScroll = true;
             panel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
-            panel.AutoSizeMode = AutoSizeMode.GrowOnly;
-            panel.Size = new System.Drawing.Size(70, 20);
+            panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            //panel.Size = new System.Drawing.Size(70, 20);
             panel.RowStyles.Clear();
-            panel.RowStyles.Add(new RowStyle(SizeType.Percent));
+            //panel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             panel.Show();
             panel.ColumnCount = 1;
             panel.RowCount = rowCount;
             panel.Parent = parent.panel;
-            panel.BackColor = System.Drawing.Color.Red;
+            //panel.BackColor = System.Drawing.Color.Red;
             parent.panel.SetRow(panel, rowNum);
             parent.panel.SetColumn(panel, 0);
             panel.BringToFront();

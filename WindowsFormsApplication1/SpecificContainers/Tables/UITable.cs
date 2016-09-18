@@ -17,5 +17,10 @@ namespace WindowsFormsApplication1
             cTable = new CollapsableTable(form, parent, rowCount, rowNum);
             xArray = newX;
         }
+
+        public void Expand()
+        {
+            cTable.panel.Refresh();
+        }
     }
 }

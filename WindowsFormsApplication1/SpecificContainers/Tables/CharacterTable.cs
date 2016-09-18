@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
             {
                 CharacterBox characterBox = new CharacterBox(form, this, i, conversations[i]);
             }
+            base.Expand();
         }
     }
 }
