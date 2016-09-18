@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class CollapsableTable
+    public class CollapsableTable : UIContainer
     {
         public TableLayoutPanel panel;
 
-        public CollapsableTable(Form1 form, HeadedContainer parent, int rowCount, int columnCount, int rowNum)
+        public CollapsableTable(Form1 form, UIContainer parent, int rowCount, int columnCount, int rowNum)
         {
             panel = new TableLayoutPanel();
             panel.Dock = DockStyle.Fill;
@@ -19,12 +19,18 @@ namespace WindowsFormsApplication1
            // panel.Show();
             panel.ColumnCount = columnCount;
             panel.RowCount = rowCount;
-            parent.SetChildControls(this, columnCount);
+            parent.SetChildControls(this);
             TableSizer.AutoSize(panel);
             //panel.BackColor = System.Drawing.Color.Red;
             //parent.groupBox.SetRow(panel, rowNum);
             //parent.groupBox.SetColumn(panel, 0);
             //panel.BringToFront();
+        }
+
+        public override void SetChildControls(CollapsableTable cTable)
+        {
+            cTable.panel.Parent = panel;
+            panel.Controls.Add(cTable.panel);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class HeadedContainer
+    public class HeadedContainer : UIContainer
     {
         public TableLayoutPanel panel;
         protected int columnCount = 1;
@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public void SetChildControls(CollapsableTable cTable, int sentColumnCount)
+        public override void SetChildControls(CollapsableTable cTable)
         {
             cTable.panel.Parent = panel;
             panel.SetRow(cTable.panel, 1);

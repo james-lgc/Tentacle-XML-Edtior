@@ -7,19 +7,33 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class HeadedFixedContainer : HeadedContainer
+    public class HeadedFixedContainer : UIContainer
     {
-        public Label label;
+        public GroupBox groupBox;
 
         public HeadedFixedContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText)
         {
-            base.SetUp(form, parentPanel, rowNum);
-            Label label = new Label();
-            label.Text = labelText;
-            label.Parent = panel;
-            panel.SetRow(label, 0);
-            panel.SetColumn(label, 0);
-            panel.Controls.Add(label);
+            groupBox = new GroupBox();
+            groupBox.AutoSize = true;
+            groupBox.Text = labelText;
+            groupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            groupBox.Dock = DockStyle.Fill;
+            if (parentPanel != null)
+            {
+                groupBox.Parent = parentPanel;
+                parentPanel.SetCellPosition(groupBox, new TableLayoutPanelCellPosition(rowNum, parentPanel.ColumnCount - 1));
+                parentPanel.Controls.Add(groupBox);
+            }
+            else
+            {
+                form.Controls.Add(groupBox);
+            }
+        }
+
+        public override void SetChildControls(CollapsableTable cTable)
+        {
+            cTable.panel.Parent = groupBox;
+            groupBox.Controls.Add(cTable.panel);
         }
     }
 

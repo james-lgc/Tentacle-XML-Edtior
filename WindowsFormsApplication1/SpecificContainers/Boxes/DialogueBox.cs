@@ -11,10 +11,13 @@ namespace WindowsFormsApplication1
     {
         public HeadedFixedContainer container;
         public LineTable lineTable;
+        public DialogueTable dTable;
 
-        public DialogueBox(Form1 form, DialogueTable dialogueTbale, int rowNum, ConversationStage conversationStage)
+        public DialogueBox(Form1 form, DialogueTable dialogueTable, int rowNum, ConversationStage conversationStage)
         {
-            container = new HeadedFixedContainer(form, dialogueTbale.cTable.panel, rowNum, "Lines");
+            dTable = dialogueTable;
+            container = new HeadedFixedContainer(form, dialogueTable.cTable.panel, rowNum, "Dialogue");
+            //dialogueTable.cTable.panel.SetColumn(container.groupBox, 1);
             lineTable = new LineTable(form, this, conversationStage.lines);
             //container.panel.AutoScroll = true;
             //TableSizer.AutoSize(container.panel);

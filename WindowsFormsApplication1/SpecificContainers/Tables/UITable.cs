@@ -13,24 +13,28 @@ namespace WindowsFormsApplication1
         public X[] xArray;
         protected List<UIBox<X>> boxes;
 
-        protected void SetUp(Form1 form, HeadedContainer parent, int rowCount, int columnCount, int rowNum, X[] newX, string[] labelTexts)
+        protected void SetUp(Form1 form, UIContainer parent, int rowCount, int columnCount, int rowNum, X[] newX, string[] labelTexts)
         { 
             cTable = new CollapsableTable(form, parent, rowCount, columnCount, rowNum);
             xArray = newX;
-            for (int i = 0; i < newX.Length; i++)
+            if (labelTexts != null)
             {
-                Label label = new Label();
-                if (labelTexts.Length > 1)
+                for (int i = 0; i < newX.Length; i++)
                 {
-                    label.Text = labelTexts[i];
+                    Label label = new Label();
+                    if (labelTexts.Length > 1)
+                    {
+                        label.Text = labelTexts[i];
+                    }
+                    else
+                    {
+                        label.Text = labelTexts[0];
+                    }
+                    label.Parent = cTable.panel;
+                    cTable.panel.SetRow(label, i);
+                    cTable.panel.SetColumn(label, 0);
+                    cTable.panel.Controls.Add(label);
                 }
-                else
-                {
-                    label.Text = labelTexts[0];    
-                }
-                label.Parent = cTable.panel;
-                cTable.panel.SetCellPosition(label, new TableLayoutPanelCellPosition(0, i));
-                cTable.panel.Controls.Add(label);
             }
 
             TableSizer.AutoSize(cTable.panel);
