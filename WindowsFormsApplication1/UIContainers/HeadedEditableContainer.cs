@@ -14,7 +14,12 @@ namespace WindowsFormsApplication1
         public HeadedEditableContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText, string textBoxText, int upDownNum)
         {
             base.SetUp(form, parentPanel, rowNum);
-            splitBox = new SplitBox(form, panel, 0, labelText, textBoxText, upDownNum);
+            groupBox.Text = labelText;
+            TextBox textBox = new TextBox();
+            textBox.Text = textBoxText;
+            textBox.Parent = groupBox;
+            groupBox.Controls.Add(textBox);
+            //splitBox = new SplitBox(form, groupBox, 0, labelText, textBoxText, upDownNum);
         }
     }
 }

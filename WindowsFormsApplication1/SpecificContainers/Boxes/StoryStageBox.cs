@@ -30,8 +30,8 @@ namespace WindowsFormsApplication1
             dialogueTable = new DialogueTable(form, this, storyStage.conversationStages);
             //container.panel.AutoScroll = true;
             TableSizer.AutoSize(subTable.panel);
-            TableSizer.AutoSize(dialogueContainer.panel);
-            TableSizer.AutoSize(container.panel);
+            //TableSizer.AutoSize(dialogueContainer.panel);
+            //TableSizer.AutoSize(container.panel);
         }
     }
 }

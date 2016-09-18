@@ -9,17 +9,16 @@ namespace WindowsFormsApplication1
 {
     public class HeadedContainer
     {
-        public TableLayoutPanel panel;
+        public GroupBox groupBox;
 
         protected void SetUp(Form1 form, TableLayoutPanel parentPanel, int rowNum)
         {
-            panel = new TableLayoutPanel();
+            groupBox = new GroupBox();
             //panel.AutoScroll = true;
             //form.Controls.Add(panel);
-            panel.Dock = DockStyle.Fill;
-            
-            panel.ColumnCount = 1;
-            panel.RowCount = 2;
+            groupBox.Dock = DockStyle.Fill;
+            groupBox.AutoSize = true;
+            groupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             //panel.BringToFront();
             //panel.Show();
             
@@ -27,15 +26,15 @@ namespace WindowsFormsApplication1
             //panel.BackColor = System.Drawing.Color.Blue;
             if (parentPanel != null)
             {
-                panel.Parent = parentPanel;
-                parentPanel.Controls.Add(panel);
-                parentPanel.SetRow(panel, rowNum);
-                parentPanel.SetColumn(panel, 0);
+                groupBox.Parent = parentPanel;
+                parentPanel.Controls.Add(groupBox);
+                parentPanel.SetRow(groupBox, rowNum);
+                parentPanel.SetColumn(groupBox, 0);
                 
             }
             else
             {
-                form.Controls.Add(panel);
+                form.Controls.Add(groupBox);
             }
         }
 

@@ -19,10 +19,10 @@ namespace WindowsFormsApplication1
             //container = new HeadedEditableContainer(form, characterTable.table.panel, rowNum, conversation.name);
             BindingSource bindingSource = new BindingSource();
             bindingSource.DataSource = conversation.name;
-            container.splitBox.textBox.DataBindings.Add("Text", conversation, "name", false, DataSourceUpdateMode.OnPropertyChanged);
+            //container.splitBox.textBox.DataBindings.Add("Text", conversation, "name", false, DataSourceUpdateMode.OnPropertyChanged);
             storyStageTable = new StoryStageTable(form, this, conversation.storyStages);
-            container.panel.AutoScroll = true;
-            TableSizer.AutoSize(container.panel);
+            //container.panel.AutoScroll = true;
+            //TableSizer.AutoSize(container.panel);
         }
 
 

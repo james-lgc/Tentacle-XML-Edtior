@@ -15,12 +15,11 @@ namespace WindowsFormsApplication1
         public MainDisplay(Form1 form, ConversationList cList)
         {
             container = new HeadedFixedContainer(form, null, 0, "Conversations");
-            container.panel.Dock = DockStyle.Fill;
+            container.groupBox.Dock = DockStyle.Fill;
             //container.panel.Hide();
             //container.panel.SuspendLayout();
             characterTable = new CharacterTable(form, this, cList.conversations);
-            container.panel.AutoScroll = true;
-            TableSizer.AutoSize(container.panel);
+            //TableSizer.AutoSize(container.panel);
             //container.panel.Show();
             //container.panel.ResumeLayout();
             //container.panel.Refresh();

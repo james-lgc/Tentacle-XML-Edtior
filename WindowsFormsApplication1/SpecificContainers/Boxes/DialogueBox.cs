@@ -16,8 +16,8 @@ namespace WindowsFormsApplication1
         {
             container = new HeadedFixedContainer(form, dialogueTbale.cTable.panel, rowNum, "Lines");
             lineTable = new LineTable(form, this, conversationStage.lines);
-            container.panel.AutoScroll = true;
-            TableSizer.AutoSize(container.panel);
+            //container.panel.AutoScroll = true;
+            //TableSizer.AutoSize(container.panel);
         }
 
         public void SetUp()

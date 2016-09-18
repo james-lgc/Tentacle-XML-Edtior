@@ -14,16 +14,16 @@ namespace WindowsFormsApplication1
         public CollapsableTable(Form1 form, HeadedContainer parent, int rowCount, int rowNum)
         {
             panel = new TableLayoutPanel();
-            parent.panel.Controls.Add(panel);
+            parent.groupBox.Controls.Add(panel);
             panel.Dock = DockStyle.Fill;
             //panel.AutoScroll = true;
            // panel.Show();
             panel.ColumnCount = 1;
             panel.RowCount = rowCount;
-            panel.Parent = parent.panel;
+            panel.Parent = parent.groupBox;
             //panel.BackColor = System.Drawing.Color.Red;
-            parent.panel.SetRow(panel, rowNum);
-            parent.panel.SetColumn(panel, 0);
+            //parent.groupBox.SetRow(panel, rowNum);
+            //parent.groupBox.SetColumn(panel, 0);
             //panel.BringToFront();
         }
     }

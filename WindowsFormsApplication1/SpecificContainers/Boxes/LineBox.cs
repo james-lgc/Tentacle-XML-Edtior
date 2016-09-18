@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
         public LineBox(Form1 form, LineTable linetable, int rowNum, Line line)
         {
             container = new HeadedEditableContainer(form, linetable.cTable.panel, rowNum, "Line", line.lineText, 0);
-            container.splitBox.textBox.DataBindings.Add("Text", line, "lineText", false, System.Windows.Forms.DataSourceUpdateMode.Never);
+            //container.splitBox.textBox.DataBindings.Add("Text", line, "lineText", false, System.Windows.Forms.DataSourceUpdateMode.Never);
         }
     }
 }
