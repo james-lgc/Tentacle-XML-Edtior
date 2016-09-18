@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         public SplitBox(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText, string textBoxtext = null, int num =0)
         {
             panel = new TableLayoutPanel();
-            form.Controls.Add(panel);
+            parentPanel.Controls.Add(panel);
             panel.ColumnCount = 2;
             panel.RowCount = 1;
             panel.Dock = DockStyle.Fill;

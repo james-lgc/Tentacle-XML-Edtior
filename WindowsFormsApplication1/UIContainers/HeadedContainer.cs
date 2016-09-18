@@ -32,6 +32,12 @@ namespace WindowsFormsApplication1
                 panel.Parent = parentPanel;
                 parentPanel.SetRow(panel, rowNum);
                 parentPanel.SetColumn(panel, 0);
+                parentPanel.Controls.Add(panel);
+            }
+            else
+            {
+                form.Controls.Add(panel);
+                
             }
         }
 

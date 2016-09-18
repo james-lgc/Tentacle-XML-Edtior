@@ -7,3 +7,12 @@ c:\users\james\documents\visual studio 2015\Projects\WindowsFormsApplication1\Wi
 c:\users\james\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
 c:\users\james\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 c:\users\james\documents\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache

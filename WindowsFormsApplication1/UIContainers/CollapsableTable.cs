@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
             parent.panel.SetRow(panel, rowNum);
             parent.panel.SetColumn(panel, 0);
             panel.BringToFront();
-            form.Controls.Add(panel);
+            parent.panel.Controls.Add(panel);
         }
     }
 }
