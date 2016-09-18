@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 
         protected void SetUp(Form1 form, CollapsableTable cTable, int rowNum, string name)
         {
-            switch (caseSwitch)
+            /*switch (caseSwitch)
             {
                 case 0:
                     //build conversation boxes
@@ -27,10 +27,11 @@ namespace WindowsFormsApplication1
                 case 3:
                     //build reply boxes
                     break;
-
+                
 
 
             }
+            */
             //container = new HeadedEditableContainer(form, characterTable.table.panel, rowNum, conversation.name);
             //storyStageTable = new StoryStageTable(form, this, conversation);
         }

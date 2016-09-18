@@ -16,11 +16,12 @@ namespace WindowsFormsApplication1
         { 
             cTable = new CollapsableTable(form, parent, rowCount, rowNum);
             xArray = newX;
+            TableSizer.AutoSize(cTable.panel);
         }
 
         public void Expand()
         {
-            cTable.panel.Refresh();
+            TableSizer.AutoSize(cTable.panel);
         }
     }
 }

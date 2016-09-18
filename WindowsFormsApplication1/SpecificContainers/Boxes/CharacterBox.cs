@@ -21,8 +21,8 @@ namespace WindowsFormsApplication1
             bindingSource.DataSource = conversation.name;
             container.splitBox.textBox.DataBindings.Add("Text", conversation, "name", false, DataSourceUpdateMode.OnPropertyChanged);
             storyStageTable = new StoryStageTable(form, this, conversation.storyStages);
-            container.panel.Refresh();
             container.panel.AutoScroll = true;
+            TableSizer.AutoSize(container.panel);
         }
 
 

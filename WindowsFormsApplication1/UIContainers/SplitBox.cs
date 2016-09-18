@@ -18,41 +18,38 @@ namespace WindowsFormsApplication1
         {
             panel = new TableLayoutPanel();
             parentPanel.Controls.Add(panel);
+            panel.Parent = parentPanel;
             panel.ColumnCount = 2;
             panel.RowCount = 1;
             panel.Dock = DockStyle.Fill;
             panel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
             label = new Label();
-            form.Controls.Add(label);
             label.Parent = panel;
+            panel.Controls.Add(label);
             label.Text = labelText;
             panel.SetColumn(label, 0);
-            panel.Parent = parentPanel;
             parentPanel.SetRow(panel, rowNum);
             parentPanel.SetColumn(panel, 0);
             //panel.BackColor = System.Drawing.Color.Green;
-            panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             //panel.Size = new System.Drawing.Size(70, 20);
-            panel.RowStyles.Clear();
-            //panel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            panel.BringToFront();
-            panel.Show();
-
+            //panel.BringToFront();
+            //panel.Show();
             if (labelText != null)
             {
                 textBox = new TextBox();
-                form.Controls.Add(textBox);
                 textBox.Parent = panel;
+                panel.Controls.Add(textBox);
                 panel.SetColumn(textBox, 1);
                 panel.SetRow(textBox, 0);
             }
             else
             {
                 numUpDown = new NumericUpDown();
-                form.Controls.Add(numUpDown);
                 numUpDown.Parent = panel;
+                panel.Controls.Add(numUpDown);
                 panel.SetColumn(numUpDown, 1);
             }
+            TableSizer.AutoSize(panel);
         }
     }
 }

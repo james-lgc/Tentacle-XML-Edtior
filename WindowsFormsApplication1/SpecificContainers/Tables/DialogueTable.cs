@@ -8,8 +8,7 @@ namespace WindowsFormsApplication1
 {
     public class DialogueTable : UITable<ConversationStage>
     {
-        HeadedFixedContainer container;
-        DialogueBox dialogueBox;
+        //HeadedFixedContainer container;
 
         public DialogueTable(Form1 form, StoryStageBox storyStageBox, ConversationStage[] conversationStages)
         {
@@ -19,7 +18,7 @@ namespace WindowsFormsApplication1
                 DialogueBox dialogueBox = new DialogueBox(form, this, i, conversationStages[i]);
             }
             base.Expand();
-            cTable.panel.AutoScroll = true;
+            //cTable.panel.AutoScroll = true;
         }
     }
 }

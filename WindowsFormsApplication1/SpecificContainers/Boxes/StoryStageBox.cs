@@ -28,7 +28,10 @@ namespace WindowsFormsApplication1
             //stageNumBox.numUpDown.DataBindings.Add("Number", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
             dialogueContainer = new HeadedFixedContainer(form, subTable.panel, 2, "Dialogues");
             dialogueTable = new DialogueTable(form, this, storyStage.conversationStages);
-            container.panel.AutoScroll = true;
+            //container.panel.AutoScroll = true;
+            TableSizer.AutoSize(subTable.panel);
+            TableSizer.AutoSize(dialogueContainer.panel);
+            TableSizer.AutoSize(container.panel);
         }
     }
 }

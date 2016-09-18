@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
                 LineBox lineBox = new LineBox(form, this, i, lines[i]);
             }
             base.Expand();
-            cTable.panel.AutoScroll = true;
+            //cTable.panel.AutoScroll = true;
         }
     }
 }

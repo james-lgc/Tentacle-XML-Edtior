@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoTableLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SpecificContainers\Boxes\LineBox.cs" />
     <Compile Include="SpecificContainers\Boxes\UIBox.cs" />
     <Compile Include="SpecificContainers\Tables\CharacterTable.cs" />
@@ -59,6 +62,7 @@
     <Compile Include="SpecificContainers\Boxes\CharacterBox.cs" />
     <Compile Include="SpecificContainers\Boxes\StoryStageBox.cs" />
     <Compile Include="SpecificContainers\Tables\StoryStageTable.cs" />
+    <Compile Include="TableSizer.cs" />
     <Compile Include="UIContainers\CollapsableTable.cs" />
     <Compile Include="UIContainers\HeadedContainer.cs" />
     <Compile Include="UIContainers\HeadedEditableContainer.cs" />
