@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1
     {
         int caseSwitch;
 
-        protected void SetUp(Form1 form, CollapsableTable cTable, int rowNum, string name)
+        protected void SetUp(Form1 form, CollapsableTable cTable, int rowNum, int columnCount, string name)
         {
             /*switch (caseSwitch)
             {

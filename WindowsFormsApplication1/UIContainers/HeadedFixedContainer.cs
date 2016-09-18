@@ -14,11 +14,12 @@ namespace WindowsFormsApplication1
         public HeadedFixedContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText)
         {
             base.SetUp(form, parentPanel, rowNum);
-            groupBox.Text = labelText;
-            label = new Label();
-            form.Controls.Add(label);
-            label.Parent = groupBox;
+            Label label = new Label();
             label.Text = labelText;
+            label.Parent = panel;
+            panel.SetRow(label, 0);
+            panel.SetColumn(label, 0);
+            panel.Controls.Add(label);
         }
     }
 

@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
 
         public CharacterBox(Form1 form, CharacterTable characterTable, int rowNum, Conversation conversation)
         {
-           // base.SetUp(form, characterTable.cTable, rowNum, conversation.name);
+            base.SetUp(form, characterTable.cTable, rowNum, 1, conversation.name);
             container = new HeadedEditableContainer(form, characterTable.cTable.panel, rowNum, "Name",conversation.name, 0);
             //container = new HeadedEditableContainer(form, characterTable.table.panel, rowNum, conversation.name);
             BindingSource bindingSource = new BindingSource();

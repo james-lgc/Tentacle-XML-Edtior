@@ -9,34 +9,37 @@ namespace WindowsFormsApplication1
 {
     public class HeadedContainer
     {
-        public GroupBox groupBox;
+        public TableLayoutPanel panel;
+        protected int columnCount = 1;
 
         protected void SetUp(Form1 form, TableLayoutPanel parentPanel, int rowNum)
         {
-            groupBox = new GroupBox();
-            //panel.AutoScroll = true;
-            //form.Controls.Add(panel);
-            groupBox.Dock = DockStyle.Fill;
-            groupBox.AutoSize = true;
-            groupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            //panel.BringToFront();
-            //panel.Show();
-            
-            //panel.RowStyles.Add(new RowStyle(SizeType.Percent)); ;
-            //panel.BackColor = System.Drawing.Color.Blue;
+            panel = new TableLayoutPanel();
+            panel.RowCount = 2;
+            panel.ColumnCount = columnCount;
+            TableSizer.AutoSize(panel);
             if (parentPanel != null)
             {
-                groupBox.Parent = parentPanel;
-                parentPanel.Controls.Add(groupBox);
-                parentPanel.SetRow(groupBox, rowNum);
-                parentPanel.SetColumn(groupBox, 0);
+                panel.Parent = parentPanel;
+                parentPanel.Controls.Add(panel);
+                parentPanel.SetRow(panel, rowNum);
+                parentPanel.SetColumn(panel, 0);
                 
             }
             else
             {
-                form.Controls.Add(groupBox);
+                form.Controls.Add(panel);
             }
         }
+
+        public void SetChildControls(CollapsableTable cTable, int sentColumnCount)
+        {
+            cTable.panel.Parent = panel;
+            panel.SetRow(cTable.panel, 1);
+            panel.SetColumn(cTable.panel, panel.ColumnCount -1);
+            panel.Controls.Add(cTable.panel);
+        }
+
 
     }
 }

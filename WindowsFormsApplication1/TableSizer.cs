@@ -12,6 +12,7 @@ namespace WindowsFormsApplication1
         public static void AutoSize(TableLayoutPanel panel)
         {
             panel.AutoSize = true;
+            panel.Dock = DockStyle.Fill;
             panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
             panel.ColumnStyles.Clear();

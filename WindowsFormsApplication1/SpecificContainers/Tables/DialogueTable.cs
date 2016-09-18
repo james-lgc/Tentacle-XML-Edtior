@@ -12,7 +12,8 @@ namespace WindowsFormsApplication1
 
         public DialogueTable(Form1 form, StoryStageBox storyStageBox, ConversationStage[] conversationStages)
         {
-            base.SetUp(form, storyStageBox.dialogueContainer, conversationStages.Length, 1, conversationStages);
+            string[] labels = new string[] { "Dialogue" };
+            base.SetUp(form, storyStageBox.dialogueContainer, conversationStages.Length, 1, 1, conversationStages, labels);
             for (int i = 0; i < xArray.Length; i++)
             {
                 DialogueBox dialogueBox = new DialogueBox(form, this, i, conversationStages[i]);

@@ -10,7 +10,8 @@ namespace WindowsFormsApplication1
     {
         public StoryStageTable(Form1 form, CharacterBox characterBox, StoryStage[] storyStages)
         {
-            base.SetUp(form, characterBox.container, storyStages.Length, 1, storyStages);
+            string[] labels = new string[] { "StoryStage" };
+            base.SetUp(form, characterBox.container, storyStages.Length, 1, 1, storyStages, labels);
             Console.Write("Table Size: " + cTable.panel.RowCount);
             for (int i = 0; i < storyStages.Length; i++)
             {
