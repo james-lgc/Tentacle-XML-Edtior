@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
             
             //dialogueTable.cTable.panel.SetColumn(container.groupBox, 1);
             lineTable = new LineTable(form, this, conversationStage.lines);
-            container.AddHeading(form, lineTable.cTable, 1, labelTexts, true);
+            container.AddHeading(form, lineTable.cTable, 0, labelTexts, true);
             //container.panel.AutoScroll = true;
             //TableSizer.AutoSize(container.panel);
         }
