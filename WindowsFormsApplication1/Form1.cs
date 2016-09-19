@@ -76,17 +76,21 @@ namespace WindowsFormsApplication1
         private void BypassLoad(object sender, EventArgs e)
         {
             //string path = "C:/Users/James/Documents/conversations.xml";
-            string path = openFileDialog1.FileName;
-            FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));
-            ConversationList cList = serializer.Deserialize(reader) as ConversationList;
-            reader.Close();
+            DialogResult open = openFileDialog1.ShowDialog();
+            if (open == DialogResult.OK)
+            {
+                string path = openFileDialog1.FileName;
+                FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));
+                ConversationList cList = serializer.Deserialize(reader) as ConversationList;
+                reader.Close();
 
-            //XmlDocument doc = new XmlDocument();
+                //XmlDocument doc = new XmlDocument();
 
-            mainDisplay = new MainDisplay(this, cList);
-            AutoScroll = true;
-            Application.DoEvents();
+                mainDisplay = new MainDisplay(this, cList);
+                AutoScroll = true;
+                Application.DoEvents();
+            }
         }
 
         private void CreateNew(object sender, EventArgs e)
