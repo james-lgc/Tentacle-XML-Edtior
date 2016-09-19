@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
         public MainDisplay(Form1 form, ConversationList cList)
         {
             container = new HeadedFixedContainer(form, null, 0, "Conversations");
+            container.groupBox.BringToFront();
             //container.splitContainer.Dock = DockStyle.Fill;
             //container.panel.Hide();
             //container.panel.SuspendLayout();

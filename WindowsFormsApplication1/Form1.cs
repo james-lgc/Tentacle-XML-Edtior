@@ -24,14 +24,23 @@ namespace WindowsFormsApplication1
             this.BackColor = ColourManager.backGroundColour;
             //WindowState = FormWindowState.Maximized;
             menuStrip = new MenuStrip();
+            menuStrip.Dock = DockStyle.Top;
+            menuStrip.SendToBack();
             this.Controls.Add(menuStrip);
+
             ToolStripMenuItem fileMenu = new ToolStripMenuItem();
             fileMenu.Text = "File";
+            ToolStripMenuItem loadButton = new ToolStripMenuItem();
+            loadButton.Text = "Load";
+            ToolStripMenuItem newButton = new ToolStripMenuItem();
+            newButton.Text = "New";
+
             menuStrip.Items.Add(fileMenu);
-            ToolStripMenuItem load = new ToolStripMenuItem();
-            load.Text = "Load";
-            fileMenu.DropDownItems.Add(load);
-            load.Click += BypassLoad;
+            
+            fileMenu.DropDownItems.Add(loadButton);
+            fileMenu.DropDownItems.Add(newButton);
+            loadButton.Click += BypassLoad;
+            newButton.Click += CreateNew;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -70,6 +79,15 @@ namespace WindowsFormsApplication1
             mainDisplay = new MainDisplay(this, cList);
             AutoScroll = true;
             Application.DoEvents();
+        }
+
+        private void CreateNew(object sender, EventArgs e)
+        {
+            ConversationList cList = new ConversationList();
+            cList.Build();
+            mainDisplay = null;
+            mainDisplay = new MainDisplay(this, cList);
+
         }
     }
 

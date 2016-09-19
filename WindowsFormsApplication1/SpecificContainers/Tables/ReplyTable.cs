@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
             string[] labels = new string[] { "Reply" };
             if (replies != null)
             {
-                base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels);
+                base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels, "Reply");
                 //cTable.panel.DataBindings.Add()
                 for (int i = 0; i < xArray.Length; i++)
                 {
@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
             else
             {
                 replies = new string[0];
-                base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels);
+                base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels, "Reply");
             }
             cTable.panel.BringToFront();
             //base.Expand();

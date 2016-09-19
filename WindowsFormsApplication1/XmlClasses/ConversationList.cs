@@ -10,4 +10,10 @@ public class ConversationList {
 	[XmlArrayItem("Conversation")]
 	public Conversation[] conversations;
 
+    public void Build()
+    {
+        conversations = new Conversation[1];
+        conversations[0] = new Conversation();
+        conversations[0].Build();
+    }
 }
