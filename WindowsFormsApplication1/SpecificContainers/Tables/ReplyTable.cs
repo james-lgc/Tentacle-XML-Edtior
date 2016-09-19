@@ -12,13 +12,13 @@ namespace WindowsFormsApplication1
 
         private LineBox lineBox;
 
-        public ReplyTable(Form1 form, LineBox newLineBox, string[] replies, Line line)
+        public ReplyTable(Form1 form, LineBox sentLineBox, string[] replies, Line line)
         {
-            lineBox = newLineBox;
+            lineBox = sentLineBox;
             string[] labels = new string[] { "Reply" };
             if (replies != null)
             {
-                base.SetUp(form, this, lineBox.cTable, replies.Length, 2, 1, replies, labels);
+                base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels);
                 //cTable.panel.DataBindings.Add()
                 for (int i = 0; i < xArray.Length; i++)
                 {
@@ -31,15 +31,16 @@ namespace WindowsFormsApplication1
             else
             {
                 replies = new string[0];
-                base.SetUp(form, this, lineBox.cTable, replies.Length, 2, 1, replies, labels);
+                base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels);
             }
+            cTable.panel.BringToFront();
             //base.Expand();
         }
 
         private void AddTextBox(StringWrapper stringWrapper, int rowNum)
         {
             TextBox textBox = new TextBox();
-            textBox.Parent = lineBox.cTable.panel;
+            textBox.Parent = cTable.panel;
             textBox.Dock = DockStyle.Fill;
             textBox.DataBindings.Add("Text", stringWrapper, "wrappedString", false, DataSourceUpdateMode.OnPropertyChanged);
             cTable.panel.SetRow(textBox, rowNum);

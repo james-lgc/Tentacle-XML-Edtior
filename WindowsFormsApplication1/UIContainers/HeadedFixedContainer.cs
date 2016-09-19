@@ -10,6 +10,7 @@ namespace WindowsFormsApplication1
     public class HeadedFixedContainer : UIContainer
     {
         Button button;
+        private int columnCount;
         public GroupBox groupBox;
         public TextBox[] textBoxes;
         public IExpandable expandable;
@@ -35,48 +36,86 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public void AddHeading(Form1 form, CollapsableTable table, int fields, string[] labelTexts)
+        public void AddHeading(Form1 form, CollapsableTable table, int fields, string[] labelTexts, bool isCollapsable)
         {
+            textBoxes = new TextBox[fields];
+            columnCount = 1;
             if (fields > 0)
             {
-                CollapsableTable subTable = new CollapsableTable(form, this, fields, 3, 0);
-                subTable.panel.Dock = DockStyle.Top;
-                cTable = table;
-
-                textBoxes = new TextBox[fields];
-                for (int i = 0; i < fields; i++)
+                if (fields > 1 || labelTexts != null || isCollapsable == true)
                 {
-                    Label label = new Label();
-                    label.Parent = groupBox;
-                    label.Text = labelTexts[i];
-                    label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-                    label.Parent = subTable.panel;
-                    subTable.panel.SetRow(label, i);
-                    subTable.panel.SetColumn(label, 1);
-                    subTable.panel.Controls.Add(label);
-
-                    TextBox nameTextBox = new TextBox();
-                    nameTextBox.Parent = groupBox;
-                    nameTextBox.Parent = subTable.panel;
-                    subTable.panel.SetRow(nameTextBox, i);
-                    subTable.panel.SetColumn(nameTextBox, 2);
-                    subTable.panel.Controls.Add(nameTextBox);
-                    textBoxes[i] = nameTextBox;
-
-                    if (i == fields - 1)
+                    if (isCollapsable == true)
                     {
-                        button = new Button();
-                        button.Text = "Expand";
-                        button.Parent = subTable.panel;
-                        subTable.panel.SetRow(button, i);
-                        subTable.panel.SetColumn(button, 0);
-                        subTable.panel.Controls.Add(button);
-                        button.Click += new EventHandler(this.ToggleExpansion);
+                        columnCount++;
+                    }
+                    if (labelTexts != null)
+                    {
+                        columnCount++;
+                    }
+                    CollapsableTable subTable = new CollapsableTable(form, this, rowCount: fields, columnCount: columnCount, rowNum: 0);
+                    subTable.panel.Dock = DockStyle.Top;
+                    cTable = table;
+                    columnCount = 3;
+                    for (int i = 0; i < fields; i++)
+                    {
+                        AddLabel(i, labelTexts[i], subTable);
+                        AddTextBoxToTable(i, subTable);
+                        if (i == fields - 1 && isCollapsable == true)
+                        {
+                            AddButton(subTable, i);
+                            isExpanded = false;
+                            cTable.panel.Visible = false;
+                        }
                     }
                 }
-                isExpanded = false;
-                cTable.panel.Visible = false;
+                else if (fields == 1)
+                {
+                    AddTextBox();
+                }
             }
+            
+        }
+
+        private void AddButton(CollapsableTable subTable, int i)
+        {
+            button = new Button();
+            button.Text = "Expand";
+            button.Parent = subTable.panel;
+            subTable.panel.SetRow(button, i);
+            subTable.panel.SetColumn(button, 0);
+            subTable.panel.Controls.Add(button);
+            button.Click += new EventHandler(this.ToggleExpansion);
+        }
+
+        private void AddLabel(int i, string labelText, CollapsableTable subTable)
+        {
+            Label label = new Label();
+            label.Text = labelText;
+            label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label.Parent = subTable.panel;
+            subTable.panel.SetRow(label, i);
+            subTable.panel.SetColumn(label, columnCount -2);
+            subTable.panel.Controls.Add(label);
+        }
+
+        private void AddTextBox()
+        {
+            TextBox nameTextBox = new TextBox();
+            nameTextBox.Dock = DockStyle.Top;
+            nameTextBox.Parent = groupBox;
+            groupBox.Controls.Add(nameTextBox);
+            textBoxes[0] = nameTextBox;
+        }
+
+        private void AddTextBoxToTable(int i, CollapsableTable subTable)
+        {
+            TextBox nameTextBox = new TextBox();
+            nameTextBox.Parent = subTable.panel;
+            subTable.panel.SetRow(nameTextBox, i);
+            subTable.panel.SetColumn(nameTextBox, columnCount - 1);
+            subTable.panel.Controls.Add(nameTextBox);
+            nameTextBox.BringToFront();
+            textBoxes[i] = nameTextBox;
         }
 
         private void ToggleExpansion(Object sender, EventArgs e)

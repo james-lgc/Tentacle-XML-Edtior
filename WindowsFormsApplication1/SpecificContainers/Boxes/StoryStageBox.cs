@@ -23,6 +23,8 @@ namespace WindowsFormsApplication1
         public StoryStageBox(Form1 form, StoryStageTable storyStageTable, int rowNum, StoryStage storyStage)
         {
             container = new HeadedFixedContainer(form, storyStageTable.cTable.panel, rowNum, storyStage.id.ToString());
+            //string[] labelTexts = new string[] { "" };
+            //container.AddHeading(form, storyStageTable.cTable, 1, labelTexts);
 
 
             //subTable = new CollapsableTable(form, container, 3, 2, 0);
@@ -63,7 +65,7 @@ namespace WindowsFormsApplication1
             //TableSizer.AutoSize(container.panel);
 
             string[] labelTexts = new string[] { "StoryThread", "StageNumber" };
-            container.AddHeading(form, dialogueTable.cTable, 2, labelTexts);
+            container.AddHeading(form, dialogueTable.cTable, 2, labelTexts, true);
             //stageNumBox.DataBindings.Add("Number", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
             container.textBoxes[0].DataBindings.Add("Text", storyStage, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
         }

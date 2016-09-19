@@ -20,7 +20,6 @@ namespace WindowsFormsApplication1
                 lineBox = new LineBox(form, this, i, lines[i]);
             }
             base.Expand();
-            //cTable.panel.AutoScroll = true;
         }
 
         public override void AddRow(object sender, EventArgs e)
@@ -29,9 +28,7 @@ namespace WindowsFormsApplication1
             base.AddLabel(cTable.panel.RowCount - 2, "Line");
             newX = new Line();
             newX.Build();
-            //lineBox.AddLine(this, newX);
             LineBox lineBox = new LineBox(form1, this, cTable.panel.RowCount - 2, newX);
-            //cTable.panel.SetColumn(lineBox.cTable.panel, 1);
         }
     }
 }

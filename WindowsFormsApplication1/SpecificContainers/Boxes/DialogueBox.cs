@@ -17,8 +17,11 @@ namespace WindowsFormsApplication1
         {
             dTable = dialogueTable;
             container = new HeadedFixedContainer(form, dialogueTable.cTable.panel, rowNum, "Dialogue");
+            string[] labelTexts = new string[] { "" };
+            
             //dialogueTable.cTable.panel.SetColumn(container.groupBox, 1);
             lineTable = new LineTable(form, this, conversationStage.lines);
+            container.AddHeading(form, lineTable.cTable, 1, labelTexts, true);
             //container.panel.AutoScroll = true;
             //TableSizer.AutoSize(container.panel);
         }
