@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < xArray.Length; i++)
             {
                 lineBox = new LineBox(form, this, i, lines[i]);
+                form.loadingPanel.IncreaseProgress();
             }
             base.Expand();
         }

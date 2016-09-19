@@ -19,13 +19,12 @@ namespace WindowsFormsApplication1
             if (replies != null)
             {
                 base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels, "Reply");
-                //cTable.panel.DataBindings.Add()
                 for (int i = 0; i < xArray.Length; i++)
                 {
-                    //ReplyBox= new LineBox(form, this, i, lines[i]);
                     StringWrapper stringWrapper = new StringWrapper();
                     stringWrapper.wrappedString = line.replies[i];
                     AddTextBox(stringWrapper, i);
+                    form.loadingPanel.IncreaseProgress();
                 }
             }
             else
@@ -33,8 +32,7 @@ namespace WindowsFormsApplication1
                 replies = new string[0];
                 base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels, "Reply");
             }
-            cTable.panel.BringToFront();
-            //base.Expand();
+            cTable.panel.BringToFront();;
         }
 
         private void AddTextBox(StringWrapper stringWrapper, int rowNum)

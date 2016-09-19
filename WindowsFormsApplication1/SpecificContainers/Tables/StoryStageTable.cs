@@ -10,15 +10,13 @@ namespace WindowsFormsApplication1
     {
         public StoryStageTable(Form1 form, CharacterBox characterBox, StoryStage[] storyStages)
         {
-            //string[] labels = new string[] { "StoryStage" };
             base.SetUp(form, this, characterBox.container, storyStages.Length, 1, 1, storyStages, null, "StoryStage");
-            //Console.Write("Table Size: " + cTable.panel.RowCount);
             for (int i = 0; i < storyStages.Length; i++)
             {
                 StoryStageBox storyStageBox = new StoryStageBox(form, this, i, storyStages[i]);
+                form.loadingPanel.IncreaseProgress();
             }
             base.Expand();
-            //cTable.panel.AutoScroll = true;
         }
 
         public override void AddRow(object sender, EventArgs e)

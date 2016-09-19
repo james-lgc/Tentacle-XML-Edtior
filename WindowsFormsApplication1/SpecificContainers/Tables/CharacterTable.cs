@@ -11,15 +11,14 @@ namespace WindowsFormsApplication1
     {
         public CharacterTable(Form1 form, MainDisplay mainDisplay, Conversation[] conversations)
         {
-            //string[] labels = new string[] { "name" };
             base.SetUp(form, this, mainDisplay.container, conversations.Length, 1, 1, conversations, null, "Conversation");
             for (int i = 0; i < xArray.Length; i++)
             {
                 CharacterBox characterBox = new CharacterBox(form, this, i, conversations[i]);
+                form.loadingPanel.IncreaseProgress();
             }
             cTable.panel.AutoScroll = true;
             base.Expand();
-            //cTable.panel.AutoScroll = true;
         }
 
         public override void AddRow(Object sender, EventArgs e)

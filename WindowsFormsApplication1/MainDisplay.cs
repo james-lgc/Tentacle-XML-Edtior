@@ -16,14 +16,14 @@ namespace WindowsFormsApplication1
         {
             container = new HeadedFixedContainer(form, null, 0, "Conversations");
             container.groupBox.BringToFront();
-            //container.splitContainer.Dock = DockStyle.Fill;
-            //container.panel.Hide();
-            //container.panel.SuspendLayout();
+            container.groupBox.SuspendLayout();
+            container.groupBox.Hide();
+            form.loadingPanel = new LoadingPanel(form, cList);
             characterTable = new CharacterTable(form, this, cList.conversations);
-            //TableSizer.AutoSize(container.panel);
-            //container.panel.Show();
-            //container.panel.ResumeLayout();
-            //container.panel.Refresh();
+            container.groupBox.ResumeLayout();
+            container.groupBox.Show();
+            form.Controls.Remove(form.loadingPanel.fullAppPanel);
+            form.loadingPanel = null;
         }
     }
 }
