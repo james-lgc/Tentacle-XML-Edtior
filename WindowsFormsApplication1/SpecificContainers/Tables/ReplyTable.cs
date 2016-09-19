@@ -26,7 +26,14 @@ namespace WindowsFormsApplication1
                     StringWrapper stringWrapper = new StringWrapper();
                     stringWrapper.wrappedString = line.replies[i];
                     AddTextBox(stringWrapper, i);
-                    form.loadingPanel.IncreaseProgress();
+                    try
+                    {
+                        form.loadingPanel.IncreaseProgress();
+                    }
+                    catch (NullReferenceException e)
+                    {
+
+                    }
                 }
             }
             else

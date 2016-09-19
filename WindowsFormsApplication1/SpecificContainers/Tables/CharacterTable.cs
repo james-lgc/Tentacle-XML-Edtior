@@ -16,7 +16,14 @@ namespace WindowsFormsApplication1
             {
                 CharacterBox characterBox = new CharacterBox(form, this, i, conversations[i]);
                 base.AddBox(characterBox);
-                form.loadingPanel.IncreaseProgress();
+                try
+                {
+                    form.loadingPanel.IncreaseProgress();
+                }
+                catch (NullReferenceException e)
+                {
+
+                }
             }
             cTable.panel.AutoScroll = true;
             base.Expand();

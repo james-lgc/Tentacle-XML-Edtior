@@ -19,7 +19,14 @@ namespace WindowsFormsApplication1
             {
                 DialogueBox dialogueBox = new DialogueBox(form, this, i, conversationStages[i]);
                 boxes.Add(dialogueBox);
-                form.loadingPanel.IncreaseProgress();
+                try
+                {
+                    form.loadingPanel.IncreaseProgress();
+                }
+                catch (NullReferenceException e)
+                {
+
+                }
             }
             base.Expand();
         }

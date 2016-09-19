@@ -15,7 +15,14 @@ namespace WindowsFormsApplication1
             {
                 StoryStageBox storyStageBox = new StoryStageBox(form, this, i, storyStages[i]);
                 boxes.Add(storyStageBox);
-                form.loadingPanel.IncreaseProgress();
+                try
+                {
+                    form.loadingPanel.IncreaseProgress();
+                }
+                catch (NullReferenceException e)
+                {
+
+                }
             }
             base.Expand();
         }
