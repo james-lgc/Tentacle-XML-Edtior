@@ -35,11 +35,6 @@ namespace WindowsFormsApplication1
             //container = new HeadedEditableContainer(form, characterTable.table.panel, rowNum, conversation.name);
             //storyStageTable = new StoryStageTable(form, this, conversation);
         }
-
-        public void Expand()
-        {
-
-        }
         
     }
 }

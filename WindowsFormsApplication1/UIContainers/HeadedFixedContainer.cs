@@ -10,6 +10,10 @@ namespace WindowsFormsApplication1
     public class HeadedFixedContainer : UIContainer
     {
         public GroupBox groupBox;
+        public TextBox[] textBoxes;
+        public IExpandable expandable;
+        private CollapsableTable cTable;
+        private bool isExpanded;
 
         public HeadedFixedContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText)
         {
@@ -27,6 +31,62 @@ namespace WindowsFormsApplication1
             else
             {
                 form.Controls.Add(groupBox);
+            }
+        }
+
+        public void AddHeading(Form1 form, CollapsableTable table, int fields, string[] labelTexts)
+        {
+            if (fields > 0)
+            {
+                CollapsableTable subTable = new CollapsableTable(form, this, fields, 3, 0);
+                subTable.panel.Dock = DockStyle.None;
+                cTable = table;
+
+                textBoxes = new TextBox[fields];
+                for (int i = 0; i < fields; i++)
+                {
+                    Label label = new Label();
+                    label.Parent = groupBox;
+                    label.Text = labelTexts[i];
+                    label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                    label.Parent = subTable.panel;
+                    subTable.panel.SetRow(label, i);
+                    subTable.panel.SetColumn(label, 1);
+                    subTable.panel.Controls.Add(label);
+
+                    TextBox nameTextBox = new TextBox();
+                    nameTextBox.Parent = groupBox;
+                    nameTextBox.Parent = subTable.panel;
+                    subTable.panel.SetRow(nameTextBox, i);
+                    subTable.panel.SetColumn(nameTextBox, 2);
+                    subTable.panel.Controls.Add(nameTextBox);
+                    textBoxes[i] = nameTextBox;
+
+                    if (i == fields - 1)
+                    {
+                        Button button = new Button();
+                        button.Text = "Expand";
+                        button.Parent = subTable.panel;
+                        subTable.panel.SetRow(button, i);
+                        subTable.panel.SetColumn(button, 0);
+                        subTable.panel.Controls.Add(button);
+                        button.Click += new EventHandler(this.ToggleExpansion);
+                    }
+                }
+            }
+        }
+
+        private void ToggleExpansion(Object sender, EventArgs e)
+        {
+            if (isExpanded == true)
+            {
+                isExpanded = false;
+                cTable.panel.Visible = false;
+            }
+            else
+            {
+                isExpanded = true;
+                cTable.panel.Visible = true;
             }
         }
 
