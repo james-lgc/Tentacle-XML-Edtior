@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1
     public class StoryStageBox : UIBox<StoryStage>
     {
         //EditableSplitBox numBox;
-        HeadedFixedContainer container;
+        public HeadedFixedContainer container;
         public CollapsableTable subTable;
         TextBox storyThreadBox;
         NumericUpDown stageNumBox;
@@ -23,10 +23,12 @@ namespace WindowsFormsApplication1
         public StoryStageBox(Form1 form, StoryStageTable storyStageTable, int rowNum, StoryStage storyStage)
         {
             container = new HeadedFixedContainer(form, storyStageTable.cTable.panel, rowNum, storyStage.id.ToString());
-            subTable = new CollapsableTable(form, container, 3, 2, 0);
+
+
+            //subTable = new CollapsableTable(form, container, 3, 2, 0);
             //storyThreadBox = new SplitBox(form, subTable.panel, 0, "StoryThread",  storyStage.storyThread, 0);
 
-            storyThreadLabel = new Label();
+            /*storyThreadLabel = new Label();
             storyThreadLabel.Parent = subTable.panel;
             storyThreadLabel.Text = "StoryThread";
             subTable.panel.SetRow(storyThreadLabel, 0);
@@ -36,28 +38,34 @@ namespace WindowsFormsApplication1
             storyThreadBox = new TextBox();
             storyThreadBox.Parent = subTable.panel;
             subTable.panel.SetCellPosition(storyThreadBox, new TableLayoutPanelCellPosition(0, 1));
-            storyThreadBox.DataBindings.Add("Text", storyStage, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             subTable.panel.Controls.Add(storyThreadBox);
             subTable.panel.Controls.Add(storyThreadBox);
 
             stageNumBox = new NumericUpDown();
             stageNumBox.Parent = subTable.panel;
             subTable.panel.SetCellPosition(stageNumBox, new TableLayoutPanelCellPosition(1, 1));
-            //stageNumBox.DataBindings.Add("Number", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
+            
             subTable.panel.Controls.Add(stageNumBox);
 
             stageNumLabel = new Label();
             stageNumLabel.Parent = subTable.panel;
             stageNumLabel.Text = "StageNumber";
             subTable.panel.SetCellPosition(stageNumLabel, new TableLayoutPanelCellPosition(1, 0));
-            subTable.panel.Controls.Add(stageNumLabel);
+            subTable.panel.Controls.Add(stageNumLabel);*/
 
             //dialogueContainer = new HeadedFixedContainer(form, subTable.panel, 2, "Dialogues");
             dialogueTable = new DialogueTable(form, this, storyStage.conversationStages);
+            dialogueTable.cTable.panel.Top = 500;
             //container.panel.AutoScroll = true;
-            TableSizer.AutoSize(subTable.panel);
+            //TableSizer.AutoSize(subTable.panel);
             //TableSizer.AutoSize(dialogueContainer.panel);
             //TableSizer.AutoSize(container.panel);
+
+            string[] labelTexts = new string[] { "StoryThread", "StageNumber" };
+            container.AddHeading(form, dialogueTable.cTable, 2, labelTexts);
+            //stageNumBox.DataBindings.Add("Number", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
+            container.textBoxes[0].DataBindings.Add("Text", storyStage, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
         }
     }
 }
