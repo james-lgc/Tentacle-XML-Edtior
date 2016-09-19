@@ -9,6 +9,7 @@ namespace WindowsFormsApplication1
 {
     public class HeadedFixedContainer : UIContainer
     {
+        Button button;
         public GroupBox groupBox;
         public TextBox[] textBoxes;
         public IExpandable expandable;
@@ -39,7 +40,7 @@ namespace WindowsFormsApplication1
             if (fields > 0)
             {
                 CollapsableTable subTable = new CollapsableTable(form, this, fields, 3, 0);
-                subTable.panel.Dock = DockStyle.None;
+                subTable.panel.Dock = DockStyle.Top;
                 cTable = table;
 
                 textBoxes = new TextBox[fields];
@@ -64,7 +65,7 @@ namespace WindowsFormsApplication1
 
                     if (i == fields - 1)
                     {
-                        Button button = new Button();
+                        button = new Button();
                         button.Text = "Expand";
                         button.Parent = subTable.panel;
                         subTable.panel.SetRow(button, i);
@@ -73,6 +74,8 @@ namespace WindowsFormsApplication1
                         button.Click += new EventHandler(this.ToggleExpansion);
                     }
                 }
+                isExpanded = false;
+                cTable.panel.Visible = false;
             }
         }
 
@@ -82,11 +85,13 @@ namespace WindowsFormsApplication1
             {
                 isExpanded = false;
                 cTable.panel.Visible = false;
+                button.Text = "Expand";
             }
             else
             {
                 isExpanded = true;
                 cTable.panel.Visible = true;
+                button.Text = "Collapse";
             }
         }
 
