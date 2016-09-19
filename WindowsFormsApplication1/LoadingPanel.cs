@@ -27,8 +27,8 @@ namespace WindowsFormsApplication1
             fullAppPanel.Show();
 
             Panel subPanel = new Panel();
-            subPanel.BackColor = ColourManager.textColour;
-            subPanel.ForeColor = ColourManager.textColour;
+            subPanel.BackColor = ColourManager.backGroundColour;
+            subPanel.ForeColor = ColourManager.backGroundColour;
             subPanel.BringToFront();
             subPanel.Show();
             subPanel.Parent = fullAppPanel;
@@ -45,7 +45,7 @@ namespace WindowsFormsApplication1
             loadingLabel.Anchor = AnchorStyles.Top;
             subPanel.Controls.Add(loadingLabel);
             loadingLabel.BackColor = ColourManager.backGroundColour;
-            loadingLabel.ForeColor = ColourManager.backGroundColour;
+            loadingLabel.ForeColor = ColourManager.textColour;
             loadingLabel.Text = "Loading...";
 
             progressBar = new ProgressBar();
