@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
     {
         private MainDisplay mainDisplay;
         MenuStrip menuStrip;
+        public LoadingPanel loadingPanel;
 
         public Form1()
         {
@@ -30,15 +31,21 @@ namespace WindowsFormsApplication1
 
             ToolStripMenuItem fileMenu = new ToolStripMenuItem();
             fileMenu.Text = "File";
-            ToolStripMenuItem loadButton = new ToolStripMenuItem();
-            loadButton.Text = "Load";
+
             ToolStripMenuItem newButton = new ToolStripMenuItem();
             newButton.Text = "New";
+            ToolStripMenuItem saveButton = new ToolStripMenuItem();
+            saveButton.Text = "Save";
+            ToolStripMenuItem loadButton = new ToolStripMenuItem();
+            loadButton.Text = "Load";
+            
 
             menuStrip.Items.Add(fileMenu);
-            
-            fileMenu.DropDownItems.Add(loadButton);
+
             fileMenu.DropDownItems.Add(newButton);
+            fileMenu.DropDownItems.Add(saveButton);
+            fileMenu.DropDownItems.Add(loadButton);
+            
             loadButton.Click += BypassLoad;
             newButton.Click += CreateNew;
         }
