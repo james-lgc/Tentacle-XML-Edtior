@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1
         private int columnCount;
         public GroupBox groupBox;
         public TextBox[] textBoxes;
+        public NumericUpDown[] numUpDowns;
         public IExpandable expandable;
         private CollapsableTable cTable;
         private bool isExpanded;
@@ -38,7 +39,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public void AddHeading(Form1 form, CollapsableTable table, int fields, string[] labelTexts, bool isCollapsable)
+        public void AddHeading(Form1 form, CollapsableTable table, int fields, string[] labelTexts, bool isCollapsable, int[] numFields = null)
         {
             textBoxes = new TextBox[fields];
             columnCount = 1;
@@ -61,7 +62,32 @@ namespace WindowsFormsApplication1
                     for (int i = 0; i < fields; i++)
                     {
                         AddLabel(i, labelTexts[i], subTable);
-                        AddTextBoxToTable(i, subTable);
+                        if (numFields == null)
+                        {
+                            AddTextBoxToTable(i, subTable);
+                        }
+                        else
+                        {
+                            numUpDowns = new NumericUpDown[numFields.Length];
+                            for (int j = 0; j < numFields.Length; j++)
+                            {
+                                if (i == numFields[j])
+                                {
+                                    NumericUpDown numUpDown = new NumericUpDown();
+                                    numUpDown.Dock = DockStyle.Top;
+                                    numUpDown.ForeColor = ColourManager.backGroundColour;
+                                    numUpDown.BackColor = ColourManager.textColour;
+                                    subTable.panel.SetRow(numUpDown, i);
+                                    subTable.panel.SetColumn(numUpDown, columnCount - 1);
+                                    subTable.panel.Controls.Add(numUpDown);
+                                    numUpDowns[j] = numUpDown;
+                                }
+                                else
+                                {
+                                    AddTextBoxToTable(i, subTable);
+                                }
+                            }
+                        }
                         if (i == fields - 1 && isCollapsable == true)
                         {
                             AddButton(subTable, i);
