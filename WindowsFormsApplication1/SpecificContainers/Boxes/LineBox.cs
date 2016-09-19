@@ -9,8 +9,9 @@ namespace WindowsFormsApplication1
 {
     public class LineBox : UIBox<Line>
     {
-        HeadedEditableContainer container;
-        CollapsableTable cTable;
+        //HeadedEditableContainer container;
+        public CollapsableTable cTable;
+        ReplyTable replyTable;
 
 
         public LineBox(Form1 form, LineTable linetable, int rowNum, Line line)
@@ -22,8 +23,10 @@ namespace WindowsFormsApplication1
             TextBox textBox = new TextBox();
             textBox.DataBindings.Add("Text", line, "lineText", false, DataSourceUpdateMode.Never);
             textBox.Parent = cTable.panel;
+            textBox.Dock = DockStyle.Fill;
             cTable.panel.SetRow(textBox, 0);
             cTable.panel.Controls.Add(textBox);
+            replyTable = new ReplyTable(form, this, line.replies, line);
         }
     }
 }

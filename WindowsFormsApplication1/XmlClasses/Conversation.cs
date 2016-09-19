@@ -55,6 +55,22 @@ public class Line{
 
     [XmlArray("Replies")]
 	[XmlArrayItem("Reply")]
-	public string[] replies { get; set; }
+	public Reply[] replies { get; set; }
+
+}
+
+[System.Serializable]
+public class Reply
+{
+
+    [XmlElementAttribute("id")]
+    public int id { get; set; }
+
+    [XmlElement("LineText")]
+    public string lineText { get; set; }
+
+    [XmlArray("Replies")]
+    [XmlArrayItem("Reply")]
+    public string[] replies { get; set; }
 
 }

@@ -41,6 +41,7 @@ namespace WindowsFormsApplication1
 
                 mainDisplay = new MainDisplay(this, cList);
                 AutoScroll = true;
+                this.AutoScroll = true;
                 Application.DoEvents();
             }
         }

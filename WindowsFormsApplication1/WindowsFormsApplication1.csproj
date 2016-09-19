@@ -57,8 +57,8 @@
     <Compile Include="SpecificContainers\Tables\UITable.cs" />
     <Compile Include="SpecificContainers\Tables\DialogueTable.cs" />
     <Compile Include="MainDisplay.cs" />
-    <Compile Include="SpecificContainers\Boxes\RepliesBox.cs" />
-    <Compile Include="SpecificContainers\Tables\RepliesTable.cs" />
+    <Compile Include="SpecificContainers\Boxes\ReplyBox.cs" />
+    <Compile Include="SpecificContainers\Tables\ReplyTable.cs" />
     <Compile Include="SpecificContainers\Boxes\CharacterBox.cs" />
     <Compile Include="SpecificContainers\Boxes\StoryStageBox.cs" />
     <Compile Include="SpecificContainers\Tables\StoryStageTable.cs" />

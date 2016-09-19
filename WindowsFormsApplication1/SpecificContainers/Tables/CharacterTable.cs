@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
             {
                 CharacterBox characterBox = new CharacterBox(form, this, i, conversations[i]);
             }
+            cTable.panel.AutoScroll = true;
             base.Expand();
             //cTable.panel.AutoScroll = true;
         }
