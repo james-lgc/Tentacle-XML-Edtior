@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
         public StoryStageTable(Form1 form, CharacterBox characterBox, StoryStage[] storyStages)
         {
             //string[] labels = new string[] { "StoryStage" };
-            base.SetUp(form, characterBox.container, storyStages.Length, 1, 1, storyStages, null);
+            base.SetUp(form, this, characterBox.container, storyStages.Length, 1, 1, storyStages, null);
             //Console.Write("Table Size: " + cTable.panel.RowCount);
             for (int i = 0; i < storyStages.Length; i++)
             {
@@ -19,6 +19,14 @@ namespace WindowsFormsApplication1
             }
             base.Expand();
             //cTable.panel.AutoScroll = true;
+        }
+
+        public override void AddRow(object sender, EventArgs e)
+        {
+            base.AddRow(sender, e);
+            newX = new StoryStage();
+            newX.Build();
+            StoryStageBox storyStageBox = new StoryStageBox(form1, this, cTable.panel.RowCount - 2, newX);
         }
     }
 }

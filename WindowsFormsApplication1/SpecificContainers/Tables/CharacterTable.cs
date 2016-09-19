@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
         public CharacterTable(Form1 form, MainDisplay mainDisplay, Conversation[] conversations)
         {
             //string[] labels = new string[] { "name" };
-            base.SetUp(form, mainDisplay.container, conversations.Length, 1, 1, conversations, null);
+            base.SetUp(form, this, mainDisplay.container, conversations.Length, 1, 1, conversations, null);
             for (int i = 0; i < xArray.Length; i++)
             {
                 CharacterBox characterBox = new CharacterBox(form, this, i, conversations[i]);
@@ -20,6 +20,15 @@ namespace WindowsFormsApplication1
             cTable.panel.AutoScroll = true;
             base.Expand();
             //cTable.panel.AutoScroll = true;
+        }
+
+        public override void AddRow(Object sender, EventArgs e)
+        {
+            base.AddRow(sender, e);
+            base.AddLabelWithText("Name");
+            newX = new Conversation();
+            newX.Build();
+            CharacterBox characterBox = new CharacterBox(form1, this, cTable.panel.RowCount - 2, newX);
         }
     }
 }

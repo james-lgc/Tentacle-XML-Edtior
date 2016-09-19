@@ -35,6 +35,5 @@ namespace WindowsFormsApplication1
             isExpanded = false;
             storyStageTable.cTable.panel.Visible = false;
         }
-
     }
 }

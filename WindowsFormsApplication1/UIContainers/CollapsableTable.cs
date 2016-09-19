@@ -30,6 +30,7 @@ namespace WindowsFormsApplication1
         public override void SetChildControls(CollapsableTable cTable)
         {
             cTable.panel.Parent = panel;
+            //panel.SetColumn(cTable.panel, 1);
             panel.Controls.Add(cTable.panel);
         }
     }

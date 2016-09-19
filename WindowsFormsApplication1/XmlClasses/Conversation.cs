@@ -11,6 +11,13 @@ public class Conversation{
 	[XmlArrayItem("StoryStage")]
 	public StoryStage[] storyStages;
 
+    public void Build()
+    {
+        storyStages = new StoryStage[1];
+        storyStages[0] = new StoryStage();
+        storyStages[0].Build();
+    }
+
 }
 
 [System.Serializable]
@@ -30,6 +37,13 @@ public class StoryStage{
 	[XmlArrayItem("ConversationStage")]
 	public ConversationStage[] conversationStages;
 
+    public void Build()
+    {
+        conversationStages = new ConversationStage[1];
+        conversationStages[0] = new ConversationStage();
+        conversationStages[0].Build();
+    }
+
 }
 
 [System.Serializable]
@@ -42,6 +56,12 @@ public class ConversationStage{
 	[XmlArrayItem("Line")]
 	public Line[] lines;
 
+    public void Build()
+    {
+        lines = new Line[1];
+        lines[0] = new Line();
+        lines[0].Build();
+    }
 }
 
 [System.Serializable]
@@ -57,4 +77,8 @@ public class Line{
 	[XmlArrayItem("Reply")]
 	public string[] replies { get; set; }
 
+    public void Build()
+    {
+        replies = new string[0];
+    }
 }

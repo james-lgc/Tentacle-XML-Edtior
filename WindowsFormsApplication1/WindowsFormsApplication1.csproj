@@ -52,6 +52,7 @@
     <Compile Include="IExpandable.cs" />
     <Compile Include="SpecificContainers\Boxes\LineBox.cs" />
     <Compile Include="SpecificContainers\Boxes\UIBox.cs" />
+    <Compile Include="SpecificContainers\SpecificContainer.cs" />
     <Compile Include="SpecificContainers\Tables\CharacterTable.cs" />
     <Compile Include="SpecificContainers\Boxes\DialogueBox.cs" />
     <Compile Include="SpecificContainers\Tables\LineTable.cs" />

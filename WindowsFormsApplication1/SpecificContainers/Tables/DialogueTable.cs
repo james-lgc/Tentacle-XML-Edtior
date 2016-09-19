@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
         public DialogueTable(Form1 form, StoryStageBox storyStageBox, ConversationStage[] conversationStages)
         {
             //string[] labels = new string[] { "Dialogue" };
-            base.SetUp(form, storyStageBox.container, conversationStages.Length, 1, 1, conversationStages, null);
+            base.SetUp(form, this, storyStageBox.container, conversationStages.Length, 1, 1, conversationStages, null);
             //storyStageBox.subTable.panel.SetColumn(cTable.panel, 1);
             //storyStageBox.subTable.panel.SetRow(cTable.panel, 2);
             for (int i = 0; i < xArray.Length; i++)
@@ -23,6 +23,14 @@ namespace WindowsFormsApplication1
             }
             base.Expand();
             //cTable.panel.AutoScroll = true;
+        }
+
+        public override void AddRow(object sender, EventArgs e)
+        {
+            base.AddRow(sender, e);
+            newX = new ConversationStage();
+            newX.Build();
+            DialogueBox dialogueBox = new DialogueBox(form1, this, cTable.panel.RowCount -2, newX);
         }
     }
 }

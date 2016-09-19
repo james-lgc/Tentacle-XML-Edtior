@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public abstract class UIBox<X>
+    public abstract class UIBox<X> : SpecificContainer
     {
         int caseSwitch;
 
