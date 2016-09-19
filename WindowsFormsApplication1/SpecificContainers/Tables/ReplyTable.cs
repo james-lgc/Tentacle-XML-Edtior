@@ -40,6 +40,8 @@ namespace WindowsFormsApplication1
         private void AddTextBox(StringWrapper stringWrapper, int rowNum)
         {
             TextBox textBox = new TextBox();
+            textBox.ForeColor = ColourManager.backGroundColour;
+            textBox.BackColor = ColourManager.textColour;
             textBox.Parent = cTable.panel;
             textBox.Dock = DockStyle.Fill;
             textBox.DataBindings.Add("Text", stringWrapper, "wrappedString", false, DataSourceUpdateMode.OnPropertyChanged);

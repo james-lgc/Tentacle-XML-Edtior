@@ -52,6 +52,8 @@ namespace WindowsFormsApplication1
         {
             button = new Button();
             button.Parent = cTable.panel;
+            button.ForeColor = ColourManager.backGroundColour;
+            button.BackColor = ColourManager.textColour;
             cTable.panel.SetRow(button, rowCount);
             cTable.panel.SetColumn(button, 0);
             cTable.panel.Controls.Add(button);
@@ -68,6 +70,8 @@ namespace WindowsFormsApplication1
         protected void AddLabel(int rowNum, string labelText)
         {
             Label label = new Label();
+            label.BackColor = ColourManager.backGroundColour;
+            label.ForeColor = ColourManager.textColour;
             label.Text = labelText;
             label.Parent = cTable.panel;
             cTable.panel.SetRow(label, rowNum);

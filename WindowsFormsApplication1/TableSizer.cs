@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
             panel.AutoSize = true;
             panel.Dock = DockStyle.Fill;
             panel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            panel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
+            panel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             panel.ColumnStyles.Clear();
             for (int i = 0; i < panel.ColumnCount; i++)
             {

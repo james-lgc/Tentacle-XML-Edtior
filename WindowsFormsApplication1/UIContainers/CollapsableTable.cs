@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
         {
             panel = new TableLayoutPanel();
             panel.Dock = DockStyle.Fill;
+            panel.BackColor = ColourManager.backGroundColour;
             //panel.AutoScroll = true;
            // panel.Show();
             panel.ColumnCount = columnCount;

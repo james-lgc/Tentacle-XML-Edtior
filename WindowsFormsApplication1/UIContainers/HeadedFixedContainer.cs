@@ -20,6 +20,8 @@ namespace WindowsFormsApplication1
         public HeadedFixedContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText)
         {
             groupBox = new GroupBox();
+            groupBox.BackColor = ColourManager.backGroundColour;
+            groupBox.ForeColor = ColourManager.textColour;
             groupBox.AutoSize = true;
             groupBox.Text = labelText;
             groupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
@@ -80,6 +82,8 @@ namespace WindowsFormsApplication1
         {
             button = new Button();
             button.Text = "Expand";
+            button.ForeColor = ColourManager.backGroundColour;
+            button.BackColor = ColourManager.textColour;
             button.Parent = subTable.panel;
             subTable.panel.SetRow(button, i);
             subTable.panel.SetColumn(button, 0);
@@ -91,6 +95,7 @@ namespace WindowsFormsApplication1
         {
             Label label = new Label();
             label.Text = labelText;
+            label.ForeColor = ColourManager.textColour;
             label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             label.Parent = subTable.panel;
             subTable.panel.SetRow(label, i);
@@ -102,6 +107,8 @@ namespace WindowsFormsApplication1
         {
             TextBox nameTextBox = new TextBox();
             nameTextBox.Dock = DockStyle.Top;
+            nameTextBox.ForeColor = ColourManager.backGroundColour;
+            nameTextBox.BackColor = ColourManager.textColour;
             nameTextBox.Parent = groupBox;
             groupBox.Controls.Add(nameTextBox);
             textBoxes[0] = nameTextBox;
@@ -111,6 +118,8 @@ namespace WindowsFormsApplication1
         {
             TextBox nameTextBox = new TextBox();
             nameTextBox.Parent = subTable.panel;
+            nameTextBox.ForeColor = ColourManager.backGroundColour;
+            nameTextBox.BackColor = ColourManager.textColour;
             subTable.panel.SetRow(nameTextBox, i);
             subTable.panel.SetColumn(nameTextBox, columnCount - 1);
             subTable.panel.Controls.Add(nameTextBox);

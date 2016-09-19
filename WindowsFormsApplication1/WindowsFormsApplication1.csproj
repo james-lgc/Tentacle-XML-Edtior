@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ColourManager.cs" />
     <Compile Include="CoTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>

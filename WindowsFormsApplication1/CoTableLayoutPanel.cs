@@ -13,6 +13,7 @@ namespace WindowsFormsApplication1
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
+            //this.BackColor =
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.CacheText, true);
         }
 
