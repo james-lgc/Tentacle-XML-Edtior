@@ -54,6 +54,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="IExpandable.cs" />
+    <Compile Include="LabelBuilder.cs" />
     <Compile Include="SpecificContainers\Boxes\LineBox.cs" />
     <Compile Include="SpecificContainers\Boxes\UIBox.cs" />
     <Compile Include="LoadingPanel.cs" />

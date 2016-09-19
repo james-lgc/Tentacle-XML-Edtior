@@ -76,6 +76,7 @@ namespace WindowsFormsApplication1
         private void BypassLoad(object sender, EventArgs e)
         {
             string path = "C:/Users/James/Documents/conversations.xml";
+            //string path = openFileDialog1.FileName;
             FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));
             ConversationList cList = serializer.Deserialize(reader) as ConversationList;

@@ -18,20 +18,20 @@ namespace WindowsFormsApplication1
         protected X newX;
         protected List<UIBox<X>> boxes;
 
-        protected void SetUp(Form1 form, SpecificContainer container, UIContainer parent, int rowCount, int columnCount, int rowNum, X[] newXArray, string[] labelTexts, string extraText)
+        protected void SetUp(Form1 form, SpecificContainer container, UIContainer parent, int rowCount, int columnCount, int rowNum, X[] sentXArray, string[] labelTexts, string extraText)
         { 
             cTable = new CollapsableTable(form, parent, rowCount + 1, columnCount, rowNum);
 
             form1 = form;
             specificContainer = container;
             parentContainer = parent;
-            xArray = newXArray;
+            xArray = sentXArray;
 
             AddButton(rowCount, extraText);
 
             if (labelTexts != null)
             {
-                for (int i = 0; i < newXArray.Length; i++)
+                for (int i = 0; i < sentXArray.Length; i++)
                 {
                     Label label = new Label();
                     if (labelTexts.Length > 1)
@@ -44,7 +44,6 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
-
             TableSizer.AutoSize(cTable.panel);
         }
 
@@ -59,7 +58,6 @@ namespace WindowsFormsApplication1
             cTable.panel.SetColumn(button, 0);
             cTable.panel.Controls.Add(button);
             string addText = "Add ";
-            //Console.Write("Extra text says: " + extraText + " and addText says: " + addText);
             string fullText = string.Concat(addText, extraText);
             button.Text = fullText;
             button.Click += new EventHandler(this.AddRow);
