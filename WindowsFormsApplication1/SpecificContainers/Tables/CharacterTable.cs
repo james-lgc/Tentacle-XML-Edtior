@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < xArray.Length; i++)
             {
                 CharacterBox characterBox = new CharacterBox(form, this, i, conversations[i]);
+                base.AddBox(characterBox);
                 form.loadingPanel.IncreaseProgress();
             }
             cTable.panel.AutoScroll = true;
@@ -28,6 +29,7 @@ namespace WindowsFormsApplication1
             newX = new Conversation();
             newX.Build();
             CharacterBox characterBox = new CharacterBox(form1, this, cTable.panel.RowCount - 2, newX);
+            base.AddBox(characterBox);
         }
     }
 }

@@ -14,14 +14,14 @@ namespace WindowsFormsApplication1
         protected SpecificContainer specificContainer;
         protected UIContainer parentContainer;
         public CollapsableTable cTable;
-        protected X[] xArray;
+        public X[] xArray;
         protected X newX;
-        protected List<UIBox<X>> boxes;
+        public List<UIBox<X>> boxes;
 
         protected void SetUp(Form1 form, SpecificContainer container, UIContainer parent, int rowCount, int columnCount, int rowNum, X[] sentXArray, string[] labelTexts, string extraText)
         { 
             cTable = new CollapsableTable(form, parent, rowCount + 1, columnCount, rowNum);
-
+            boxes = new List<UIBox<X>>();
             form1 = form;
             specificContainer = container;
             parentContainer = parent;
@@ -86,6 +86,11 @@ namespace WindowsFormsApplication1
             AddLabel(cTable.panel.RowCount - 2, labelText);
         }
 
+        protected void AddBox(UIBox<X> box)
+        {
+            boxes.Add(box);
+        }
+
         public virtual void AddRow(Object sender, EventArgs e)
         {
             cTable.panel.RowCount++;
@@ -95,6 +100,20 @@ namespace WindowsFormsApplication1
         public void Expand()
         {
             TableSizer.AutoSize(cTable.panel);
+        }
+
+        public X[] ReturnContents
+        {
+            get
+            {
+                X[] newXAraay = new X[boxes.Count];
+                for (int i = 0; i < boxes.Count; i++)
+                {
+                    boxes[i].ReturnX();
+                    newXAraay[i] = boxes[i].thisX;
+                }
+                return newXAraay;
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ namespace WindowsFormsApplication1
 
         public DialogueBox(Form1 form, DialogueTable dialogueTable, int rowNum, ConversationStage conversationStage)
         {
+            base.SetUp(conversationStage);
             dTable = dialogueTable;
             container = new HeadedFixedContainer(form, dialogueTable.cTable.panel, rowNum, "Dialogue");
             string[] labelTexts = new string[] { "" };
@@ -24,5 +25,11 @@ namespace WindowsFormsApplication1
 
         }
 
+        public override ConversationStage ReturnX()
+        {
+            Line[] lines = lineTable.ReturnContents;
+            thisX.lines = lines;
+            return base.ReturnX();
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1
     public class MainDisplay
     {
         public HeadedFixedContainer container;
-        CharacterTable characterTable;
+        public CharacterTable characterTable;
 
         public MainDisplay(Form1 form, ConversationList cList)
         {

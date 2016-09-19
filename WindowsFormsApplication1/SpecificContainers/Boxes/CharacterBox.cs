@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
 
         public CharacterBox(Form1 form, CharacterTable characterTable, int rowNum, Conversation conversation)
         {
-            base.SetUp(form, characterTable.cTable, rowNum, 1, conversation.name);
+            base.SetUp(conversation);
             container = new HeadedFixedContainer(form, characterTable.cTable.panel, rowNum, "");
             container.groupBox.Padding = new Padding(20);
             string[] labelTexts = new string[] { "Name" };
@@ -26,6 +26,13 @@ namespace WindowsFormsApplication1
             storyStageTable.cTable.panel.Top = 120;
             container.AddHeading(form, storyStageTable.cTable, 1, labelTexts, true);
             container.textBoxes[0].DataBindings.Add("Text", conversation, "name", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        public override Conversation ReturnX()
+        {
+            StoryStage[] storyStages = storyStageTable.ReturnContents;
+            thisX.storyStages = storyStages;
+            return base.ReturnX();
         }
     }
 }

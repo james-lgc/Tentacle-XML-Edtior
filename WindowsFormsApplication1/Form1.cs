@@ -46,8 +46,10 @@ namespace WindowsFormsApplication1
             fileMenu.DropDownItems.Add(saveButton);
             fileMenu.DropDownItems.Add(loadButton);
             
-            loadButton.Click += BypassLoad;
             newButton.Click += CreateNew;
+            saveButton.Click += SaveFile;
+            loadButton.Click += BypassLoad;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -99,12 +101,25 @@ namespace WindowsFormsApplication1
             cList.Build();
             mainDisplay = null;
             mainDisplay = new MainDisplay(this, cList);
-
         }
 
-        private void SaveFile()
+        private void SaveFile(object sender, EventArgs e)
         {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            DialogResult save = saveFileDialog1.ShowDialog();
 
+            if (save == DialogResult.OK)
+            {
+                ConversationList saveFile = new ConversationList();
+                saveFile.conversations = mainDisplay.characterTable.ReturnContents;
+
+                string path = openFileDialog1.FileName;
+                //string path = "C:/Users/James/Documents/conversationsTestSave.xml";
+                FileStream stream = new FileStream(path, FileMode.Create);
+                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));
+                serializer.Serialize(stream, saveFile);
+                stream.Close();
+            }
         }
     }
 

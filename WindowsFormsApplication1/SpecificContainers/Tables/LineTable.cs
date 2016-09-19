@@ -8,7 +8,6 @@ namespace WindowsFormsApplication1
 {
     public class LineTable : UITable<Line>
     {
-
         private LineBox lineBox;
 
         public LineTable(Form1 form, DialogueBox dialogueBox, Line[] lines)
@@ -18,11 +17,18 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < xArray.Length; i++)
             {
                 lineBox = new LineBox(form, this, i, lines[i]);
-                form.loadingPanel.IncreaseProgress();
+                boxes.Add(lineBox);
+                try
+                {
+                    form.loadingPanel.IncreaseProgress();
+                }
+                catch (NullReferenceException e)
+                {
+
+                }
             }
             base.Expand();
         }
-
         public override void AddRow(object sender, EventArgs e)
         {
             base.AddRow(sender, e);
@@ -30,6 +36,7 @@ namespace WindowsFormsApplication1
             newX = new Line();
             newX.Build();
             LineBox lineBox = new LineBox(form1, this, cTable.panel.RowCount - 2, newX);
+            boxes.Add(lineBox);
         }
     }
 }

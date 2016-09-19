@@ -22,6 +22,7 @@ namespace WindowsFormsApplication1
 
         public StoryStageBox(Form1 form, StoryStageTable storyStageTable, int rowNum, StoryStage storyStage)
         {
+            base.SetUp(storyStage);
             container = new HeadedFixedContainer(form, storyStageTable.cTable.panel, rowNum, storyStage.id.ToString());
             dialogueTable = new DialogueTable(form, this, storyStage.conversationStages);
             dialogueTable.cTable.panel.Top = 500;
@@ -31,6 +32,13 @@ namespace WindowsFormsApplication1
             container.AddHeading(form, dialogueTable.cTable, 2, labelTexts, true, new int[] { 1 });
             container.textBoxes[0].DataBindings.Add("Text", storyStage, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
             container.numUpDowns[0].DataBindings.Add("Value", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
+        }
+
+        public override StoryStage ReturnX()
+        {
+            ConversationStage[] cStages = dialogueTable.ReturnContents;
+            thisX.conversationStages = cStages;
+            return base.ReturnX();
         }
     }
 }

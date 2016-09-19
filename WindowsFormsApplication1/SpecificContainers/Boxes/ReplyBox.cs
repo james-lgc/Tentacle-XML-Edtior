@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    class RepliesBox
+    class RepliesBox : UIBox<string>
     {
+        public RepliesBox(Form1 form, ReplyTable replyTable, int rowNum, string reply)
+        {
+            base.SetUp(reply);
+        }
+
+        public override string ReturnX()
+        {
+            return base.ReturnX();
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
 
         public LineBox(Form1 form, LineTable lineTable, int rowNum, Line line)
         {
+            base.SetUp(line);
             container = new HeadedFixedContainer(form, lineTable.cTable.panel, rowNum, null);
             lineTable.cTable.panel.SetColumn(container.groupBox, 1);
             lineTable.cTable.panel.SetRow(container.groupBox, rowNum);
@@ -27,6 +28,13 @@ namespace WindowsFormsApplication1
 
             replyTable = new ReplyTable(form1, this, line.replies, line);
 
+        }
+
+        public override Line ReturnX()
+        {
+            string[] replies = replyTable.ReturnContents;
+            thisX.replies = replies;
+            return base.ReturnX();
         }
 
     }

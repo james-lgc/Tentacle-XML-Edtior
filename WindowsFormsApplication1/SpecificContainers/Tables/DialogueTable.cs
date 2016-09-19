@@ -18,6 +18,7 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < xArray.Length; i++)
             {
                 DialogueBox dialogueBox = new DialogueBox(form, this, i, conversationStages[i]);
+                boxes.Add(dialogueBox);
                 form.loadingPanel.IncreaseProgress();
             }
             base.Expand();
@@ -29,6 +30,7 @@ namespace WindowsFormsApplication1
             newX = new ConversationStage();
             newX.Build();
             DialogueBox dialogueBox = new DialogueBox(form1, this, cTable.panel.RowCount -2, newX);
+            boxes.Add(dialogueBox);
         }
     }
 }

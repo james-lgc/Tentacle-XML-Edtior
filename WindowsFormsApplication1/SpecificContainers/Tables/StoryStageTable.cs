@@ -14,6 +14,7 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < storyStages.Length; i++)
             {
                 StoryStageBox storyStageBox = new StoryStageBox(form, this, i, storyStages[i]);
+                boxes.Add(storyStageBox);
                 form.loadingPanel.IncreaseProgress();
             }
             base.Expand();
@@ -25,6 +26,7 @@ namespace WindowsFormsApplication1
             newX = new StoryStage();
             newX.Build();
             StoryStageBox storyStageBox = new StoryStageBox(form1, this, cTable.panel.RowCount - 2, newX);
+            boxes.Add(storyStageBox);
         }
     }
 }

@@ -21,6 +21,8 @@ namespace WindowsFormsApplication1
                 base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels, "Reply");
                 for (int i = 0; i < xArray.Length; i++)
                 {
+                    RepliesBox repliesBox = new RepliesBox(form, this, i, replies[i]);
+                    AddBox(repliesBox);
                     StringWrapper stringWrapper = new StringWrapper();
                     stringWrapper.wrappedString = line.replies[i];
                     AddTextBox(stringWrapper, i);
@@ -55,6 +57,8 @@ namespace WindowsFormsApplication1
             StringWrapper stringWrapper = new StringWrapper();
             stringWrapper.wrappedString = newX;
             AddTextBox(stringWrapper, cTable.panel.RowCount -1);
+            RepliesBox replyBox = new RepliesBox(form1, this, cTable.panel.RowCount -2, newX);
+            AddBox(replyBox);
         }
     }
 }
