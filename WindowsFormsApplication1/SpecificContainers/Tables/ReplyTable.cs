@@ -15,13 +15,15 @@ namespace WindowsFormsApplication1
             if (replies != null)
             {
                 base.SetUp(form, lineBox.cTable, replies.Length, 2, 1, replies, labels);
-                cTable.panel.DataBindings.Add()
+                //cTable.panel.DataBindings.Add()
                 for (int i = 0; i < xArray.Length; i++)
                 {
                     //ReplyBox= new LineBox(form, this, i, lines[i]);
                     TextBox textBox = new TextBox();
                     textBox.Parent = lineBox.cTable.panel;
-                    textBox.DataBindings.Add("Text", replies[i], "Reply", false, DataSourceUpdateMode.OnPropertyChanged);
+                    StringWrapper stringWrapper = new StringWrapper();
+                    stringWrapper.wrappedString = line.replies[i];
+                    textBox.DataBindings.Add("Text", stringWrapper, "wrappedString", false, DataSourceUpdateMode.OnPropertyChanged);
                     textBox.Dock = DockStyle.Fill;
                     cTable.panel.SetRow(textBox, i);
                     cTable.panel.SetColumn(textBox, 1);
@@ -31,4 +33,9 @@ namespace WindowsFormsApplication1
             //base.Expand();
         }
     }
+}
+
+public class StringWrapper
+{
+    public string wrappedString { get; set; }
 }
