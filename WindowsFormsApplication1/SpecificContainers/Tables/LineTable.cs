@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1
     {
         private LineBox lineBox;
 
-        public LineTable(Form1 form, DialogueBox dialogueBox, Line[] lines)
+        public LineTable(TentacleDoc form, DialogueBox dialogueBox, Line[] lines)
         {
             string[] labels = new string[] { "Line" };
             base.SetUp(form, this, dialogueBox.container, lines.Length, 2, 1, lines, labels, "Line");

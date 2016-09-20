@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         public DialogueTable dialogueTable;
         
 
-        public StoryStageBox(Form1 form, StoryStageTable storyStageTable, int rowNum, StoryStage storyStage)
+        public StoryStageBox(TentacleDoc form, StoryStageTable storyStageTable, int rowNum, StoryStage storyStage)
         {
             base.SetUp(storyStage);
             container = new HeadedFixedContainer(form, storyStageTable.cTable.panel, rowNum, storyStage.id.ToString());

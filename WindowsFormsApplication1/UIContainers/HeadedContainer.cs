@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
         public TableLayoutPanel panel;
         protected int columnCount = 1;
 
-        protected void SetUp(Form1 form, TableLayoutPanel parentPanel, int rowNum)
+        protected void SetUp(TentacleDoc form, TableLayoutPanel parentPanel, int rowNum)
         {
             panel = new TableLayoutPanel();
             panel.RowCount = 2;

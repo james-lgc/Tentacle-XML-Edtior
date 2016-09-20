@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
         public TextBox textBox;
         public NumericUpDown numUpDown;
 
-        public SplitBox(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText, string textBoxtext = null, int num =0)
+        public SplitBox(TentacleDoc form, TableLayoutPanel parentPanel, int rowNum, string labelText, string textBoxtext = null, int num =0)
         {
             panel = new TableLayoutPanel();
             parentPanel.Controls.Add(panel);

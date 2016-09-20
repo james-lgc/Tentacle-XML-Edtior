@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Form1
+    partial class TentacleDoc
     {
         /// <summary>
         /// Required designer variable.
@@ -35,14 +35,14 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // Form1
+            // TentacleDoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(775, 496);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "TentacleDoc";
+            this.Text = "TentacleDoc";
             this.ResumeLayout(false);
 
         }

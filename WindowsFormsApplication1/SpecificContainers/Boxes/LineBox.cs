@@ -11,10 +11,10 @@ namespace WindowsFormsApplication1
     {
         public HeadedFixedContainer container;
         ReplyTable replyTable;
-        private Form1 form1;
+        private TentacleDoc form1;
 
 
-        public LineBox(Form1 form, LineTable lineTable, int rowNum, Line line)
+        public LineBox(TentacleDoc form, LineTable lineTable, int rowNum, Line line)
         {
             base.SetUp(line);
             container = new HeadedFixedContainer(form, lineTable.cTable.panel, rowNum, null);

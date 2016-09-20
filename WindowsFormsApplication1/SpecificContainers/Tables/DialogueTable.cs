@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
     {
         //HeadedFixedContainer container;
 
-        public DialogueTable(Form1 form, StoryStageBox storyStageBox, ConversationStage[] conversationStages)
+        public DialogueTable(TentacleDoc form, StoryStageBox storyStageBox, ConversationStage[] conversationStages)
         {
             base.SetUp(form, this, storyStageBox.container, conversationStages.Length, 1, 1, conversationStages, null, "Dialogue");
 

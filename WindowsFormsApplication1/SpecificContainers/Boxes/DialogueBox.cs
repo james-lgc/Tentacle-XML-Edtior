@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
         public LineTable lineTable;
         public DialogueTable dTable;
 
-        public DialogueBox(Form1 form, DialogueTable dialogueTable, int rowNum, ConversationStage conversationStage)
+        public DialogueBox(TentacleDoc form, DialogueTable dialogueTable, int rowNum, ConversationStage conversationStage)
         {
             base.SetUp(conversationStage);
             dTable = dialogueTable;

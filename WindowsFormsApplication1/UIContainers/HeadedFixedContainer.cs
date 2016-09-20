@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         private CollapsableTable cTable;
         private bool isExpanded;
 
-        public HeadedFixedContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText)
+        public HeadedFixedContainer(TentacleDoc form, TableLayoutPanel parentPanel, int rowNum, string labelText)
         {
             groupBox = new GroupBox();
             groupBox.BackColor = ColourManager.backGroundColour2;
@@ -39,7 +39,7 @@ namespace WindowsFormsApplication1
             }
         }
 
-        public void AddHeading(Form1 form, CollapsableTable table, int fields, string[] labelTexts, bool isCollapsable, int[] numFields = null)
+        public void AddHeading(TentacleDoc form, CollapsableTable table, int fields, string[] labelTexts, bool isCollapsable, int[] numFields = null)
         {
             textBoxes = new TextBox[fields];
             columnCount = 1;

@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1
     public class HeadedEditableContainer : HeadedContainer
     {
 
-        public HeadedEditableContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText, string textBoxText, int upDownNum)
+        public HeadedEditableContainer(TentacleDoc form, TableLayoutPanel parentPanel, int rowNum, string labelText, string textBoxText, int upDownNum)
         {
             base.columnCount = 2;
             base.SetUp(form, parentPanel, rowNum);

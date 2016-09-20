@@ -9,7 +9,7 @@ namespace WindowsFormsApplication1
 {
     public class CharacterTable : UITable<Conversation>
     {
-        public CharacterTable(Form1 form, MainDisplay mainDisplay, Conversation[] conversations)
+        public CharacterTable(TentacleDoc form, MainDisplay mainDisplay, Conversation[] conversations)
         {
             base.SetUp(form, this, mainDisplay.container, conversations.Length, 1, 1, conversations, null, "Conversation");
             for (int i = 0; i < xArray.Length; i++)

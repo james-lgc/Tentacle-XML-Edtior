@@ -8,7 +8,7 @@ namespace WindowsFormsApplication1
 {
     class RepliesBox : UIBox<string>
     {
-        public RepliesBox(Form1 form, ReplyTable replyTable, int rowNum, string reply)
+        public RepliesBox(TentacleDoc form, ReplyTable replyTable, int rowNum, string reply)
         {
             base.SetUp(reply);
         }

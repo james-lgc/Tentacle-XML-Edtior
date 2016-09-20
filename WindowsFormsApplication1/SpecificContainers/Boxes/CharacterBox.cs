@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
         StoryStageTable storyStageTable;
         public Button button;
 
-        public CharacterBox(Form1 form, CharacterTable characterTable, int rowNum, Conversation conversation)
+        public CharacterBox(TentacleDoc form, CharacterTable characterTable, int rowNum, Conversation conversation)
         {
             base.SetUp(conversation);
             container = new HeadedFixedContainer(form, characterTable.cTable.panel, rowNum, "");

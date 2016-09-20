@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
     {
         public TableLayoutPanel panel;
 
-        public CollapsableTable(Form1 form, UIContainer parent, int rowCount, int columnCount, int rowNum)
+        public CollapsableTable(TentacleDoc form, UIContainer parent, int rowCount, int columnCount, int rowNum)
         {
             panel = new TableLayoutPanel();
             panel.Dock = DockStyle.Fill;

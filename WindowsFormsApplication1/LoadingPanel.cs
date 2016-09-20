@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         int totalCalculations;
         int currentProgress;
 
-        public LoadingPanel(Form1 form, ConversationList cList)
+        public LoadingPanel(TentacleDoc form, ConversationList cList)
         {
             fullAppPanel = new Panel();
             fullAppPanel.Parent = form;

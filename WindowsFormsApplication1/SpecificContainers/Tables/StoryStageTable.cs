@@ -8,7 +8,7 @@ namespace WindowsFormsApplication1
 {
     public class StoryStageTable : UITable<StoryStage>
     {
-        public StoryStageTable(Form1 form, CharacterBox characterBox, StoryStage[] storyStages)
+        public StoryStageTable(TentacleDoc form, CharacterBox characterBox, StoryStage[] storyStages)
         {
             base.SetUp(form, this, characterBox.container, storyStages.Length, 1, 1, storyStages, null, "StoryStage");
             for (int i = 0; i < storyStages.Length; i++)

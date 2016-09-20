@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
         public HeadedFixedContainer container;
         public CharacterTable characterTable;
 
-        public MainDisplay(Form1 form, ConversationList cList)
+        public MainDisplay(TentacleDoc form, ConversationList cList)
         {
             container = new HeadedFixedContainer(form, null, 0, "Conversations");
             container.groupBox.BringToFront();

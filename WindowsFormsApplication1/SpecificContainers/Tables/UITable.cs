@@ -9,7 +9,7 @@ namespace WindowsFormsApplication1
 {
     public abstract class UITable<X> : SpecificContainer
     {
-        protected Form1 form1;
+        protected TentacleDoc form1;
         private Button button;
         protected SpecificContainer specificContainer;
         protected UIContainer parentContainer;
@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         protected X newX;
         public List<UIBox<X>> boxes;
 
-        protected void SetUp(Form1 form, SpecificContainer container, UIContainer parent, int rowCount, int columnCount, int rowNum, X[] sentXArray, string[] labelTexts, string extraText)
+        protected void SetUp(TentacleDoc form, SpecificContainer container, UIContainer parent, int rowCount, int columnCount, int rowNum, X[] sentXArray, string[] labelTexts, string extraText)
         { 
             cTable = new CollapsableTable(form, parent, rowCount + 1, columnCount, rowNum);
             boxes = new List<UIBox<X>>();

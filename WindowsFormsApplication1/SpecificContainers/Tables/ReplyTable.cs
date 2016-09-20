@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 
         private LineBox lineBox;
 
-        public ReplyTable(Form1 form, LineBox sentLineBox, string[] replies, Line line)
+        public ReplyTable(TentacleDoc form, LineBox sentLineBox, string[] replies, Line line)
         {
             lineBox = sentLineBox;
             string[] labels = new string[] { "Reply" };
