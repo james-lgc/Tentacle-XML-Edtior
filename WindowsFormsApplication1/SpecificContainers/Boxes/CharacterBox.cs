@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
             storyStageTable = new StoryStageTable(form, this, conversation.storyStages);;
             storyStageTable.cTable.panel.Top = 120;
             container.AddHeading(form, storyStageTable.cTable, 1, labelTexts, true);
-            container.textBoxes[0].DataBindings.Add("Text", conversation, "name", false, DataSourceUpdateMode.OnPropertyChanged);
+            container.TextBoxes[0].DataBindings.Add("Text", conversation, "name", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override Conversation ReturnX()

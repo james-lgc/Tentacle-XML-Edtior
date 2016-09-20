@@ -12,8 +12,9 @@ namespace WindowsFormsApplication1
         private ExpandButton ExpandButton1 { get; set; }
         private int columnCount;
         public GroupBox groupBox;
-        public TextBox[] textBoxes;
-        public NumericUpDown[] numUpDowns;
+        public TentacleTextBox[] TextBoxes { get; set; }
+        public TentacleNumberBox[] numberBoxes { get; set; }
+        //public NumericUpDown[] numUpDowns;
         public IExpandable expandable;
         private CollapsableTable cTable;
         private bool isExpanded;
@@ -41,7 +42,7 @@ namespace WindowsFormsApplication1
 
         public void AddHeading(TentacleDoc form, CollapsableTable table, int fields, string[] labelTexts, bool isCollapsable, int[] numFields = null)
         {
-            textBoxes = new TextBox[fields];
+            TextBoxes = new TentacleTextBox[fields];
             columnCount = 1;
             if (fields > 0)
             {
@@ -63,27 +64,23 @@ namespace WindowsFormsApplication1
                         TentacleLabel tLabel = new TentacleLabel(labelTexts[i], i, subTable.panel);
                         if (numFields == null)
                         {
-                            AddTextBoxToTable(i, subTable);
+                            TentacleTextBox textBox = new TentacleTextBox(i, subTable.panel);
+                            TextBoxes[i] = textBox;
                         }
                         else
                         {
-                            numUpDowns = new NumericUpDown[numFields.Length];
+                            numberBoxes = new TentacleNumberBox[numFields.Length];
                             for (int j = 0; j < numFields.Length; j++)
                             {
                                 if (i == numFields[j])
                                 {
-                                    NumericUpDown numUpDown = new NumericUpDown();
-                                    numUpDown.Dock = DockStyle.Top;
-                                    numUpDown.ForeColor = ColourManager.backGroundColour;
-                                    numUpDown.BackColor = ColourManager.textColour;
-                                    subTable.panel.SetRow(numUpDown, i);
-                                    subTable.panel.SetColumn(numUpDown, columnCount - 1);
-                                    subTable.panel.Controls.Add(numUpDown);
-                                    numUpDowns[j] = numUpDown;
+                                    TentacleNumberBox numberBox = new TentacleNumberBox(i, subTable.panel);
+                                    numberBoxes[j] = numberBox;
                                 }
                                 else
                                 {
-                                    AddTextBoxToTable(i, subTable);
+                                    TentacleTextBox textBox = new TentacleTextBox(i, subTable.panel);
+                                    TextBoxes[i] = textBox;
                                 }
                             }
                         }
@@ -98,34 +95,12 @@ namespace WindowsFormsApplication1
                 }
                 else if (fields == 1)
                 {
-                    AddTextBox();
+                    TentacleTextBox TextBox1 = new TentacleTextBox(groupBox);
+                    TextBoxes[0] = TextBox1;
+                    //AddTextBox();
                 }
             }
             
-        }
-
-        private void AddTextBox()
-        {
-            TextBox nameTextBox = new TextBox();
-            nameTextBox.Dock = DockStyle.Top;
-            nameTextBox.ForeColor = ColourManager.backGroundColour;
-            nameTextBox.BackColor = ColourManager.textColour;
-            nameTextBox.Parent = groupBox;
-            groupBox.Controls.Add(nameTextBox);
-            textBoxes[0] = nameTextBox;
-        }
-
-        private void AddTextBoxToTable(int i, CollapsableTable subTable)
-        {
-            TextBox nameTextBox = new TextBox();
-            nameTextBox.Parent = subTable.panel;
-            nameTextBox.ForeColor = ColourManager.backGroundColour;
-            nameTextBox.BackColor = ColourManager.textColour;
-            subTable.panel.SetRow(nameTextBox, i);
-            subTable.panel.SetColumn(nameTextBox, columnCount - 1);
-            subTable.panel.Controls.Add(nameTextBox);
-            nameTextBox.BringToFront();
-            textBoxes[i] = nameTextBox;
         }
 
         private void ToggleExpansion(Object sender, EventArgs e)

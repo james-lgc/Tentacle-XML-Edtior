@@ -28,6 +28,7 @@ namespace WindowsFormsApplication1
         {
             Text = labelText;
             Parent = groupBox;
+            groupBox.Controls.Add(this);
         }
     }
 }

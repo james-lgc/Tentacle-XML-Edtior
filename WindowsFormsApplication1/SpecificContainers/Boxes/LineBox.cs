@@ -22,7 +22,7 @@ namespace WindowsFormsApplication1
             lineTable.cTable.panel.SetRow(container.groupBox, rowNum);
             string[] labelTexts = new string[] { "Line" };
             container.AddHeading(form, lineTable.cTable, 1, null, false);
-            container.textBoxes[0].DataBindings.Add("Text", line, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
+            container.TextBoxes[0].DataBindings.Add("Text", line, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
 
             form1 = form;
 

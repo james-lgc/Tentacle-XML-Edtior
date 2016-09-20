@@ -30,8 +30,8 @@ namespace WindowsFormsApplication1
 
             string[] labelTexts = new string[] { "StoryThread", "StageNumber" };
             container.AddHeading(form, dialogueTable.cTable, 2, labelTexts, true, new int[] { 1 });
-            container.textBoxes[0].DataBindings.Add("Text", storyStage, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
-            container.numUpDowns[0].DataBindings.Add("Value", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
+            container.TextBoxes[0].DataBindings.Add("Text", storyStage, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
+            container.numberBoxes[0].DataBindings.Add("Value", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override StoryStage ReturnX()

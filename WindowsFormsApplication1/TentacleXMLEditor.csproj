@@ -82,6 +82,12 @@
     <Compile Include="TentacleUIElements\TentacleLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TentacleUIElements\TentacleNumberBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TentacleUIElements\TentacleTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UIContainers\CollapsableTable.cs" />
     <Compile Include="UIContainers\HeadedContainer.cs" />
     <Compile Include="UIContainers\HeadedEditableContainer.cs" />
