@@ -21,5 +21,16 @@ namespace WindowsFormsApplication1
 
         public static Color expandButtonBaseColour = Color.FromArgb(191, 214, 245);
         public static Color expandButtonTextColour = backGroundColour;
+
+        public static Color removeButtonBaseColour = Color.FromArgb(245, 191, 241);
+        public static Color removeButtonTextColour = backGroundColour;
+
+        public static Color moveButtonBaseColour = Color.FromArgb(245, 222, 191);
+        public static Color moveButtonTextColour = backGroundColour;
+
+        public static Color[] addButtonColours = { addButtonBaseColour, addButtonTextColour };
+        public static Color[] expandButtonColours = { expandButtonBaseColour, expandButtonTextColour };
+        public static Color[] removeButtonColours = { removeButtonBaseColour, removeButtonTextColour };
+        public static Color[] moveButtonColours = { moveButtonBaseColour, moveButtonTextColour };
     }
 }

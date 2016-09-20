@@ -12,11 +12,6 @@ namespace WindowsFormsApplication1
         //EditableSplitBox numBox;
         public HeadedFixedContainer container;
         public CollapsableTable subTable;
-        TextBox storyThreadBox;
-        NumericUpDown stageNumBox;
-        Label storyThreadLabel;
-        Label stageNumLabel;
-        //public HeadedFixedContainer dialogueContainer;
         public DialogueTable dialogueTable;
         
 

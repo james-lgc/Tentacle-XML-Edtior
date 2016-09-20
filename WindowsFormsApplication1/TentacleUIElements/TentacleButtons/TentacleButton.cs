@@ -18,8 +18,26 @@ namespace WindowsFormsApplication1
         {
             base.OnCreateControl();
             AutoSize = true;
-            ForeColor = textColour;
-            BackColor = baseColour;
+        }
+
+        public TentacleButton(Control control, string text, Color[] colours)
+        {
+            Text = text;
+            BackColor = colours[0];
+            ForeColor = colours[1];
+            Parent = control;
+            control.Controls.Add(this);
+        }
+
+        public TentacleButton(CollapsableTable cTable, string text, Color[] colours)
+        {
+            Text = text;
+            BackColor = colours[0];
+            ForeColor = colours[1];
+            Parent = cTable.panel;
+            cTable.panel.SetRow(this, cTable.panel.RowCount - 1);
+            cTable.panel.SetColumn(this, 0);
+            cTable.panel.Controls.Add(this);
         }
     }
 }

@@ -9,7 +9,10 @@ namespace WindowsFormsApplication1
 {
     public class HeadedFixedContainer : UIContainer
     {
-        private ExpandButton ExpandButton1 { get; set; }
+        private TentacleButton ExpandButton1 { get; set; }
+        private TentacleButton RemoveButton1 { get; set; }
+        private TentaclePanel ButtonPanel { get; set; }
+        private TentaclePanel SubButtonPanel { get; set; }
         private int columnCount;
         public GroupBox groupBox;
         public TentacleTextBox[] TextBoxes { get; set; }
@@ -61,7 +64,10 @@ namespace WindowsFormsApplication1
                     cTable = table;
                     for (int i = 0; i < fields; i++)
                     {
-                        TentacleLabel tLabel = new TentacleLabel(labelTexts[i], i, subTable.panel);
+                        if (labelTexts != null)
+                        {
+                            TentacleLabel tLabel = new TentacleLabel(labelTexts[i], i, subTable.panel);
+                        }
                         if (numFields == null)
                         {
                             TentacleTextBox textBox = new TentacleTextBox(i, subTable.panel);
@@ -86,10 +92,7 @@ namespace WindowsFormsApplication1
                         }
                         if (i == fields - 1 && isCollapsable == true)
                         {
-                            ExpandButton1 = new ExpandButton(subTable, i);
-                            ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
-                            isExpanded = false;
-                            cTable.panel.Visible = false;
+                            BuildButtons(subTable, i);
                         }
                     }
                 }
@@ -100,7 +103,68 @@ namespace WindowsFormsApplication1
                     //AddTextBox();
                 }
             }
+            else if (isCollapsable == true)
+            {
+                cTable = table;
+                ExpandButton1 = new TentacleButton(groupBox, "Expand", ColourManager.expandButtonColours);
+                ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
+                isExpanded = false;
+                cTable.panel.Visible = false;
+            }
             
+        }
+
+        private void BuildButtons(CollapsableTable sentTable, int i)
+        {
+            ButtonPanel = new TentaclePanel(sentTable, i);
+            ButtonPanel.Dock = DockStyle.Left;
+
+            RemoveButton1 = new TentacleButton(ButtonPanel, "Remove", ColourManager.removeButtonColours);
+
+            SplitContainer SubButtonPanel = new SplitContainer();
+            //spli
+
+            //SubButtonPanel = new TentaclePanel(ButtonPanel);
+            //SubButtonPanel.FlowDirection = FlowDirection.TopDown;
+            //SubButtonPanel.BorderStyle = BorderStyle.FixedSingle;
+            //SubButtonPanel.AutoSize = true;
+            SubButtonPanel.Parent = ButtonPanel;
+            ButtonPanel.Controls.Add(SubButtonPanel);
+            SubButtonPanel.Height = RemoveButton1.Height;
+            SubButtonPanel.Width = RemoveButton1.Width/2;
+            SubButtonPanel.Panel1MinSize = 0;
+            SubButtonPanel.Panel2MinSize = 0;
+            SubButtonPanel.Orientation = Orientation.Horizontal;
+            SubButtonPanel.IsSplitterFixed = true;
+            SubButtonPanel.SplitterDistance = SubButtonPanel.Height / 3;
+            SubButtonPanel.Panel1.Padding = Padding.Empty;
+            SubButtonPanel.Panel2.Padding = Padding.Empty;
+            SubButtonPanel.SplitterWidth = 1;
+            //SubButtonPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            SubButtonPanel.Padding = Padding.Empty;
+
+
+
+            TentacleButton upButton = new TentacleButton(SubButtonPanel.Panel1, "Up", ColourManager.moveButtonColours);
+            TentacleButton downButton = new TentacleButton(SubButtonPanel.Panel2, "Down", ColourManager.moveButtonColours);
+            upButton.AutoSize = false;
+            upButton.Dock = DockStyle.Fill;
+            upButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            upButton.MinimumSize = System.Drawing.Size.Empty;
+            //upButton.Height = RemoveButton1.Height/2;
+            //upButton.
+            downButton.Dock = DockStyle.Fill;
+            downButton.AutoSize = false;
+            downButton.MinimumSize = System.Drawing.Size.Empty;
+            downButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            downButton.Height = RemoveButton1.Height / 2;
+
+            ExpandButton1 = new TentacleButton(ButtonPanel, "Expand", ColourManager.expandButtonColours);
+            ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
+            isExpanded = false;
+            cTable.panel.Visible = false;
+
+            //RemoveButton1.Click += new EventHandler(this.ToggleExpansion);
         }
 
         private void ToggleExpansion(Object sender, EventArgs e)

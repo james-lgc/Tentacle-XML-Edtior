@@ -18,11 +18,11 @@ namespace WindowsFormsApplication1
             base.SetUp(conversationStage);
             dTable = dialogueTable;
             container = new HeadedFixedContainer(form, dialogueTable.cTable.panel, rowNum, "Dialogue");
-            string[] labelTexts = new string[] { "" };
-
+            string[] labelTexts = new string[] { "Id" };
+            int[] numFields = { 0 };
             lineTable = new LineTable(form, this, conversationStage.lines);
-            container.AddHeading(form, lineTable.cTable, 0, labelTexts, true);
-
+            container.AddHeading(form, lineTable.cTable, 1, labelTexts, true, numFields);
+            container.numberBoxes[0].DataBindings.Add("Value", conversationStage, "id", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override ConversationStage ReturnX()

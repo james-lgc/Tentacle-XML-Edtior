@@ -20,14 +20,13 @@ namespace WindowsFormsApplication1
             container = new HeadedFixedContainer(form, lineTable.cTable.panel, rowNum, null);
             lineTable.cTable.panel.SetColumn(container.groupBox, 1);
             lineTable.cTable.panel.SetRow(container.groupBox, rowNum);
-            string[] labelTexts = new string[] { "Line" };
-            container.AddHeading(form, lineTable.cTable, 1, null, false);
-            container.TextBoxes[0].DataBindings.Add("Text", line, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
+            string[] labelTexts = new string[] { "Speech" };
 
             form1 = form;
 
             replyTable = new ReplyTable(form1, this, line.replies, line);
-
+            container.AddHeading(form, replyTable.cTable, 1, null, true);
+            container.TextBoxes[0].DataBindings.Add("Text", line, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override Line ReturnX()

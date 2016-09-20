@@ -70,12 +70,6 @@
     <Compile Include="SpecificContainers\Boxes\StoryStageBox.cs" />
     <Compile Include="SpecificContainers\Tables\StoryStageTable.cs" />
     <Compile Include="TableSizer.cs" />
-    <Compile Include="TentacleUIElements\TentacleButtons\AddButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TentacleUIElements\TentacleButtons\ExpandButton.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="TentacleUIElements\TentacleButtons\TentacleButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -85,14 +79,14 @@
     <Compile Include="TentacleUIElements\TentacleNumberBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TentacleUIElements\TentaclePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TentacleUIElements\TentacleTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UIContainers\CollapsableTable.cs" />
-    <Compile Include="UIContainers\HeadedContainer.cs" />
-    <Compile Include="UIContainers\HeadedEditableContainer.cs" />
     <Compile Include="UIContainers\HeadedFixedContainer.cs" />
-    <Compile Include="UIContainers\SplitBox.cs" />
     <Compile Include="UIContainers\UIContainer.cs" />
     <Compile Include="XmlClasses\Conversation.cs" />
     <Compile Include="XmlClasses\ConversationList.cs" />

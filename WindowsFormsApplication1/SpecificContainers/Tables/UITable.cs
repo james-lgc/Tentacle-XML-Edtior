@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
                 }
                     
             }
-            addButton = new AddButton(cTable, extraText);
+            addButton = new TentacleButton(cTable, "Add" + extraText, ColourManager.addButtonColours);
             addButton.Click += new EventHandler(this.AddRow);
             TableSizer.AutoSize(cTable.panel);
         }

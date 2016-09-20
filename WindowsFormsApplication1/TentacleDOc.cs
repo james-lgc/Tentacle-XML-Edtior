@@ -121,6 +121,11 @@ namespace WindowsFormsApplication1
                 stream.Close();
             }
         }
+
+        private void TentacleDoc_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
