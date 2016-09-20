@@ -18,5 +18,8 @@ namespace WindowsFormsApplication1
 
         public static Color addButtonBaseColour = Color.FromArgb(191, 245, 195);
         public static Color addButtonTextColour = backGroundColour;
+
+        public static Color expandButtonBaseColour = Color.FromArgb(191, 214, 245);
+        public static Color expandButtonTextColour = backGroundColour;
     }
 }

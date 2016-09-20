@@ -73,6 +73,9 @@
     <Compile Include="TentacleUIElements\TentacleButtons\AddButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TentacleUIElements\TentacleButtons\ExpandButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TentacleUIElements\TentacleButtons\TentacleButton.cs">
       <SubType>Component</SubType>
     </Compile>

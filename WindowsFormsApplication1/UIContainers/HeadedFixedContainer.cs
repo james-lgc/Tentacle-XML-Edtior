@@ -9,7 +9,7 @@ namespace WindowsFormsApplication1
 {
     public class HeadedFixedContainer : UIContainer
     {
-        Button button;
+        private ExpandButton ExpandButton1 { get; set; }
         private int columnCount;
         public GroupBox groupBox;
         public TextBox[] textBoxes;
@@ -58,11 +58,9 @@ namespace WindowsFormsApplication1
                     CollapsableTable subTable = new CollapsableTable(form, this, rowCount: fields, columnCount: columnCount);
                     subTable.panel.Dock = DockStyle.Top;
                     cTable = table;
-                    //columnCount = 3;
                     for (int i = 0; i < fields; i++)
                     {
                         TentacleLabel tLabel = new TentacleLabel(labelTexts[i], i, subTable.panel);
-                        //AddLabel(i, labelTexts[i], subTable);
                         if (numFields == null)
                         {
                             AddTextBoxToTable(i, subTable);
@@ -91,7 +89,8 @@ namespace WindowsFormsApplication1
                         }
                         if (i == fields - 1 && isCollapsable == true)
                         {
-                            AddButton(subTable, i);
+                            ExpandButton1 = new ExpandButton(subTable, i);
+                            ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
                             isExpanded = false;
                             cTable.panel.Visible = false;
                         }
@@ -103,25 +102,6 @@ namespace WindowsFormsApplication1
                 }
             }
             
-        }
-
-        private void AddButton(CollapsableTable subTable, int i)
-        {
-            button = new Button();
-            button.Text = "Expand";
-            button.ForeColor = ColourManager.backGroundColour;
-            button.BackColor = ColourManager.textColour;
-            button.Parent = subTable.panel;
-            subTable.panel.SetRow(button, i);
-            subTable.panel.SetColumn(button, 0);
-            subTable.panel.Controls.Add(button);
-            button.Click += new EventHandler(this.ToggleExpansion);
-        }
-
-        private void AddLabel(int i, string labelText, CollapsableTable subTable)
-        {
-            //LabelBuilder labelBuilder = new LabelBuilder();
-            //labelBuilder.GetLabel(labelText, i, subTable.panel);
         }
 
         private void AddTextBox()
@@ -154,13 +134,13 @@ namespace WindowsFormsApplication1
             {
                 isExpanded = false;
                 cTable.panel.Visible = false;
-                button.Text = "Expand";
+                ExpandButton1.Text = "Expand";
             }
             else
             {
                 isExpanded = true;
                 cTable.panel.Visible = true;
-                button.Text = "Collapse";
+                ExpandButton1.Text = "Collapse";
             }
         }
 

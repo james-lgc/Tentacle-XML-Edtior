@@ -10,6 +10,7 @@ namespace WindowsFormsApplication1
 {
     public class TentacleButton : Button
     {
+        //public virtual string Text { get; set; }
         protected Color baseColour;
         protected Color textColour;
 
