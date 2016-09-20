@@ -54,7 +54,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="IExpandable.cs" />
-    <Compile Include="LabelBuilder.cs" />
     <Compile Include="SpecificContainers\Boxes\LineBox.cs" />
     <Compile Include="SpecificContainers\Boxes\UIBox.cs" />
     <Compile Include="LoadingPanel.cs" />
@@ -71,6 +70,9 @@
     <Compile Include="SpecificContainers\Boxes\StoryStageBox.cs" />
     <Compile Include="SpecificContainers\Tables\StoryStageTable.cs" />
     <Compile Include="TableSizer.cs" />
+    <Compile Include="TentacleLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UIContainers\CollapsableTable.cs" />
     <Compile Include="UIContainers\HeadedContainer.cs" />
     <Compile Include="UIContainers\HeadedEditableContainer.cs" />

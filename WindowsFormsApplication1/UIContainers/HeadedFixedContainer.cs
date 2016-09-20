@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
         public HeadedFixedContainer(Form1 form, TableLayoutPanel parentPanel, int rowNum, string labelText)
         {
             groupBox = new GroupBox();
-            groupBox.BackColor = ColourManager.backGroundColour;
+            groupBox.BackColor = ColourManager.backGroundColour2;
             groupBox.ForeColor = ColourManager.textColour;
             groupBox.AutoSize = true;
             groupBox.Text = labelText;
@@ -119,14 +119,8 @@ namespace WindowsFormsApplication1
 
         private void AddLabel(int i, string labelText, CollapsableTable subTable)
         {
-            Label label = new Label();
-            label.Text = labelText;
-            label.ForeColor = ColourManager.textColour;
-            label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            label.Parent = subTable.panel;
-            subTable.panel.SetRow(label, i);
-            subTable.panel.SetColumn(label, columnCount -2);
-            subTable.panel.Controls.Add(label);
+            //LabelBuilder labelBuilder = new LabelBuilder();
+            //labelBuilder.GetLabel(labelText, i, subTable.panel);
         }
 
         private void AddTextBox()

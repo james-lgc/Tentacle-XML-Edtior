@@ -27,23 +27,23 @@ namespace WindowsFormsApplication1
             parentContainer = parent;
             xArray = sentXArray;
 
-            AddButton(rowCount, extraText);
+            //AddButton(rowCount, extraText);
 
             if (labelTexts != null)
             {
                 for (int i = 0; i < sentXArray.Length; i++)
                 {
                     Label label = new Label();
+                    int j = 0;
                     if (labelTexts.Length > 1)
                     {
-                        AddLabel(i, labelTexts[i]);
+                        j = i;
                     }
-                    else
-                    {
-                        AddLabel(i, labelTexts[0]);
-                    }
+                    TentacleLabel tLabel = new TentacleLabel(labelTexts[j], i, cTable.panel);
                 }
+                    
             }
+            AddButton(cTable.panel.RowCount - 1, extraText);
             TableSizer.AutoSize(cTable.panel);
         }
 
