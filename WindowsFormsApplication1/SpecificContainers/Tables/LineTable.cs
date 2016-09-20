@@ -12,27 +12,19 @@ namespace WindowsFormsApplication1
 
         public LineTable(TentacleDoc form, DialogueBox dialogueBox, Line[] lines)
         {
-            string[] labels = new string[] { "Line" };
-            base.SetUp(form, this, dialogueBox.container, lines.Length, 2, 1, lines, labels, "Line");
+            labelTexts = new string[] { "Line" };
+            base.SetUp(form, this, dialogueBox.container, lines.Length, 2, lines, "Line");
             for (int i = 0; i < xArray.Length; i++)
             {
                 lineBox = new LineBox(form, this, i, lines[i]);
-                boxes.Add(lineBox);
-                try
-                {
-                    form.loadingPanel.IncreaseProgress();
-                }
-                catch (NullReferenceException e)
-                {
-
-                }
+                base.AddBox(lineBox);
             }
-            base.Expand();
         }
         public override void AddRow(object sender, EventArgs e)
         {
             base.AddRow(sender, e);
-            base.AddLabel(cTable.panel.RowCount - 2, "Line");
+            TentacleLabel tLabel = new TentacleLabel("Line", cTable.panel.RowCount - 2, cTable.panel);
+            //base.AddLabel(cTable.panel.RowCount - 2, "Line");
             newX = new Line();
             newX.Build();
             LineBox lineBox = new LineBox(form1, this, cTable.panel.RowCount - 2, newX);

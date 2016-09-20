@@ -15,5 +15,8 @@ namespace WindowsFormsApplication1
         public static Color backGroundColour2 = Color.FromArgb(79, 79, 79);
         //public static Color textColour = Color.LightBlue;
         public static Color textColour = Color.WhiteSmoke;
+
+        public static Color addButtonBaseColour = Color.FromArgb(191, 245, 195);
+        public static Color addButtonTextColour = backGroundColour;
     }
 }

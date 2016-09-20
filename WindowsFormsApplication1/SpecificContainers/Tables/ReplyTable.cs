@@ -15,31 +15,23 @@ namespace WindowsFormsApplication1
         public ReplyTable(TentacleDoc form, LineBox sentLineBox, string[] replies, Line line)
         {
             lineBox = sentLineBox;
-            string[] labels = new string[] { "Reply" };
+            labelTexts = new string[] { "Reply" };
             if (replies != null)
             {
-                base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels, "Reply");
+                base.SetUp(form, this, lineBox.container, replies.Length, 2, replies, "Reply");
                 for (int i = 0; i < xArray.Length; i++)
                 {
                     RepliesBox repliesBox = new RepliesBox(form, this, i, replies[i]);
-                    AddBox(repliesBox);
                     StringWrapper stringWrapper = new StringWrapper();
                     stringWrapper.wrappedString = line.replies[i];
                     AddTextBox(stringWrapper, i);
-                    try
-                    {
-                        form.loadingPanel.IncreaseProgress();
-                    }
-                    catch (NullReferenceException e)
-                    {
-
-                    }
+                    base.AddBox(repliesBox);
                 }
             }
             else
             {
                 replies = new string[0];
-                base.SetUp(form, this, lineBox.container, replies.Length, 2, 1, replies, labels, "Reply");
+                base.SetUp(form, this, lineBox.container, replies.Length, 2, replies, "Reply");
             }
             cTable.panel.BringToFront();;
         }

@@ -70,7 +70,13 @@
     <Compile Include="SpecificContainers\Boxes\StoryStageBox.cs" />
     <Compile Include="SpecificContainers\Tables\StoryStageTable.cs" />
     <Compile Include="TableSizer.cs" />
-    <Compile Include="TentacleLabel.cs">
+    <Compile Include="TentacleUIElements\TentacleButtons\AddButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TentacleUIElements\TentacleButtons\TentacleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TentacleUIElements\TentacleLabel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UIContainers\CollapsableTable.cs" />

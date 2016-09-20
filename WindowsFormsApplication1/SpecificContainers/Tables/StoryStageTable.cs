@@ -10,21 +10,13 @@ namespace WindowsFormsApplication1
     {
         public StoryStageTable(TentacleDoc form, CharacterBox characterBox, StoryStage[] storyStages)
         {
-            base.SetUp(form, this, characterBox.container, storyStages.Length, 1, 1, storyStages, null, "StoryStage");
+            labelTexts = null;
+            base.SetUp(form, this, characterBox.container, storyStages.Length, 1, storyStages, "StoryStage");
             for (int i = 0; i < storyStages.Length; i++)
             {
                 StoryStageBox storyStageBox = new StoryStageBox(form, this, i, storyStages[i]);
-                boxes.Add(storyStageBox);
-                try
-                {
-                    form.loadingPanel.IncreaseProgress();
-                }
-                catch (NullReferenceException e)
-                {
-
-                }
+                base.AddBox(storyStageBox);
             }
-            base.Expand();
         }
 
         public override void AddRow(object sender, EventArgs e)

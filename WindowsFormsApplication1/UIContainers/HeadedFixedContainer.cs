@@ -55,13 +55,14 @@ namespace WindowsFormsApplication1
                     {
                         columnCount++;
                     }
-                    CollapsableTable subTable = new CollapsableTable(form, this, rowCount: fields, columnCount: columnCount, rowNum: 0);
+                    CollapsableTable subTable = new CollapsableTable(form, this, rowCount: fields, columnCount: columnCount);
                     subTable.panel.Dock = DockStyle.Top;
                     cTable = table;
-                    columnCount = 3;
+                    //columnCount = 3;
                     for (int i = 0; i < fields; i++)
                     {
-                        AddLabel(i, labelTexts[i], subTable);
+                        TentacleLabel tLabel = new TentacleLabel(labelTexts[i], i, subTable.panel);
+                        //AddLabel(i, labelTexts[i], subTable);
                         if (numFields == null)
                         {
                             AddTextBoxToTable(i, subTable);

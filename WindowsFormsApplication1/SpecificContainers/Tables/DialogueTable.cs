@@ -13,22 +13,14 @@ namespace WindowsFormsApplication1
 
         public DialogueTable(TentacleDoc form, StoryStageBox storyStageBox, ConversationStage[] conversationStages)
         {
-            base.SetUp(form, this, storyStageBox.container, conversationStages.Length, 1, 1, conversationStages, null, "Dialogue");
+            labelTexts = null;
+            base.SetUp(form, this, storyStageBox.container, conversationStages.Length, 1, conversationStages, "Dialogue");
 
             for (int i = 0; i < xArray.Length; i++)
             {
                 DialogueBox dialogueBox = new DialogueBox(form, this, i, conversationStages[i]);
-                boxes.Add(dialogueBox);
-                try
-                {
-                    form.loadingPanel.IncreaseProgress();
-                }
-                catch (NullReferenceException e)
-                {
-
-                }
+                base.AddBox(dialogueBox);
             }
-            base.Expand();
         }
 
         public override void AddRow(object sender, EventArgs e)
