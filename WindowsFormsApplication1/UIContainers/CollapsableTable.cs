@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
     {
         public TableLayoutPanel panel;
 
-        public CollapsableTable(TentacleDoc form, GroupBox parent, int rowCount, int columnCount)
+        public CollapsableTable(TentacleDoc form, Control parent, int rowCount, int columnCount)
         {
             panel = new TableLayoutPanel();
             panel.Parent = parent;

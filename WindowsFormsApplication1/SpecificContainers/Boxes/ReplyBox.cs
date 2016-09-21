@@ -10,6 +10,11 @@ namespace WindowsFormsApplication1
     {
         public RepliesBox(TentacleDoc form, ReplyTable replyTable, int rowNum, string reply)
         {
+            Fields = 1;
+            LabelTexts = new string[] { "Reply" };
+            IsCollapsable = true;
+            NumFields = null;
+
             //base.SetUp(reply);
             thisX = reply;
         }

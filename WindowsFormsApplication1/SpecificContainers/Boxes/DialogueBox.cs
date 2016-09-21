@@ -15,15 +15,22 @@ namespace WindowsFormsApplication1
 
         public DialogueBox(TentacleDoc form, DialogueTable dialogueTable, int rowNum, ConversationStage conversationStage)
         {
-            base.SetUp(conversationStage, form, dialogueTable.cTable.panel, rowNum, "Dialogue");
+            Fields = 1;
+            LabelTexts = new string[] { "Dialogue Id" };
+            IsCollapsable = true;
+            NumFields = new int[] { 0 };
+
+            base.SetUp(conversationStage, form, dialogueTable, rowNum, "Dialogue");
             dTable = dialogueTable;
             //container = new HeadedFixedContainer(form, dialogueTable.cTable.panel, rowNum, "Dialogue");
             string[] labelTexts = new string[] { "Dialogue Id" };
             int[] numFields = { 0 };
             lineTable = new LineTable(form, this, conversationStage.lines);
+            ChildCTable = lineTable.cTable;
             //container.AddHeading(form, lineTable.cTable, 1, labelTexts, true, numFields);
-            base.AddHeading(form, lineTable.cTable, 1, labelTexts, true, numFields);
-            NumberBoxes[0].DataBindings.Add("Value", conversationStage, "id", false, DataSourceUpdateMode.OnPropertyChanged);
+            //base.AddHeading(form, lineTable.cTable, 1, labelTexts, true, numFields);
+            BoxHeading = new UIBoxHeading<ConversationStage>(this);
+            BoxHeading.InputControls[0].DataBindings.Add("Value", conversationStage, "id", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override ConversationStage ReturnX()

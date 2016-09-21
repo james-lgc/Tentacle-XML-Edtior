@@ -16,17 +16,24 @@ namespace WindowsFormsApplication1
 
         public CharacterBox(TentacleDoc form, CharacterTable characterTable, int rowNum, Conversation conversation)
         {
-            base.SetUp(conversation, form, characterTable.cTable.panel, rowNum, "");
+
+            Fields = 1;
+            LabelTexts = new string[] { "Name" };
+            IsCollapsable = true;
+            NumFields = null;
+
+            base.SetUp(conversation, form, characterTable, rowNum, "");
             //container = new HeadedFixedContainer(form, characterTable.cTable.panel, rowNum, "");
             //container.groupBox.Padding = new Padding(20);
-            string[] labelTexts = new string[] { "Name" };
 
 
-            storyStageTable = new StoryStageTable(form, this, conversation.storyStages);;
+            storyStageTable = new StoryStageTable(form, this, conversation.storyStages);
+            ChildCTable = storyStageTable.cTable;
             storyStageTable.cTable.panel.Top = 120;
-            base.AddHeading(form, storyStageTable.cTable, 1, labelTexts, true);
+            //base.AddHeading(form, storyStageTable.cTable, 1, labelTexts, true);
+            BoxHeading = new UIBoxHeading<Conversation>(this);
             //container.AddHeading(form, storyStageTable.cTable, 1, labelTexts, true);
-            TextBoxes[0].DataBindings.Add("Text", conversation, "name", false, DataSourceUpdateMode.OnPropertyChanged);
+            BoxHeading.InputControls[0].DataBindings.Add("Text", conversation, "name", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override Conversation ReturnX()

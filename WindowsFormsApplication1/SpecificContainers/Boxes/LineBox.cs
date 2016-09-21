@@ -16,7 +16,12 @@ namespace WindowsFormsApplication1
 
         public LineBox(TentacleDoc form, LineTable lineTable, int rowNum, Line line)
         {
-            base.SetUp(line, form, lineTable.cTable.panel, rowNum, null);
+            Fields = 1;
+            LabelTexts = new string[] { "Speech" };
+            IsCollapsable = true;
+            NumFields = null;
+
+            base.SetUp(line, form, lineTable, rowNum, null);
             //container = new HeadedFixedContainer(form, lineTable.cTable.panel, rowNum, null);
             lineTable.cTable.panel.SetColumn(GroupBox1, 1);
             lineTable.cTable.panel.SetRow(GroupBox1, rowNum);
@@ -25,9 +30,10 @@ namespace WindowsFormsApplication1
             form1 = form;
 
             replyTable = new ReplyTable(form1, this, line.replies, line);
-            base.AddHeading(form, replyTable.cTable, 1, null, true);
-            //container.AddHeading(form, replyTable.cTable, 1, null, true);
-            TextBoxes[0].DataBindings.Add("Text", line, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
+            ChildCTable = replyTable.cTable;
+            //base.AddHeading(form, replyTable.cTable, 1, null, true);
+            BoxHeading = new UIBoxHeading<Line>(this);
+            BoxHeading.InputControls[0].DataBindings.Add("Text", line, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override Line ReturnX()
