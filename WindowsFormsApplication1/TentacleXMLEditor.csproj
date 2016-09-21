@@ -54,6 +54,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="IExpandable.cs" />
+    <Compile Include="IReturnable.cs" />
     <Compile Include="WrappedReply.cs" />
     <Compile Include="SpecificContainers\Boxes\LineBox.cs" />
     <Compile Include="SpecificContainers\Boxes\UIBox.cs" />
@@ -65,7 +66,7 @@
     <Compile Include="SpecificContainers\Tables\LineTable.cs" />
     <Compile Include="SpecificContainers\Tables\UITable.cs" />
     <Compile Include="SpecificContainers\Tables\DialogueTable.cs" />
-    <Compile Include="MainDisplay.cs" />
+    <Compile Include="SpecificContainers\Boxes\MainDisplay.cs" />
     <Compile Include="SpecificContainers\Boxes\ReplyBox.cs" />
     <Compile Include="SpecificContainers\Tables\ReplyTable.cs" />
     <Compile Include="SpecificContainers\Boxes\CharacterBox.cs" />

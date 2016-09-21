@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class CharacterBox : UIBox<Conversation, StoryStage>
+    public class CharacterBox : UIBox<Conversation<StoryStage<ConversationStage<Line<Reply<string>>>>>, StoryStage<ConversationStage<Line<Reply<string>>>>>
     {
         public override int Fields { get { return 1; } }
         public override string[] LabelTexts { get { return new string[] { "Name" }; } }
@@ -16,10 +16,13 @@ namespace WindowsFormsApplication1
 
         //private StoryStageTable Table { get; set; }
 
-        public CharacterBox(TentacleDoc form, CharacterTable characterTable, int rowNum, Conversation conversation)
+        public CharacterBox(TentacleDoc form, UITable<Conversation<StoryStage<ConversationStage<Line<Reply<string>>>>>> int rowNum)
         {
-            base.SetUp(conversation, form, characterTable, rowNum, "");
-            StoryStageTable table = new StoryStageTable(form, this, ThisX.storyStages);
+
+            base.SetUp(ThisX, form, characterTable, rowNum, "", 1, "StoryStage");
+
+            //StoryStageTable table = new StoryStageTable(form, this, ThisX.storyStages);
+            //table.SetUp(form, characterBox.GroupBox1, storyStages.Length, 1, storyStages, "StoryStage");
             //ChildTable.panel.Top = 120;
             AssignTable(table);
             BoxHeading.InputControls[0].DataBindings.Add("Text", ThisX, "name", false, DataSourceUpdateMode.OnPropertyChanged);

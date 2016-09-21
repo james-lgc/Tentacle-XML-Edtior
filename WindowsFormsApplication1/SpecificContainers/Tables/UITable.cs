@@ -20,7 +20,7 @@ namespace WindowsFormsApplication1
         protected X NewX { get; set; }
         public List<SpecificContainer<X>> boxes;
 
-        public UITable()
+        public UITable(GroupBox groupBox, int rowCount, int columnCount, X[] sentXArray, string extraText)
         {
 
         }
@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1
             cTable.panel.SetRow(addButton, cTable.panel.RowCount - 1);
         }
 
-        protected void AddBox<Y>(UIBox<X, Y> box)
+        protected void AddBox<Y>(SpecificContainer<X> box) where Y : X
         {
             boxes.Add(box);
             Step();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class UIBox<X, Y> : SpecificContainer<X>
+    public class UIBox<X, Y> : SpecificContainer<X> where X : IReturnable<Y> where Y : X
     {
         //public CollapsableTable ChildTable {get; protected set; }
         public X ThisX { get; set; }
@@ -26,13 +26,14 @@ namespace WindowsFormsApplication1
 
         protected UITable<Y> ChildTable { get; set; }
 
+
         protected UIBox ()
         {
 
         }
 
 
-        protected void SetUp(X sentX, TentacleDoc form, UITable<X> parentTable, int rowNum, string labelText)
+        protected void SetUp(X sentX, TentacleDoc form, UITable<X> parentTable, int rowNum, string labelText, int columnCount, string extraText)
         {
             ThisX = sentX;
             ParentTable = parentTable;
@@ -54,6 +55,8 @@ namespace WindowsFormsApplication1
             {
                 form.Controls.Add(GroupBox1);
             }
+            IReturnable<Y>[] yArray = ThisX.Returnables as IReturnable<Y>[];
+            ChildTable = new UITable<Y>(GroupBox1, yArray.Length, columnCount, yArray as Y[], extraText);
         }
 
         protected void AssignTable(UITable<Y> table)
