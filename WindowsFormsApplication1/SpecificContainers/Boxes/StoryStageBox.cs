@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class StoryStageBox : UIBox<StoryStage, ConversationStage>
+    public class StoryStageBox : UIBox<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>, ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>
     {
         public override int Fields { get { return 2; } }
         public override string[] LabelTexts { get { return new string[] { "StoryThread", "StageNumber" }; } }
@@ -18,9 +18,9 @@ namespace WindowsFormsApplication1
         //public DialogueTable dialogueTable;
         
 
-        public StoryStageBox(TentacleDoc form, StoryStageTable storyStageTable, int rowNum, StoryStage storyStage)
+        public StoryStageBox(StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>> sentX, TentacleDoc form, StoryStageTable parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
         {
-            base.SetUp(storyStage, form, storyStageTable, rowNum, storyStage.id.ToString());
+            /*base.SetUp(storyStage, form, storyStageTable, rowNum, storyStage.id.ToString());
             DialogueTable table = new DialogueTable(form, this, storyStage.conversationStages);
             //ChildCTable = dialogueTable.cTable;
             //dialogueTable.cTable.panel.Top = 500;
@@ -28,14 +28,14 @@ namespace WindowsFormsApplication1
             base.AssignTable(table);
             BoxHeading.InputControls[0].DataBindings.Add("Text", ThisX, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
             //BoxHeading.BindData("Value", storyStage, "stageNumber");
-            BoxHeading.InputControls[1].DataBindings.Add("Value", ThisX, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
+            BoxHeading.InputControls[1].DataBindings.Add("Value", ThisX, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);*/
         }
 
-        public override StoryStage ReturnX()
+        /*public override StoryStage ReturnX()
         {
             ConversationStage[] cStages = ChildTable.ReturnContents;
             ThisX.conversationStages = cStages;
             return base.ReturnX();
-        }
+        }*/
     }
 }

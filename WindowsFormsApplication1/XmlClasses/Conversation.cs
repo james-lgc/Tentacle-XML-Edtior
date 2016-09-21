@@ -10,13 +10,13 @@ public class Conversation<X> : ConversationList<Conversation<X>>, IReturnable<X>
 
     [XmlArray("StoryStages")]
     [XmlArrayItem("StoryStage")]
-    public StoryStage<ConversationStage<Line<Reply<string>>>>[] storyStages;
+    public StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>[] storyStages;
     public new IReturnable<X>[] Returnables { get { return storyStages as IReturnable<X>[]; } set { } }
 
     public void Build()
     {
-        storyStages = new StoryStage<ConversationStage<Line<Reply<string>>>>[1];
-        storyStages[0] = new StoryStage<ConversationStage<Line<Reply<string>>>>();
+        storyStages = new StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>[1];
+        storyStages[0] = new StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>();
         storyStages[0].Build();
     }
 
@@ -37,14 +37,14 @@ public class StoryStage<X> : Conversation<StoryStage<X>>, IReturnable<X> where X
 
     [XmlArray("ConversationStages")]
 	[XmlArrayItem("ConversationStage")]
-	public ConversationStage<Line<Reply<string>>>[] conversationStages;
+	public ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>[] conversationStages;
 
     public new IReturnable<X>[] Returnables { get { return conversationStages as IReturnable<X>[]; } set { } }
 
     public new void Build()
     {
-        conversationStages = new ConversationStage<Line<Reply<string>>>[1];
-        conversationStages[0] = new ConversationStage<Line<Reply<string>>>();
+        conversationStages = new ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>[1];
+        conversationStages[0] = new ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>();
         conversationStages[0].Build();
     }
 
@@ -59,14 +59,14 @@ public class ConversationStage<X> : StoryStage<ConversationStage<X>>, IReturnabl
     [XmlArray("Lines")]
 	[XmlArrayItem("Line")]
 
-	public Line<Reply<string>>[] lines;
+	public Line<Reply<WrappedReply<ReplyString<string>>>>[] lines;
 
     public new IReturnable<X>[] Returnables { get { return lines as IReturnable<X>[]; } set { } }
 
     public new void Build()
     {
-        lines = new Line<Reply<string>>[1];
-        lines[0] = new Line<Reply<string>>();
+        lines = new Line<Reply<WrappedReply<ReplyString<string>>>>[1];
+        lines[0] = new Line<Reply<WrappedReply<ReplyString<string>>>>();
         lines[0].Build();
     }
 }
@@ -82,13 +82,13 @@ public class Line<X> : ConversationStage<Line<X>>, IReturnable<X> where X : Line
 
     [XmlArray("Replies")]
 	[XmlArrayItem("Reply")]
-	public Reply<string>[] replies { get; set; }
+	public Reply<WrappedReply<ReplyString<string>>>[] replies { get; set; }
 
     public new IReturnable<X>[] Returnables { get { return replies as IReturnable<X>[]; } set { } }
 
     public new void Build()
     {
-        replies = new Reply<string>[0];
+        replies = new Reply<WrappedReply<ReplyString<string>>>[0];
     }
 }
 

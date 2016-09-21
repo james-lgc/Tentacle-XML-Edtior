@@ -27,13 +27,7 @@ namespace WindowsFormsApplication1
         protected UITable<Y> ChildTable { get; set; }
 
 
-        protected UIBox ()
-        {
-
-        }
-
-
-        protected void SetUp(X sentX, TentacleDoc form, UITable<X> parentTable, int rowNum, string labelText, int columnCount, string extraText)
+        protected UIBox (X sentX, TentacleDoc form, UITable<X> parentTable, int rowNum, string labelText, int columnCount, string extraText)
         {
             ThisX = sentX;
             ParentTable = parentTable;
@@ -45,15 +39,15 @@ namespace WindowsFormsApplication1
             GroupBox1.Text = labelText;
             GroupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             GroupBox1.Dock = DockStyle.Fill;
-            if (ParentTable.cTable.panel != null)
+            if (ParentTable == null|| ParentTable.cTable.panel == null)
+            {
+                form.Controls.Add(GroupBox1);
+            }
+            else
             {
                 GroupBox1.Parent = ParentTable.cTable.panel;
                 ParentTable.cTable.panel.SetCellPosition(GroupBox1, new TableLayoutPanelCellPosition(rowNum, ParentTable.cTable.panel.ColumnCount - 1));
                 ParentTable.cTable.panel.Controls.Add(GroupBox1);
-            }
-            else
-            {
-                form.Controls.Add(GroupBox1);
             }
             IReturnable<Y>[] yArray = ThisX.Returnables as IReturnable<Y>[];
             ChildTable = new UITable<Y>(GroupBox1, yArray.Length, columnCount, yArray as Y[], extraText);

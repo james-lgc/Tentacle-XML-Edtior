@@ -52,7 +52,7 @@ namespace WindowsFormsApplication1
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /*private void button1_Click(object sender, EventArgs e)
         {
             BypassLoad(sender, e);
             return;
@@ -73,7 +73,7 @@ namespace WindowsFormsApplication1
                 this.AutoScroll = true;
                 Application.DoEvents();
             }
-        }
+        }*/
 
         private void BypassLoad(object sender, EventArgs e)
         {
@@ -83,13 +83,13 @@ namespace WindowsFormsApplication1
             {
                 string path = openFileDialog1.FileName;
                 FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));
-                ConversationList cList = serializer.Deserialize(reader) as ConversationList;
+                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<string>>>>>>));
+                ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>> cList = serializer.Deserialize(reader) as ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>>;
                 reader.Close();
 
                 //XmlDocument doc = new XmlDocument();
 
-                mainDisplay = new MainDisplay(this, cList);
+                mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
                 AutoScroll = true;
                 Application.DoEvents();
             }
@@ -97,10 +97,10 @@ namespace WindowsFormsApplication1
 
         private void CreateNew(object sender, EventArgs e)
         {
-            ConversationList cList = new ConversationList();
+            ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>> cList = new ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>>();
             cList.Build();
             mainDisplay = null;
-            mainDisplay = new MainDisplay(this, cList);
+            mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
         }
 
         private void SaveFile(object sender, EventArgs e)
@@ -110,13 +110,13 @@ namespace WindowsFormsApplication1
 
             if (save == DialogResult.OK)
             {
-                ConversationList saveFile = new ConversationList();
+                ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<string>>>>>> saveFile = new ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<string>>>>>>();
                 saveFile.conversations = mainDisplay.characterTable.ReturnContents;
 
                 string path = saveFileDialog1.FileName;
                 //string path = "C:/Users/James/Documents/conversationsTestSave.xml";
                 FileStream stream = new FileStream(path, FileMode.Create);
-                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));
+                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<string>>>>>>));
                 serializer.Serialize(stream, saveFile);
                 stream.Close();
             }

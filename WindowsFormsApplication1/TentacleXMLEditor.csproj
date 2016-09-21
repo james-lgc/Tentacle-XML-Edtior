@@ -55,6 +55,7 @@
     </Compile>
     <Compile Include="IExpandable.cs" />
     <Compile Include="IReturnable.cs" />
+    <Compile Include="ReplyString.cs" />
     <Compile Include="WrappedReply.cs" />
     <Compile Include="SpecificContainers\Boxes\LineBox.cs" />
     <Compile Include="SpecificContainers\Boxes\UIBox.cs" />

@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
         int totalCalculations;
         int currentProgress;
 
-        public LoadingPanel(TentacleDoc form, ConversationList cList)
+        public LoadingPanel(TentacleDoc form, ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>> cList)
         {
             fullAppPanel = new Panel();
             fullAppPanel.Parent = form;
@@ -76,24 +76,24 @@ namespace WindowsFormsApplication1
             progressBar.Value = currentProgress;
         }
 
-        private void Calculate(ConversationList cList)
+        private void Calculate(ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>> cList)
         {
             totalCalculations = 0;
             for (int i = 0; i < cList.conversations.Length; i++)
             {
-                Conversation conversation = cList.conversations[i];
+                Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>> conversation = cList.conversations[i];
                 totalCalculations++;
                 for (int j = 0; j < conversation.storyStages.Length; j++)
                 {
-                    StoryStage storyStage = conversation.storyStages[j];
+                    StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>> storyStage = conversation.storyStages[j];
                     totalCalculations++;
                     for (int k = 0; k <storyStage.conversationStages.Length; k++)
                     {
-                        ConversationStage cStage = storyStage.conversationStages[k];
+                        ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>> cStage = storyStage.conversationStages[k];
                         totalCalculations++;
                         for (int m = 0; m < cStage.lines.Length; m++)
                         {
-                            Line line = cStage.lines[m];
+                            Line<Reply<WrappedReply<ReplyString<string>>>> line = cStage.lines[m];
                             totalCalculations++;
                             if (line.replies != null && line.replies.Length > 0)
                             {

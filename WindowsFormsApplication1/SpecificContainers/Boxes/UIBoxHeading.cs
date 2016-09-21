@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class UIBoxHeading<X, Y>
+    public class UIBoxHeading<X, Y> where Y : X, IReturnable<Y> where X : IReturnable<Y>
     {
         private UIBox<X, Y> ParentBox { get; set; }
         private CollapsableTable HeadingTable { get; set; }

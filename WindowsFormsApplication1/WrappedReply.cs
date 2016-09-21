@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class WrappedReply
+    public class WrappedReply<X> : Reply<WrappedReply<X>>, IReturnable<X>
     {
         public string WrappedReply1 { get; set; }
 
+        public new IReturnable<X>[] Returnables { get; set; }
         /*public WrappedReply()
         {
 

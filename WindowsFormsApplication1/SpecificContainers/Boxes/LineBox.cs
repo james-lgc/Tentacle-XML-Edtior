@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class LineBox : UIBox<Line, WrappedReply>
+    public class LineBox : UIBox<Line<Reply<WrappedReply<ReplyString<string>>>>, Reply<WrappedReply<ReplyString<string>>>>
     {
         public override int Fields { get { return 1; } }
         public override string[] LabelTexts { get { return new string[] { "Speech" }; } }
@@ -16,18 +16,19 @@ namespace WindowsFormsApplication1
 
         //ReplyTable Table { get; set; }
 
-        public LineBox(TentacleDoc form, LineTable lineTable, int rowNum, Line line)
+        protected LineBox(Line<Reply<WrappedReply<ReplyString<string>>>> sentX, TentacleDoc form, UITable<Line<Reply<WrappedReply<ReplyString<string>>>>>  parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
         {
 
-            base.SetUp(line, form, lineTable, rowNum, null);
+            /*base.SetUp(line, form, lineTable, rowNum, null);
             ReplyTable table = new ReplyTable(form, this, WrapReplies(line), line);
             base.AssignTable(table);
             ChildTable.cTable.panel.SetColumn(GroupBox1, 1);
             ChildTable.cTable.panel.SetRow(GroupBox1, rowNum);
-            BoxHeading.InputControls[0].DataBindings.Add("Text", ThisX, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
+            BoxHeading.InputControls[0].DataBindings.Add("Text", ThisX, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);*/
+        return;
         }
 
-        private WrappedReply[] WrapReplies(Line line)
+        /*private WrappedReply[] WrapReplies(Line line)
         {
             if (line.replies != null)
             {
@@ -54,6 +55,6 @@ namespace WindowsFormsApplication1
                 ThisX.replies[i] = replies[i].WrappedReply1;
             }
             return base.ReturnX();
-        }
+        }*/
     }
 }

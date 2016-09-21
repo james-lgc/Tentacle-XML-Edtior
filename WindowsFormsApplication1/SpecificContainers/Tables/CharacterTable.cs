@@ -7,22 +7,23 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class CharacterTable : UITable<Conversation>
+    public class CharacterTable : UITable<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>>
     {
-        public CharacterTable(TentacleDoc form, MainDisplay mainDisplay, Conversation[] conversations)
+        //public GroupBox groupBox;
+        public CharacterTable(GroupBox groupBox, int rowCount, int columnCount, Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>[] conversations, string extraText) : base(groupBox, rowCount, columnCount, conversations, extraText)
         {
             //labelTexts = new string [] { "Name" };
             labelTexts = null;
-            base.SetUp(form, mainDisplay.container.groupBox, conversations.Length, 1, conversations, "Conversation");
+            //base.SetUp(form, mainDisplay.container.groupBox, conversations.Length, 1, conversations, "Conversation");
             for (int i = 0; i < xArray.Length; i++)
             {
-                CharacterBox characterBox = new CharacterBox(form, this, i, xArray[i]);
-                base.AddBox(characterBox);
+                //CharacterBox characterBox = new CharacterBox(form, this, i, xArray[i]);
+                //base.AddBox(characterBox);
             }
             cTable.panel.AutoScroll = true;
         }
 
-        public override void AddRow(Object sender, EventArgs e)
+        /*public override void AddRow(Object sender, EventArgs e)
         {
             base.AddRow(sender, e);
             //move label adding to UITable
@@ -32,6 +33,6 @@ namespace WindowsFormsApplication1
             NewX.Build();
             CharacterBox characterBox = new CharacterBox(form1, this, cTable.panel.RowCount - 1, NewX);
             base.AddBox(characterBox);
-        }
+        }*/
     }
 }

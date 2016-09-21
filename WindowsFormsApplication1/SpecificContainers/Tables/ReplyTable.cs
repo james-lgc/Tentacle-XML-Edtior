@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class ReplyTable : UITable<WrappedReply>
+    public class ReplyTable : UITable<WrappedReply<ReplyString<string>>>
     {
 
         private LineBox lineBox;
 
-        public ReplyTable(TentacleDoc form, LineBox sentLineBox, WrappedReply[] replies, Line line)
+        public ReplyTable(GroupBox groupBox, int rowCount, int columnCount, WrappedReply<ReplyString<string>>[] sentXArray, string extraText) : base(groupBox, rowCount, columnCount, sentXArray, extraText)
         {
-            lineBox = sentLineBox;
+            /*lineBox = sentLineBox;
             //labelTexts = new string[] { "Reply" };
             if (replies != null)
             {
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
                 replies = new WrappedReply[0];
                 base.SetUp(form, sentLineBox.GroupBox1, replies.Length, 2, replies, "Reply");
             }
-            cTable.panel.BringToFront();;
+            cTable.panel.BringToFront();;*/
         }
 
         private void AddTextBox(StringWrapper stringWrapper, int rowNum)
@@ -49,7 +49,7 @@ namespace WindowsFormsApplication1
             cTable.panel.Controls.Add(textBox);
         }
 
-        public override void AddRow(object sender, EventArgs e)
+        /*public override void AddRow(object sender, EventArgs e)
         {
             base.AddRow(sender, e);
             NewX = new WrappedReply();
@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1
             //AddTextBox(stringWrapper, cTable.panel.RowCount -1);
             RepliesBox replyBox = new RepliesBox(form1, this, cTable.panel.RowCount -1, NewX);
             AddBox(replyBox);
-        }
+        }*/
     }
 }
 
