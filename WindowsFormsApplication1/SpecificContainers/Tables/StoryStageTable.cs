@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1
         public StoryStageTable(TentacleDoc form, CharacterBox characterBox, StoryStage[] storyStages)
         {
             labelTexts = null;
-            base.SetUp(form, this, characterBox.container, storyStages.Length, 1, storyStages, "StoryStage");
+            base.SetUp(form, characterBox.GroupBox1, storyStages.Length, 1, storyStages, "StoryStage");
             for (int i = 0; i < storyStages.Length; i++)
             {
                 StoryStageBox storyStageBox = new StoryStageBox(form, this, i, storyStages[i]);

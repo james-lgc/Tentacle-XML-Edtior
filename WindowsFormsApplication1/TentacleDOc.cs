@@ -113,7 +113,7 @@ namespace WindowsFormsApplication1
                 ConversationList saveFile = new ConversationList();
                 saveFile.conversations = mainDisplay.characterTable.ReturnContents;
 
-                string path = openFileDialog1.FileName;
+                string path = saveFileDialog1.FileName;
                 //string path = "C:/Users/James/Documents/conversationsTestSave.xml";
                 FileStream stream = new FileStream(path, FileMode.Create);
                 XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));

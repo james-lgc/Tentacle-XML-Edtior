@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1
                     {
                         columnCount++;
                     }
-                    CollapsableTable subTable = new CollapsableTable(form, this, rowCount: fields, columnCount: columnCount);
+                    CollapsableTable subTable = new CollapsableTable(form, groupBox, rowCount: fields, columnCount: columnCount);
                     subTable.panel.Dock = DockStyle.Top;
                     cTable = table;
                     for (int i = 0; i < fields; i++)
@@ -162,6 +162,11 @@ namespace WindowsFormsApplication1
             cTable.panel.Visible = false;
 
             //RemoveButton1.Click += new EventHandler(this.ToggleExpansion);
+        }
+
+        private void Remove()
+        {
+
         }
 
         private void ToggleExpansion(Object sender, EventArgs e)

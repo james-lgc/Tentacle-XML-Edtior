@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
         {
             //labelTexts = new string [] { "Name" };
             labelTexts = null;
-            base.SetUp(form, this, mainDisplay.container, conversations.Length, 1, conversations, "Conversation");
+            base.SetUp(form, mainDisplay.container.groupBox, conversations.Length, 1, conversations, "Conversation");
             for (int i = 0; i < xArray.Length; i++)
             {
                 CharacterBox characterBox = new CharacterBox(form, this, i, conversations[i]);

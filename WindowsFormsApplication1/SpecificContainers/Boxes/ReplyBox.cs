@@ -10,7 +10,8 @@ namespace WindowsFormsApplication1
     {
         public RepliesBox(TentacleDoc form, ReplyTable replyTable, int rowNum, string reply)
         {
-            base.SetUp(reply);
+            //base.SetUp(reply);
+            thisX = reply;
         }
 
         public override string ReturnX()

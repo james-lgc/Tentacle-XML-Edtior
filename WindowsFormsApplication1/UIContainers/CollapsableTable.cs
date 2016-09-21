@@ -11,16 +11,17 @@ namespace WindowsFormsApplication1
     {
         public TableLayoutPanel panel;
 
-        public CollapsableTable(TentacleDoc form, UIContainer parent, int rowCount, int columnCount)
+        public CollapsableTable(TentacleDoc form, GroupBox parent, int rowCount, int columnCount)
         {
             panel = new TableLayoutPanel();
+            panel.Parent = parent;
+            parent.Controls.Add(panel);
             panel.Dock = DockStyle.Fill;
             panel.BackColor = ColourManager.backGroundColour;
             panel.ColumnCount = columnCount;
             panel.RowCount = rowCount;
-            parent.SetChildControls(this);
+            //parent.SetChildControls(this);
             TableSizer.AutoSize(panel);
-
         }
 
         public override void SetChildControls(CollapsableTable cTable)

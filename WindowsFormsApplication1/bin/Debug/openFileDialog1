@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<ConversationListCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Conversations>
+    <Conversation name="GuupdaGuup">
+      <StoryStages>
+        <StoryStage id="0">
+          <ConversationStages>
+            <ConversationStage>
+              <Lines>
+                <Line>
+                  <id>0</id>
+                  <LineText>dafasdfsf</LineText>
+                  <Replies>
+                    <Reply />
+                    <Reply />
+                  </Replies>
+                </Line>
+                <Line>
+                  <id>0</id>
+                  <LineText>zfgfgzgzgzfg</LineText>
+                  <Replies />
+                </Line>
+              </Lines>
+              <id>5</id>
+            </ConversationStage>
+          </ConversationStages>
+          <StoryThread>afszvsfasgfasga</StoryThread>
+          <StageNumber>2</StageNumber>
+        </StoryStage>
+      </StoryStages>
+    </Conversation>
+  </Conversations>
+</ConversationListCollection>

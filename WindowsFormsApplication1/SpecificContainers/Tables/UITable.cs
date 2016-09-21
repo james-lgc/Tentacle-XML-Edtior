@@ -14,19 +14,19 @@ namespace WindowsFormsApplication1
         protected TentacleDoc form1;
         private TentacleButton addButton { get; set; }
         protected SpecificContainer specificContainer;
-        protected UIContainer parentContainer;
+        //protected UIContainer parentContainer;
         public CollapsableTable cTable;
         public X[] xArray;
         protected X newX;
         public List<UIBox<X>> boxes;
 
-        protected void SetUp(TentacleDoc form, SpecificContainer container, UIContainer parent, int rowCount, int columnCount, X[] sentXArray, string extraText)
+        protected void SetUp(TentacleDoc form, GroupBox groupBox, int rowCount, int columnCount, X[] sentXArray, string extraText)
         { 
-            cTable = new CollapsableTable(form, parent, rowCount + 1, columnCount);
+            cTable = new CollapsableTable(form, groupBox, rowCount + 1, columnCount);
             boxes = new List<UIBox<X>>();
             form1 = form;
-            specificContainer = container;
-            parentContainer = parent;
+            //specificContainer = container;
+            //parentContainer = parent;
             xArray = sentXArray;
 
             if (labelTexts != null)
@@ -85,6 +85,11 @@ namespace WindowsFormsApplication1
                 }
                 return newXAraay;
             }
+        }
+
+        private void Remove()
+        {
+
         }
 
         protected void Step()

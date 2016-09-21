@@ -10,23 +10,24 @@ namespace WindowsFormsApplication1
     public class StoryStageBox : UIBox<StoryStage>
     {
         //EditableSplitBox numBox;
-        public HeadedFixedContainer container;
+        //public HeadedFixedContainer container;
         public CollapsableTable subTable;
         public DialogueTable dialogueTable;
         
 
         public StoryStageBox(TentacleDoc form, StoryStageTable storyStageTable, int rowNum, StoryStage storyStage)
         {
-            base.SetUp(storyStage);
-            container = new HeadedFixedContainer(form, storyStageTable.cTable.panel, rowNum, storyStage.id.ToString());
+            base.SetUp(storyStage, form, storyStageTable.cTable.panel, rowNum, storyStage.id.ToString());
+            //container = new HeadedFixedContainer(form, storyStageTable.cTable.panel, rowNum, storyStage.id.ToString());
             dialogueTable = new DialogueTable(form, this, storyStage.conversationStages);
             dialogueTable.cTable.panel.Top = 500;
     
 
             string[] labelTexts = new string[] { "StoryThread", "StageNumber" };
-            container.AddHeading(form, dialogueTable.cTable, 2, labelTexts, true, new int[] { 1 });
-            container.TextBoxes[0].DataBindings.Add("Text", storyStage, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
-            container.numberBoxes[0].DataBindings.Add("Value", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
+            //container.AddHeading(form, dialogueTable.cTable, 2, labelTexts, true, new int[] { 1 });
+            base.AddHeading(form, dialogueTable.cTable, 2, labelTexts, true, new int[] { 1 });
+            TextBoxes[0].DataBindings.Add("Text", storyStage, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
+            NumberBoxes[0].DataBindings.Add("Value", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override StoryStage ReturnX()

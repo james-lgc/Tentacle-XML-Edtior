@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
         public DialogueTable(TentacleDoc form, StoryStageBox storyStageBox, ConversationStage[] conversationStages)
         {
             labelTexts = null;
-            base.SetUp(form, this, storyStageBox.container, conversationStages.Length, 1, conversationStages, "Dialogue");
+            base.SetUp(form, storyStageBox.GroupBox1, conversationStages.Length, 1, conversationStages, "Dialogue");
 
             for (int i = 0; i < xArray.Length; i++)
             {
