@@ -28,9 +28,9 @@ namespace WindowsFormsApplication1
             //move label adding to UITable
             //TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
             //base.AddLabelWithText("Name");
-            newX = new Conversation();
-            newX.Build();
-            CharacterBox characterBox = new CharacterBox(form1, this, cTable.panel.RowCount - 1, newX);
+            NewX = new Conversation();
+            NewX.Build();
+            CharacterBox characterBox = new CharacterBox(form1, this, cTable.panel.RowCount - 1, NewX);
             base.AddBox(characterBox);
         }
     }

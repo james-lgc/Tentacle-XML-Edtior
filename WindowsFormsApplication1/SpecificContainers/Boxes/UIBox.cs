@@ -7,26 +7,34 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public abstract class UIBox<X> : SpecificContainer
+    public class UIBox<X, Y> : SpecificContainer<X>
     {
-        public X thisX { get; set; }
+        //public CollapsableTable ChildTable {get; protected set; }
+        public X ThisX { get; set; }
         public GroupBox GroupBox1 { get; set; }
-        public UIBoxHeading<X> BoxHeading { get; set; }
+        public UIBoxHeading<X, Y> BoxHeading { get; set; }
         public CollapsableTable ChildCTable { get; set; }
 
         public UITable<X> ParentTable { get; set; }
         protected bool IsExpanded { get; set; }
 
-        public int Fields { get; protected set; }
-        public int ColumnCount { get; protected set; }
-        public int[] NumFields { get; protected set; }
-        public string[] LabelTexts { get; protected set; }
-        public bool IsCollapsable { get; protected set; }
+        public virtual int Fields { get; }
+        public virtual int ColumnCount { get; set; }
+        public virtual int[] NumFields { get; }
+        public virtual string[] LabelTexts { get; }
+        public virtual bool IsCollapsable { get; }
+
+        protected UITable<Y> ChildTable { get; set; }
+
+        protected UIBox ()
+        {
+
+        }
 
 
         protected void SetUp(X sentX, TentacleDoc form, UITable<X> parentTable, int rowNum, string labelText)
         {
-            thisX = sentX;
+            ThisX = sentX;
             ParentTable = parentTable;
 
             GroupBox1 = new GroupBox();
@@ -48,6 +56,16 @@ namespace WindowsFormsApplication1
             }
         }
 
+        protected void AssignTable(UITable<Y> table)
+        {
+            if (table != null)
+            {
+                ChildTable = table;
+                ChildCTable = table.cTable;
+            }
+            BoxHeading = new UIBoxHeading<X, Y>(this);
+        }
+
         public void SaveContents()
         {
 
@@ -55,7 +73,7 @@ namespace WindowsFormsApplication1
 
         public virtual X ReturnX()
         {
-            return thisX;
+            return ThisX;
         }
     }
 }

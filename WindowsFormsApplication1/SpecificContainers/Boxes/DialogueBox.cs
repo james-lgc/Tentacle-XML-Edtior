@@ -7,36 +7,28 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class DialogueBox : UIBox<ConversationStage>
+    public class DialogueBox : UIBox<ConversationStage, Line>
     {
+        public override int Fields { get { return 1; } }
+        public override string[] LabelTexts { get { return new string[] { "Dialogue Id" }; } }
+        public override bool IsCollapsable { get { return true; } }
+        public override int[] NumFields { get { return new int[] { 0 }; } }
+
         //public HeadedFixedContainer container;
-        public LineTable lineTable;
-        public DialogueTable dTable;
+        //private LineTable Table;
 
         public DialogueBox(TentacleDoc form, DialogueTable dialogueTable, int rowNum, ConversationStage conversationStage)
         {
-            Fields = 1;
-            LabelTexts = new string[] { "Dialogue Id" };
-            IsCollapsable = true;
-            NumFields = new int[] { 0 };
-
             base.SetUp(conversationStage, form, dialogueTable, rowNum, "Dialogue");
-            dTable = dialogueTable;
-            //container = new HeadedFixedContainer(form, dialogueTable.cTable.panel, rowNum, "Dialogue");
-            string[] labelTexts = new string[] { "Dialogue Id" };
-            int[] numFields = { 0 };
-            lineTable = new LineTable(form, this, thisX.lines);
-            ChildCTable = lineTable.cTable;
-            //container.AddHeading(form, lineTable.cTable, 1, labelTexts, true, numFields);
-            //base.AddHeading(form, lineTable.cTable, 1, labelTexts, true, numFields);
-            BoxHeading = new UIBoxHeading<ConversationStage>(this);
-            BoxHeading.InputControls[0].DataBindings.Add("Value", thisX, "id", false, DataSourceUpdateMode.OnPropertyChanged);
+            LineTable table = new LineTable(form, this, ThisX.lines);
+            base.AssignTable(table);
+            BoxHeading.InputControls[0].DataBindings.Add("Value", ThisX, "id", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override ConversationStage ReturnX()
         {
-            Line[] lines = lineTable.ReturnContents;
-            thisX.lines = lines;
+            Line[] lines = ChildTable.ReturnContents;
+            ThisX.lines = lines;
             return base.ReturnX();
         }
     }

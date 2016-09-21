@@ -7,23 +7,28 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public abstract class UITable<X> : SpecificContainer
+    public class UITable<X> : SpecificContainer<X>
     {
         protected string[] labelTexts { get; set; }
 
         protected TentacleDoc form1;
         private TentacleButton addButton { get; set; }
-        protected SpecificContainer specificContainer;
-        //protected UIContainer parentContainer;
+        //protected UIBox<X> specificContainer;
+        protected UIContainer parentContainer;
         public CollapsableTable cTable;
         public X[] xArray;
-        protected X newX;
-        public List<UIBox<X>> boxes;
+        protected X NewX { get; set; }
+        public List<SpecificContainer<X>> boxes;
+
+        public UITable()
+        {
+
+        }
 
         protected void SetUp(TentacleDoc form, GroupBox groupBox, int rowCount, int columnCount, X[] sentXArray, string extraText)
         { 
             cTable = new CollapsableTable(form, groupBox, rowCount + 1, columnCount);
-            boxes = new List<UIBox<X>>();
+            boxes = new List<SpecificContainer<X>>();
             form1 = form;
             //specificContainer = container;
             //parentContainer = parent;
@@ -54,7 +59,7 @@ namespace WindowsFormsApplication1
             cTable.panel.SetRow(addButton, cTable.panel.RowCount - 1);
         }
 
-        protected void AddBox(UIBox<X> box)
+        protected void AddBox<Y>(UIBox<X, Y> box)
         {
             boxes.Add(box);
             Step();
@@ -81,7 +86,7 @@ namespace WindowsFormsApplication1
                 for (int i = 0; i < boxes.Count; i++)
                 {
                     boxes[i].ReturnX();
-                    newXAraay[i] = boxes[i].thisX;
+                    //newXAraay[i] = boxes[i].thisX;
                 }
                 return newXAraay;
             }

@@ -7,21 +7,18 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    class RepliesBox : UIBox<WrappedReply>
+    class RepliesBox : UIBox<WrappedReply, string>
     {
+        public override int Fields { get { return 1; } }
+        public override string[] LabelTexts { get { return new string[] { "Reply" }; } }
+        public override bool IsCollapsable { get { return false; } }
+        public override int[] NumFields { get { return null; } }
+
         public RepliesBox(TentacleDoc form, ReplyTable replyTable, int rowNum, WrappedReply reply)
         {
-            Fields = 1;
-            LabelTexts = new string[] { "Reply" };
-            IsCollapsable = false;
-            NumFields = null;
-
             base.SetUp(reply, form, replyTable, rowNum, null);
-            //stringWrapper stringWrapper = new StringWrapper();
-            //stringWrapper.wrappedString = reply;
-            BoxHeading = new UIBoxHeading<WrappedReply>(this);
-            BoxHeading.InputControls[0].DataBindings.Add("Text", thisX, "WrappedReply1", false, DataSourceUpdateMode.OnPropertyChanged);
-            thisX = reply;
+            base.AssignTable(null);
+            BoxHeading.InputControls[0].DataBindings.Add("Text", ThisX, "WrappedReply1", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override WrappedReply ReturnX()

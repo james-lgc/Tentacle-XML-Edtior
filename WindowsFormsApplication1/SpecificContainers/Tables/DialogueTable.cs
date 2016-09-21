@@ -26,9 +26,9 @@ namespace WindowsFormsApplication1
         public override void AddRow(object sender, EventArgs e)
         {
             base.AddRow(sender, e);
-            newX = new ConversationStage();
-            newX.Build();
-            DialogueBox dialogueBox = new DialogueBox(form1, this, cTable.panel.RowCount -1, newX);
+            NewX = new ConversationStage();
+            NewX.Build();
+            DialogueBox dialogueBox = new DialogueBox(form1, this, cTable.panel.RowCount -1, NewX);
             boxes.Add(dialogueBox);
         }
     }

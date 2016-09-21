@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class UIBoxHeading<X> : UIBox<X>
+    public class UIBoxHeading<X, Y>
     {
-        private UIBox<X> ParentBox { get; set; }
+        private UIBox<X, Y> ParentBox { get; set; }
         private CollapsableTable HeadingTable { get; set; }
         public Control[] InputControls { get; set; }
         //public TentacleTextBox[] TextBoxes { get; set; }
@@ -19,39 +19,39 @@ namespace WindowsFormsApplication1
         private TentacleButton RemoveButton1 { get; set; }
         private TentaclePanel ButtonPanel { get; set; }
 
-        public UIBoxHeading(UIBox<X> sentBox)
+        public UIBoxHeading(UIBox<X, Y> sentBox)
         {
             ParentBox = sentBox;
 
-            Fields = ParentBox.Fields;
-            LabelTexts = ParentBox.LabelTexts;
-            IsCollapsable = ParentBox.IsCollapsable;
-            NumFields = ParentBox.NumFields;
+            int fields = ParentBox.Fields;
+            string [] labelTexts = ParentBox.LabelTexts;
+            bool isCollapsable = ParentBox.IsCollapsable;
+            int[] numFields = ParentBox.NumFields;
 
             //TextBoxes = new TentacleTextBox[Fields];
-            ColumnCount = 1;
-            if (Fields > 0)
+            ParentBox.ColumnCount = 1;
+            if (fields > 0)
             {
-                if (Fields > 1 || LabelTexts != null || IsCollapsable == true)
+                if (fields > 1 || labelTexts != null || isCollapsable == true)
                 {
-                    if (IsCollapsable == true)
+                    if (isCollapsable == true)
                     {
-                        ColumnCount++;
+                        ParentBox.ColumnCount++;
                     }
-                    if (LabelTexts != null)
+                    if (labelTexts != null)
                     {
-                        ColumnCount++;
+                        ParentBox.ColumnCount++;
                     }
-                    HeadingTable = new CollapsableTable(null, ParentBox.GroupBox1, rowCount: Fields, columnCount: ColumnCount);
+                    HeadingTable = new CollapsableTable(null, ParentBox.GroupBox1, rowCount: fields, columnCount: ParentBox.ColumnCount);
                     HeadingTable.panel.Dock = DockStyle.Top;
-                    InputControls = new Control[Fields];
-                    for (int i = 0; i < Fields; i++)
+                    InputControls = new Control[fields];
+                    for (int i = 0; i < fields; i++)
                     {
-                        if (LabelTexts != null)
+                        if (labelTexts != null)
                         {
-                            TentacleLabel tLabel = new TentacleLabel(LabelTexts[i], i, HeadingTable.panel);
+                            TentacleLabel tLabel = new TentacleLabel(labelTexts[i], i, HeadingTable.panel);
                         }
-                        if (NumFields == null)
+                        if (numFields == null)
                         {
                             TentacleTextBox textBox = new TentacleTextBox(i, HeadingTable.panel);
                             InputControls[i] = textBox;
@@ -59,15 +59,15 @@ namespace WindowsFormsApplication1
                         else
                         {
                             //NumberBoxes = new TentacleNumberBox[NumFields.Length];
-                            for (int j = 0; j < NumFields.Length; j++)
+                            for (int j = 0; j < numFields.Length; j++)
                             {
-                                if (i == NumFields[j])
+                                if (i == numFields[j])
                                 {
                                     TentacleNumberBox numberBox = new TentacleNumberBox(i, HeadingTable.panel);
                                     InputControls[i] = numberBox;
                                     break;
                                 }
-                                else if (i == NumFields.Length - 1)
+                                else if (i == numFields.Length - 1)
                                 {
                                     TentacleTextBox textBox = new TentacleTextBox(i, HeadingTable.panel);
                                     InputControls[i] = textBox;
@@ -75,25 +75,25 @@ namespace WindowsFormsApplication1
                                 }
                             }
                         }
-                        if (i == Fields - 1 && IsCollapsable == true)
+                        if (i == fields - 1 && isCollapsable == true)
                         {
                             BuildButtons(HeadingTable, i);
                         }
                     }
                 }
-                else if (Fields == 1)
+                else if (fields == 1)
                 {
-                    TentacleTextBox TextBox1 = new TentacleTextBox(GroupBox1);
+                    TentacleTextBox TextBox1 = new TentacleTextBox(ParentBox.GroupBox1);
                     InputControls[0] = TextBox1;
                     //AddTextBox();
                 }
             }
-            else if (IsCollapsable == true)
+            else if (isCollapsable == true)
             {
                 //ParentTable = table;
-                ExpandButton1 = new TentacleButton(GroupBox1, "Expand", ColourManager.expandButtonColours);
+                ExpandButton1 = new TentacleButton(ParentBox.GroupBox1, "Expand", ColourManager.expandButtonColours);
                 ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
-                IsExpanded = false;
+                //ParentBox.ChildTable.cTable.IsExpanded = false;
                 ParentBox.ChildCTable.panel.Visible = false;
             }
 
@@ -148,7 +148,7 @@ namespace WindowsFormsApplication1
 
             ExpandButton1 = new TentacleButton(ButtonPanel, "Expand", ColourManager.expandButtonColours);
             ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
-            IsExpanded = false;
+            //IsExpanded = false;
             ParentBox.ChildCTable.panel.Visible = false;
 
             //RemoveButton1.Click += new EventHandler(this.ToggleExpansion);
@@ -163,15 +163,15 @@ namespace WindowsFormsApplication1
         {
             Cursor.Current = Cursors.WaitCursor;
             ParentBox.GroupBox1.SuspendLayout();
-            if (IsExpanded == true)
+            if (ParentBox.ChildCTable.panel.Visible == true)
             {
-                IsExpanded = false;
+                //IsExpanded = false;
                 ParentBox.ChildCTable.panel.Visible = false;
                 ExpandButton1.Text = "Expand";
             }
             else
             {
-                IsExpanded = true;
+                //IsExpanded = true;
                 ParentBox.ChildCTable.panel.Visible = true;
                 ExpandButton1.Text = "Collapse";
             }

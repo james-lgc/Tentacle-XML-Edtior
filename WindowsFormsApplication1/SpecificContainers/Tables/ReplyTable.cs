@@ -52,12 +52,12 @@ namespace WindowsFormsApplication1
         public override void AddRow(object sender, EventArgs e)
         {
             base.AddRow(sender, e);
-            newX = new WrappedReply();
-            newX.WrappedReply1 = "";
+            NewX = new WrappedReply();
+            NewX.WrappedReply1 = "";
             //StringWrapper stringWrapper = new StringWrapper();
             //stringWrapper.wrappedString = newX;
             //AddTextBox(stringWrapper, cTable.panel.RowCount -1);
-            RepliesBox replyBox = new RepliesBox(form1, this, cTable.panel.RowCount -1, newX);
+            RepliesBox replyBox = new RepliesBox(form1, this, cTable.panel.RowCount -1, NewX);
             AddBox(replyBox);
         }
     }

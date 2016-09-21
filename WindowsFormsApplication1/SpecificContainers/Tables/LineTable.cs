@@ -25,9 +25,9 @@ namespace WindowsFormsApplication1
             base.AddRow(sender, e);
             //TentacleLabel tLabel = new TentacleLabel("Line", cTable.panel.RowCount - 2, cTable.panel);
             //base.AddLabel(cTable.panel.RowCount - 2, "Line");
-            newX = new Line();
-            newX.Build();
-            LineBox lineBox = new LineBox(form1, this, cTable.panel.RowCount - 1, newX);
+            NewX = new Line();
+            NewX.Build();
+            LineBox lineBox = new LineBox(form1, this, cTable.panel.RowCount - 1, NewX);
             boxes.Add(lineBox);
         }
     }

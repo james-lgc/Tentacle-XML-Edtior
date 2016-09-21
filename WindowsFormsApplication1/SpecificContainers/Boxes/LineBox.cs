@@ -7,33 +7,24 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class LineBox : UIBox<Line>
+    public class LineBox : UIBox<Line, WrappedReply>
     {
-        //public HeadedFixedContainer container;
-        ReplyTable replyTable;
-        private TentacleDoc form1;
+        public override int Fields { get { return 1; } }
+        public override string[] LabelTexts { get { return new string[] { "Speech" }; } }
+        public override bool IsCollapsable { get { return true; } }
+        public override int[] NumFields { get { return null; } }
 
+        //ReplyTable Table { get; set; }
 
         public LineBox(TentacleDoc form, LineTable lineTable, int rowNum, Line line)
         {
-            Fields = 1;
-            LabelTexts = new string[] { "Speech" };
-            IsCollapsable = true;
-            NumFields = null;
 
             base.SetUp(line, form, lineTable, rowNum, null);
-            //container = new HeadedFixedContainer(form, lineTable.cTable.panel, rowNum, null);
-            lineTable.cTable.panel.SetColumn(GroupBox1, 1);
-            lineTable.cTable.panel.SetRow(GroupBox1, rowNum);
-            string[] labelTexts = new string[] { "Speech" };
-
-            form1 = form;
-
-            replyTable = new ReplyTable(form1, this, WrapReplies(line), line);
-            ChildCTable = replyTable.cTable;
-            //base.AddHeading(form, replyTable.cTable, 1, null, true);
-            BoxHeading = new UIBoxHeading<Line>(this);
-            BoxHeading.InputControls[0].DataBindings.Add("Text", thisX, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
+            ReplyTable table = new ReplyTable(form, this, WrapReplies(line), line);
+            base.AssignTable(table);
+            ChildTable.cTable.panel.SetColumn(GroupBox1, 1);
+            ChildTable.cTable.panel.SetRow(GroupBox1, rowNum);
+            BoxHeading.InputControls[0].DataBindings.Add("Text", ThisX, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private WrappedReply[] WrapReplies(Line line)
@@ -56,13 +47,12 @@ namespace WindowsFormsApplication1
         }
         public override Line ReturnX()
         {
-            WrappedReply[] replies = replyTable.ReturnContents;
-            thisX.replies = new string[replies.Length];
+            WrappedReply[] replies = ChildTable.ReturnContents;
+            ThisX.replies = new string[replies.Length];
             for (int i = 0; i < replies.Length; i++)
             {
-                thisX.replies[i] = replies[i].WrappedReply1;
+                ThisX.replies[i] = replies[i].WrappedReply1;
             }
-            //thisX.replies = WrapReplies(replies;
             return base.ReturnX();
         }
     }

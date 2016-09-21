@@ -22,9 +22,9 @@ namespace WindowsFormsApplication1
         public override void AddRow(object sender, EventArgs e)
         {
             base.AddRow(sender, e);
-            newX = new StoryStage();
-            newX.Build();
-            StoryStageBox storyStageBox = new StoryStageBox(form1, this, cTable.panel.RowCount - 1, newX);
+            NewX = new StoryStage();
+            NewX.Build();
+            StoryStageBox storyStageBox = new StoryStageBox(form1, this, cTable.panel.RowCount - 1, NewX);
             boxes.Add(storyStageBox);
         }
     }
