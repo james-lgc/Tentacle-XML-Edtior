@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
             base.SetUp(form, dialogueBox.GroupBox1, lines.Length, 2, lines, "Line");
             for (int i = 0; i < xArray.Length; i++)
             {
-                lineBox = new LineBox(form, this, i, lines[i]);
+                lineBox = new LineBox(form, this, i, xArray[i]);
                 base.AddBox(lineBox);
             }
         }

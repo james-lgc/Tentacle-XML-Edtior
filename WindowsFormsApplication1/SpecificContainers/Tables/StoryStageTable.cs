@@ -14,7 +14,7 @@ namespace WindowsFormsApplication1
             base.SetUp(form, characterBox.GroupBox1, storyStages.Length, 1, storyStages, "StoryStage");
             for (int i = 0; i < storyStages.Length; i++)
             {
-                StoryStageBox storyStageBox = new StoryStageBox(form, this, i, storyStages[i]);
+                StoryStageBox storyStageBox = new StoryStageBox(form, this, i, xArray[i]);
                 base.AddBox(storyStageBox);
             }
         }

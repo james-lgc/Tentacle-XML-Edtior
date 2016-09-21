@@ -25,12 +25,12 @@ namespace WindowsFormsApplication1
             //container = new HeadedFixedContainer(form, dialogueTable.cTable.panel, rowNum, "Dialogue");
             string[] labelTexts = new string[] { "Dialogue Id" };
             int[] numFields = { 0 };
-            lineTable = new LineTable(form, this, conversationStage.lines);
+            lineTable = new LineTable(form, this, thisX.lines);
             ChildCTable = lineTable.cTable;
             //container.AddHeading(form, lineTable.cTable, 1, labelTexts, true, numFields);
             //base.AddHeading(form, lineTable.cTable, 1, labelTexts, true, numFields);
             BoxHeading = new UIBoxHeading<ConversationStage>(this);
-            BoxHeading.InputControls[0].DataBindings.Add("Value", conversationStage, "id", false, DataSourceUpdateMode.OnPropertyChanged);
+            BoxHeading.InputControls[0].DataBindings.Add("Value", thisX, "id", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override ConversationStage ReturnX()

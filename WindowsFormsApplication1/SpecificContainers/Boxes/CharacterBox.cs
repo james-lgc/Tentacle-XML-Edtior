@@ -27,13 +27,13 @@ namespace WindowsFormsApplication1
             //container.groupBox.Padding = new Padding(20);
 
 
-            storyStageTable = new StoryStageTable(form, this, conversation.storyStages);
+            storyStageTable = new StoryStageTable(form, this, thisX.storyStages);
             ChildCTable = storyStageTable.cTable;
             storyStageTable.cTable.panel.Top = 120;
             //base.AddHeading(form, storyStageTable.cTable, 1, labelTexts, true);
             BoxHeading = new UIBoxHeading<Conversation>(this);
             //container.AddHeading(form, storyStageTable.cTable, 1, labelTexts, true);
-            BoxHeading.InputControls[0].DataBindings.Add("Text", conversation, "name", false, DataSourceUpdateMode.OnPropertyChanged);
+            BoxHeading.InputControls[0].DataBindings.Add("Text", thisX, "name", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override Conversation ReturnX()

@@ -33,9 +33,9 @@ namespace WindowsFormsApplication1
             //container.AddHeading(form, dialogueTable.cTable, 2, labelTexts, true, new int[] { 1 });
             //base.AddHeading(form, dialogueTable.cTable, 2, labelTexts, true, new int[] { 1 });
             BoxHeading = new UIBoxHeading<StoryStage>(this);
-            BoxHeading.InputControls[0].DataBindings.Add("Text", storyStage, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
+            BoxHeading.InputControls[0].DataBindings.Add("Text", thisX, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
             //BoxHeading.BindData("Value", storyStage, "stageNumber");
-            BoxHeading.InputControls[1].DataBindings.Add("Value", storyStage, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
+            BoxHeading.InputControls[1].DataBindings.Add("Value", thisX, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public override StoryStage ReturnX()

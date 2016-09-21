@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
 
             for (int i = 0; i < xArray.Length; i++)
             {
-                DialogueBox dialogueBox = new DialogueBox(form, this, i, conversationStages[i]);
+                DialogueBox dialogueBox = new DialogueBox(form, this, i, xArray[i]);
                 base.AddBox(dialogueBox);
             }
         }

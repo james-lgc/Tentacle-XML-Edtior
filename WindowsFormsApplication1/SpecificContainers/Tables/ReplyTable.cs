@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
                 base.SetUp(form, sentLineBox.GroupBox1, replies.Length, 1, replies, "Reply");
                 for (int i = 0; i < xArray.Length; i++)
                 {
-                    RepliesBox repliesBox = new RepliesBox(form, this, i, replies[i]);
+                    RepliesBox repliesBox = new RepliesBox(form, this, i, xArray[i]);
                     StringWrapper stringWrapper = new StringWrapper();
                     stringWrapper.wrappedString = line.replies[i];
                     //AddTextBox(stringWrapper, i);

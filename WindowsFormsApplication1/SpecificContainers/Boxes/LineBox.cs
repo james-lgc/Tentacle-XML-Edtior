@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
             ChildCTable = replyTable.cTable;
             //base.AddHeading(form, replyTable.cTable, 1, null, true);
             BoxHeading = new UIBoxHeading<Line>(this);
-            BoxHeading.InputControls[0].DataBindings.Add("Text", line, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
+            BoxHeading.InputControls[0].DataBindings.Add("Text", thisX, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private WrappedReply[] WrapReplies(Line line)
@@ -57,7 +57,7 @@ namespace WindowsFormsApplication1
         public override Line ReturnX()
         {
             WrappedReply[] replies = replyTable.ReturnContents;
-
+            thisX.replies = new string[replies.Length];
             for (int i = 0; i < replies.Length; i++)
             {
                 thisX.replies[i] = replies[i].WrappedReply1;

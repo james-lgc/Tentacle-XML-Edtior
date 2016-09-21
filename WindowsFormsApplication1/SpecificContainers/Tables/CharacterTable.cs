@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
             base.SetUp(form, mainDisplay.container.groupBox, conversations.Length, 1, conversations, "Conversation");
             for (int i = 0; i < xArray.Length; i++)
             {
-                CharacterBox characterBox = new CharacterBox(form, this, i, conversations[i]);
+                CharacterBox characterBox = new CharacterBox(form, this, i, xArray[i]);
                 base.AddBox(characterBox);
             }
             cTable.panel.AutoScroll = true;
