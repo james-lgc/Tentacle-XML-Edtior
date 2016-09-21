@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
             base.SetUp(conversationStage);
             dTable = dialogueTable;
             container = new HeadedFixedContainer(form, dialogueTable.cTable.panel, rowNum, "Dialogue");
-            string[] labelTexts = new string[] { "Id" };
+            string[] labelTexts = new string[] { "Dialogue Id" };
             int[] numFields = { 0 };
             lineTable = new LineTable(form, this, conversationStage.lines);
             container.AddHeading(form, lineTable.cTable, 1, labelTexts, true, numFields);

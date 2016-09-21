@@ -117,6 +117,7 @@ namespace WindowsFormsApplication1
         private void BuildButtons(CollapsableTable sentTable, int i)
         {
             ButtonPanel = new TentaclePanel(sentTable, i);
+            ButtonPanel.Margin = Padding.Empty;
             ButtonPanel.Dock = DockStyle.Left;
 
             RemoveButton1 = new TentacleButton(ButtonPanel, "Remove", ColourManager.removeButtonColours);
@@ -124,11 +125,8 @@ namespace WindowsFormsApplication1
             SplitContainer SubButtonPanel = new SplitContainer();
             //spli
 
-            //SubButtonPanel = new TentaclePanel(ButtonPanel);
-            //SubButtonPanel.FlowDirection = FlowDirection.TopDown;
-            //SubButtonPanel.BorderStyle = BorderStyle.FixedSingle;
-            //SubButtonPanel.AutoSize = true;
-            SubButtonPanel.Parent = ButtonPanel;
+           
+            /*SubButtonPanel.Parent = ButtonPanel;
             ButtonPanel.Controls.Add(SubButtonPanel);
             SubButtonPanel.Height = RemoveButton1.Height;
             SubButtonPanel.Width = RemoveButton1.Width/2;
@@ -140,7 +138,6 @@ namespace WindowsFormsApplication1
             SubButtonPanel.Panel1.Padding = Padding.Empty;
             SubButtonPanel.Panel2.Padding = Padding.Empty;
             SubButtonPanel.SplitterWidth = 1;
-            //SubButtonPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             SubButtonPanel.Padding = Padding.Empty;
 
 
@@ -157,7 +154,7 @@ namespace WindowsFormsApplication1
             downButton.AutoSize = false;
             downButton.MinimumSize = System.Drawing.Size.Empty;
             downButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            downButton.Height = RemoveButton1.Height / 2;
+            downButton.Height = RemoveButton1.Height / 2;*/
 
             ExpandButton1 = new TentacleButton(ButtonPanel, "Expand", ColourManager.expandButtonColours);
             ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
@@ -169,6 +166,8 @@ namespace WindowsFormsApplication1
 
         private void ToggleExpansion(Object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            groupBox.SuspendLayout();
             if (isExpanded == true)
             {
                 isExpanded = false;
@@ -181,6 +180,8 @@ namespace WindowsFormsApplication1
                 cTable.panel.Visible = true;
                 ExpandButton1.Text = "Collapse";
             }
+            groupBox.ResumeLayout();
+            Cursor.Current = Cursors.Default;
         }
 
         public override void SetChildControls(CollapsableTable cTable)

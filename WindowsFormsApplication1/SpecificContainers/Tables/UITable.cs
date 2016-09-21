@@ -62,9 +62,15 @@ namespace WindowsFormsApplication1
 
         public virtual void AddRow(Object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
+            form1.SuspendLayout();
+            //cTable.panel.SuspendLayout();
             cTable.panel.RowCount++;
-            TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
             MoveButton();
+            //entacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
+            form1.ResumeLayout();
+            Cursor.Current = Cursors.Default;
+            //cTable.panel.ResumeLayout();
         }
 
         public X[] ReturnContents
