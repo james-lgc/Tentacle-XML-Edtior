@@ -23,11 +23,11 @@ namespace WindowsFormsApplication1
         public override void AddRow(object sender, EventArgs e)
         {
             base.AddRow(sender, e);
-            TentacleLabel tLabel = new TentacleLabel("Line", cTable.panel.RowCount - 2, cTable.panel);
+            //TentacleLabel tLabel = new TentacleLabel("Line", cTable.panel.RowCount - 2, cTable.panel);
             //base.AddLabel(cTable.panel.RowCount - 2, "Line");
             newX = new Line();
             newX.Build();
-            LineBox lineBox = new LineBox(form1, this, cTable.panel.RowCount - 2, newX);
+            LineBox lineBox = new LineBox(form1, this, cTable.panel.RowCount - 1, newX);
             boxes.Add(lineBox);
         }
     }

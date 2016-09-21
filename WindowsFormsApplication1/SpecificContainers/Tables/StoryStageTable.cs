@@ -24,7 +24,7 @@ namespace WindowsFormsApplication1
             base.AddRow(sender, e);
             newX = new StoryStage();
             newX.Build();
-            StoryStageBox storyStageBox = new StoryStageBox(form1, this, cTable.panel.RowCount - 2, newX);
+            StoryStageBox storyStageBox = new StoryStageBox(form1, this, cTable.panel.RowCount - 1, newX);
             boxes.Add(storyStageBox);
         }
     }

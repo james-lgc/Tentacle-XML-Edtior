@@ -7,30 +7,30 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class ReplyTable : UITable<string>
+    public class ReplyTable : UITable<WrappedReply>
     {
 
         private LineBox lineBox;
 
-        public ReplyTable(TentacleDoc form, LineBox sentLineBox, string[] replies, Line line)
+        public ReplyTable(TentacleDoc form, LineBox sentLineBox, WrappedReply[] replies, Line line)
         {
             lineBox = sentLineBox;
-            labelTexts = new string[] { "Reply" };
+            //labelTexts = new string[] { "Reply" };
             if (replies != null)
             {
-                base.SetUp(form, sentLineBox.GroupBox1, replies.Length, 2, replies, "Reply");
+                base.SetUp(form, sentLineBox.GroupBox1, replies.Length, 1, replies, "Reply");
                 for (int i = 0; i < xArray.Length; i++)
                 {
                     RepliesBox repliesBox = new RepliesBox(form, this, i, replies[i]);
                     StringWrapper stringWrapper = new StringWrapper();
                     stringWrapper.wrappedString = line.replies[i];
-                    AddTextBox(stringWrapper, i);
+                    //AddTextBox(stringWrapper, i);
                     base.AddBox(repliesBox);
                 }
             }
             else
             {
-                replies = new string[0];
+                replies = new WrappedReply[0];
                 base.SetUp(form, sentLineBox.GroupBox1, replies.Length, 2, replies, "Reply");
             }
             cTable.panel.BringToFront();;
@@ -52,11 +52,12 @@ namespace WindowsFormsApplication1
         public override void AddRow(object sender, EventArgs e)
         {
             base.AddRow(sender, e);
-            newX = "";
-            StringWrapper stringWrapper = new StringWrapper();
-            stringWrapper.wrappedString = newX;
-            AddTextBox(stringWrapper, cTable.panel.RowCount -1);
-            RepliesBox replyBox = new RepliesBox(form1, this, cTable.panel.RowCount -2, newX);
+            newX = new WrappedReply();
+            newX.WrappedReply1 = "";
+            //StringWrapper stringWrapper = new StringWrapper();
+            //stringWrapper.wrappedString = newX;
+            //AddTextBox(stringWrapper, cTable.panel.RowCount -1);
+            RepliesBox replyBox = new RepliesBox(form1, this, cTable.panel.RowCount -1, newX);
             AddBox(replyBox);
         }
     }

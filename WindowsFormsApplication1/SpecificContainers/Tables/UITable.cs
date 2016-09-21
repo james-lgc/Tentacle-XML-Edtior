@@ -67,7 +67,7 @@ namespace WindowsFormsApplication1
             //cTable.panel.SuspendLayout();
             cTable.panel.RowCount++;
             MoveButton();
-            //entacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
+            //TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
             form1.ResumeLayout();
             Cursor.Current = Cursors.Default;
             //cTable.panel.ResumeLayout();

@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
             base.AddRow(sender, e);
             newX = new ConversationStage();
             newX.Build();
-            DialogueBox dialogueBox = new DialogueBox(form1, this, cTable.panel.RowCount -2, newX);
+            DialogueBox dialogueBox = new DialogueBox(form1, this, cTable.panel.RowCount -1, newX);
             boxes.Add(dialogueBox);
         }
     }

@@ -29,19 +29,41 @@ namespace WindowsFormsApplication1
 
             form1 = form;
 
-            replyTable = new ReplyTable(form1, this, line.replies, line);
+            replyTable = new ReplyTable(form1, this, WrapReplies(line), line);
             ChildCTable = replyTable.cTable;
             //base.AddHeading(form, replyTable.cTable, 1, null, true);
             BoxHeading = new UIBoxHeading<Line>(this);
             BoxHeading.InputControls[0].DataBindings.Add("Text", line, "lineText", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
+        private WrappedReply[] WrapReplies(Line line)
+        {
+            if (line.replies != null)
+            {
+                WrappedReply[] wrappedReplies = new WrappedReply[line.replies.Length];
+                for (int i = 0; i < wrappedReplies.Length; i++)
+                {
+                    wrappedReplies[i] = new WrappedReply();
+                    wrappedReplies[i].WrappedReply1 = line.replies[i];
+                }
+                return wrappedReplies;
+            }
+            else
+            {
+                WrappedReply[] wrappedReplies = new WrappedReply[0];
+                return wrappedReplies;
+            }
+        }
         public override Line ReturnX()
         {
-            string[] replies = replyTable.ReturnContents;
-            thisX.replies = replies;
+            WrappedReply[] replies = replyTable.ReturnContents;
+
+            for (int i = 0; i < replies.Length; i++)
+            {
+                thisX.replies[i] = replies[i].WrappedReply1;
+            }
+            //thisX.replies = WrapReplies(replies;
             return base.ReturnX();
         }
-
     }
 }

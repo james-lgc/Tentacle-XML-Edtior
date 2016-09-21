@@ -26,11 +26,11 @@ namespace WindowsFormsApplication1
         {
             base.AddRow(sender, e);
             //move label adding to UITable
-            TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
+            //TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
             //base.AddLabelWithText("Name");
             newX = new Conversation();
             newX.Build();
-            CharacterBox characterBox = new CharacterBox(form1, this, cTable.panel.RowCount - 2, newX);
+            CharacterBox characterBox = new CharacterBox(form1, this, cTable.panel.RowCount - 1, newX);
             base.AddBox(characterBox);
         }
     }
