@@ -7,26 +7,29 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class CharacterBox : UIBox<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>, StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>
+    public class CharacterBox : UIBox<Conversation, StoryStage>
     {
+        public override string BoxLabel{ get { return "Conversations"; } }
         public override int Fields { get { return 1; } }
         public override string[] LabelTexts { get { return new string[] { "Name" }; } }
         public override bool IsCollapsable { get { return true; } }
         public override int[] NumFields { get { return null; } }
+        public override int ColumnCount { get { return 1; } }
+        public override string ExtraText { get { return "Conversation"; } }
 
         //private StoryStageTable Table { get; set; }
 
-        public CharacterBox(Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>> sentX, TentacleDoc form, UITable<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>> parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
+        public CharacterBox(Conversation sentX, UITable<Conversation> parentTable, int rowNum)
         {
-
-            /*"base.SetUp(ThisX, form, characterTable, rowNum, "", 1, "StoryStage");
+            base.SetUp<StoryStageTable>(sentX, parentTable, rowNum);
+            /*base.SetUp(ThisX, form, characterTable, rowNum, "", 1, "StoryStage");
 
             //StoryStageTable table = new StoryStageTable(form, this, ThisX.storyStages);
             //table.SetUp(form, characterBox.GroupBox1, storyStages.Length, 1, storyStages, "StoryStage");
             //ChildTable.panel.Top = 120;
             AssignTable(table);
             BoxHeading.InputControls[0].DataBindings.Add("Text", ThisX, "name", false, DataSourceUpdateMode.OnPropertyChanged);*/
-            return;
+            //return;
         }
 
         /*public override Conversation ReturnX()

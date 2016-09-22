@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class ReplyString<X> : WrappedReply<ReplyString<X>>
+    public class ReplyString : WrappedReply, IReturnable<string>
     {
-
+        public new IReturnable<string>[] Returnables { get { return null; } set { } }
     }
 }

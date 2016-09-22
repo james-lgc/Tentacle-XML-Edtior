@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class LineTable : UITable<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>
+    public class LineTable : UITable<ConversationStage>
     {
         private LineBox lineBox;
 
-        public LineTable(GroupBox groupBox, int rowCount, int columnCount, Line<Reply<WrappedReply<ReplyString<string>>>>[] sentXArray, string extraText) : base(groupBox, rowCount, columnCount, sentXArray, extraText)
+        public LineTable(GroupBox groupBox, int rowCount, int columnCount, Line[] sentXArray, string extraText)
         {
             /*labelTexts = new string[] { "Line" };
             base.SetUp(form, dialogueBox.GroupBox1, lines.Length, 2, lines, "Line");

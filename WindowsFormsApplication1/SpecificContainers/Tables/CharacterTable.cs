@@ -7,16 +7,17 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class CharacterTable : UITable<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>>
+    public class CharacterTable : UITable<Conversation>
     {
         //public GroupBox groupBox;
-        public CharacterTable(GroupBox groupBox, int rowCount, int columnCount, Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>[] conversations, string extraText) : base(groupBox, rowCount, columnCount, conversations, extraText)
+        public CharacterTable(GroupBox groupBox, int rowCount, int columnCount, Conversation[] sentXArray, string extraText)
         {
             //labelTexts = new string [] { "Name" };
             labelTexts = null;
             //base.SetUp(form, mainDisplay.container.groupBox, conversations.Length, 1, conversations, "Conversation");
             for (int i = 0; i < xArray.Length; i++)
             {
+                base.BuildBoxes<Conversation, StoryStage, CharacterBox>(xArray[i], null, this, i, "Name", cTable.panel.ColumnCount, "Conversation");
                 //CharacterBox characterBox = new CharacterBox(form, this, i, xArray[i]);
                 //base.AddBox(characterBox);
             }

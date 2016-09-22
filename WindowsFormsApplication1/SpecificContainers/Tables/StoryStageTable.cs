@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class StoryStageTable : UITable<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>
+    public class StoryStageTable : UITable<StoryStage>
     {
-        public StoryStageTable(GroupBox groupBox, int rowCount, int columnCount, ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>[] sentXArray, string extraText) : base(groupBox, rowCount, columnCount, sentXArray, extraText)
+        public StoryStageTable(GroupBox groupBox, int rowCount, int columnCount, ConversationStage[] sentXArray, string extraText)
         {
             /*labelTexts = null;
             base.SetUp(form, characterBox.GroupBox1, storyStages.Length, 1, storyStages, "StoryStage");

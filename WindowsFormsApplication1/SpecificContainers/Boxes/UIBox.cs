@@ -18,16 +18,19 @@ namespace WindowsFormsApplication1
         public UITable<X> ParentTable { get; set; }
         protected bool IsExpanded { get; set; }
 
+        public virtual string BoxLabel { get; }
         public virtual int Fields { get; }
         public virtual int ColumnCount { get; set; }
         public virtual int[] NumFields { get; }
         public virtual string[] LabelTexts { get; }
         public virtual bool IsCollapsable { get; }
+        public virtual string ExtraText { get; }
+        
 
         protected UITable<Y> ChildTable { get; set; }
 
 
-        protected UIBox (X sentX, TentacleDoc form, UITable<X> parentTable, int rowNum, string labelText, int columnCount, string extraText)
+        public void SetUp<Z>(X sentX, UITable<X> parentTable, int rowNum) where Z : UITable<Y>
         {
             ThisX = sentX;
             ParentTable = parentTable;
@@ -36,24 +39,20 @@ namespace WindowsFormsApplication1
             GroupBox1.BackColor = ColourManager.backGroundColour2;
             GroupBox1.ForeColor = ColourManager.textColour;
             GroupBox1.AutoSize = true;
-            GroupBox1.Text = labelText;
+            GroupBox1.Text = BoxLabel;
             GroupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             GroupBox1.Dock = DockStyle.Fill;
-            if (ParentTable == null|| ParentTable.cTable.panel == null)
-            {
-                form.Controls.Add(GroupBox1);
-            }
-            else
+            if (ParentTable != null)
             {
                 GroupBox1.Parent = ParentTable.cTable.panel;
                 ParentTable.cTable.panel.SetCellPosition(GroupBox1, new TableLayoutPanelCellPosition(rowNum, ParentTable.cTable.panel.ColumnCount - 1));
                 ParentTable.cTable.panel.Controls.Add(GroupBox1);
             }
             IReturnable<Y>[] yArray = ThisX.Returnables as IReturnable<Y>[];
-            ChildTable = new UITable<Y>(GroupBox1, yArray.Length, columnCount, yArray as Y[], extraText);
+            ChildTable = (Z)Activator.CreateInstance(typeof(Z), GroupBox1, yArray.Length, ColumnCount, yArray as Y[], ExtraText);
+            //(GroupBox1, yArray.Length, columnCount, yArray as Y[], extraText);
         }
-
-        protected void AssignTable(UITable<Y> table)
+        /*protected void AssignTable(UITable<Y, Z> table)
         {
             if (table != null)
             {
@@ -61,7 +60,7 @@ namespace WindowsFormsApplication1
                 ChildCTable = table.cTable;
             }
             BoxHeading = new UIBoxHeading<X, Y>(this);
-        }
+        }*/
 
         public void SaveContents()
         {

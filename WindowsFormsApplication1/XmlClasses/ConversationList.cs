@@ -5,18 +5,18 @@ using System.Xml;
 
 [XmlRoot("ConversationListCollection")]
 [System.Serializable]
-public class ConversationList<X> : IReturnable<X> where X : ConversationList<X>
+public class ConversationList : IReturnable<Conversation>
 {
 	[XmlArray("Conversations")]
 	[XmlArrayItem("Conversation")]
-	public Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>[] conversations;
+	public Conversation[] conversations { get; set; }
 
-    public IReturnable<X>[] Returnables { get { return conversations as IReturnable<X>[]; } set { } }
+    public IReturnable<Conversation>[] Returnables { get { return conversations as IReturnable<Conversation>[]; } set { conversations = value as Conversation[]; } }
 
     public void Build()
     {
-        conversations = new Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>[1];
-        conversations[0] = new Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>();
+        conversations = new Conversation[1];
+        conversations[0] = new Conversation();
         conversations[0].Build();
     }
 }

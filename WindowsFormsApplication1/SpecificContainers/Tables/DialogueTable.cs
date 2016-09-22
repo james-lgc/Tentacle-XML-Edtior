@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class DialogueTable : UITable<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>
+    public class DialogueTable : UITable<ConversationStage>
     {
         //HeadedFixedContainer container;
 
-        public DialogueTable(GroupBox groupBox, int rowCount, int columnCount, ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>[] sentXArray, string extraText) : base(groupBox, rowCount, columnCount, sentXArray, extraText)
+        public DialogueTable(GroupBox groupBox, int rowCount, int columnCount, ConversationStage[] sentXArray, string extraText)
         {
             /*labelTexts = null;
             base.SetUp(form, storyStageBox.GroupBox1, conversationStages.Length, 1, conversationStages, "Dialogue");

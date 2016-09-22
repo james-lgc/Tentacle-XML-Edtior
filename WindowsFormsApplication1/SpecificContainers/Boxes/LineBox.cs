@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class LineBox : UIBox<Line<Reply<WrappedReply<ReplyString<string>>>>, Reply<WrappedReply<ReplyString<string>>>>
+    public class LineBox : UIBox<Line, Reply>
     {
         public override int Fields { get { return 1; } }
         public override string[] LabelTexts { get { return new string[] { "Speech" }; } }
@@ -16,7 +16,7 @@ namespace WindowsFormsApplication1
 
         //ReplyTable Table { get; set; }
 
-        protected LineBox(Line<Reply<WrappedReply<ReplyString<string>>>> sentX, TentacleDoc form, UITable<Line<Reply<WrappedReply<ReplyString<string>>>>>  parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
+        protected LineBox(Line sentX, TentacleDoc form, UITable<Line>  parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
         {
 
             /*base.SetUp(line, form, lineTable, rowNum, null);

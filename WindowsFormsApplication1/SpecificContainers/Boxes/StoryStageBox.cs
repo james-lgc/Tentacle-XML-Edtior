@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class StoryStageBox : UIBox<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>, ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>
+    public class StoryStageBox : UIBox<StoryStage, ConversationStage>
     {
         public override int Fields { get { return 2; } }
         public override string[] LabelTexts { get { return new string[] { "StoryThread", "StageNumber" }; } }
@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
         //public DialogueTable dialogueTable;
         
 
-        public StoryStageBox(StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>> sentX, TentacleDoc form, StoryStageTable parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
+        public StoryStageBox(StoryStage sentX, TentacleDoc form, StoryStageTable parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
         {
             /*base.SetUp(storyStage, form, storyStageTable, rowNum, storyStage.id.ToString());
             DialogueTable table = new DialogueTable(form, this, storyStage.conversationStages);

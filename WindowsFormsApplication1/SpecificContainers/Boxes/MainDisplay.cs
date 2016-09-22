@@ -7,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class MainDisplay : UIBox<ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>>, Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>>
+    public class MainDisplay : UIBox<ConversationList, Conversation>
     {
         //public HeadedFixedContainer container;
-        public CharacterTable characterTable;
+        //public CharacterTable characterTable;
 
-        public MainDisplay(ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>> sentX, TentacleDoc form, UITable<ConversationList<Conversation<StoryStage<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>>>>> parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
+        public MainDisplay(ConversationList sentX, TentacleDoc form, UITable<ConversationList> parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
         {
+            base.SetUp();
+            //ChildTable.BuildBoxes<Conversation, StoryStage<ConversationStage<Line<Reply>>>>()
             //base.SetUp(cList, form, null, 0, "Conversations", 1, "Conversation");
             //container = new HeadedFixedContainer(form, null, 0, "Conversations");
             //container.groupBox.BringToFront();

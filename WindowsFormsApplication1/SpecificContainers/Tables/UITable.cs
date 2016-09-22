@@ -7,29 +7,23 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class UITable<X> : SpecificContainer<X>
+    public abstract class UITable<X> : SpecificContainer<X>
     {
         protected string[] labelTexts { get; set; }
 
         protected TentacleDoc form1;
         private TentacleButton addButton { get; set; }
-        //protected UIBox<X> specificContainer;
+        protected SpecificContainer<X> SpecificContainer1 { get; set; }
         protected UIContainer parentContainer;
         public CollapsableTable cTable;
         public X[] xArray;
         protected X NewX { get; set; }
         public List<SpecificContainer<X>> boxes;
 
-        public UITable(GroupBox groupBox, int rowCount, int columnCount, X[] sentXArray, string extraText)
+        protected void SetUp(GroupBox groupBox, int rowCount, int columnCount, X[] sentXArray, string extraText)
         {
-
-        }
-
-        protected void SetUp(TentacleDoc form, GroupBox groupBox, int rowCount, int columnCount, X[] sentXArray, string extraText)
-        { 
-            cTable = new CollapsableTable(form, groupBox, rowCount + 1, columnCount);
+            cTable = new CollapsableTable(null, groupBox, rowCount + 1, columnCount);
             boxes = new List<SpecificContainer<X>>();
-            form1 = form;
             //specificContainer = container;
             //parentContainer = parent;
             xArray = sentXArray;
@@ -45,12 +39,19 @@ namespace WindowsFormsApplication1
                         j = i;
                     }
                     TentacleLabel tLabel = new TentacleLabel(labelTexts[j], i, cTable.panel);
+                    //UIBox<X> uiBox = new UIBox<X>();
                 }
                     
             }
             addButton = new TentacleButton(cTable, "Add" + extraText, ColourManager.addButtonColours);
             addButton.Click += new EventHandler(this.AddRow);
             TableSizer.AutoSize(cTable.panel);
+        }
+
+        public void BuildBoxes<X, Y, Z>(X sentX, TentacleDoc form, UITable<X> parentTable, int rowNum, string labelText, int columnCount, string extraText) where Y : X where Z : UIBox<X, Y> where X : IReturnable<Y>
+        {
+            //SpecificContainer1 = new UIBox<X, Y>(sentX, form, parentTable, rowNum, labelText, columnCount, extraText );
+           Z newBox = (Z)Activator.CreateInstance(typeof(Z), sentX, form, parentTable, rowNum, labelText, columnCount, extraText);
         }
 
         protected void MoveButton()

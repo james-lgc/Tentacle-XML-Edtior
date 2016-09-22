@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class DialogueBox : UIBox<ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>>, Line<Reply<WrappedReply<ReplyString<string>>>>>
+    public class DialogueBox : UIBox<ConversationStage, Line>
     {
         public override int Fields { get { return 1; } }
         public override string[] LabelTexts { get { return new string[] { "Dialogue Id" }; } }
@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
         //public HeadedFixedContainer container;
         //private LineTable Table;
 
-        public DialogueBox(ConversationStage<Line<Reply<WrappedReply<ReplyString<string>>>>> sentX, TentacleDoc form, DialogueTable parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
+        public DialogueBox(ConversationStage sentX, TentacleDoc form, DialogueTable parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
         {
             //base.SetUp(conversationStage, form, dialogueTable, rowNum, "Dialogue");
             //LineTable table = new LineTable(form, this, ThisX.lines);

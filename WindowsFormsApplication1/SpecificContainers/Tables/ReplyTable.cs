@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class ReplyTable : UITable<WrappedReply<ReplyString<string>>>
+    public class ReplyTable : UITable<WrappedReply>
     {
 
         private LineBox lineBox;
 
-        public ReplyTable(GroupBox groupBox, int rowCount, int columnCount, WrappedReply<ReplyString<string>>[] sentXArray, string extraText) : base(groupBox, rowCount, columnCount, sentXArray, extraText)
+        public ReplyTable(GroupBox groupBox, int rowCount, int columnCount, WrappedReply[] sentXArray, string extraText)
         {
             /*lineBox = sentLineBox;
             //labelTexts = new string[] { "Reply" };
