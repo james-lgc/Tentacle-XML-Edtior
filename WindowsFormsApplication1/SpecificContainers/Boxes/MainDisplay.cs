@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class MainDisplay : UIBox<ConversationList, Conversation>
+    public class MainDisplay
     {
         //public HeadedFixedContainer container;
         //public CharacterTable characterTable;
 
-        public MainDisplay(ConversationList sentX, TentacleDoc form, UITable<ConversationList> parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
+        public MainDisplay(ConversationList sentX, TentacleDoc form)
         {
-            base.SetUp();
+            
+
+            //base.SetUp();
             //ChildTable.BuildBoxes<Conversation, StoryStage<ConversationStage<Line<Reply>>>>()
             //base.SetUp(cList, form, null, 0, "Conversations", 1, "Conversation");
             //container = new HeadedFixedContainer(form, null, 0, "Conversations");

@@ -7,16 +7,18 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class StoryStageBox : UIBox<StoryStage, ConversationStage>
+    /*public class StoryStageBox : BoxInformation
     {
         public override int Fields { get { return 2; } }
         public override string[] LabelTexts { get { return new string[] { "StoryThread", "StageNumber" }; } }
         public override bool IsCollapsable { get { return true; } }
         public override int[] NumFields { get { return new int[] { 1 }; } }
 
+        public override DialogueBox NextBox { get; }
+
         //public CollapsableTable subTable;
         //public DialogueTable dialogueTable;
-        
+
 
         public StoryStageBox(StoryStage sentX, TentacleDoc form, StoryStageTable parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
         {
@@ -28,7 +30,7 @@ namespace WindowsFormsApplication1
             base.AssignTable(table);
             BoxHeading.InputControls[0].DataBindings.Add("Text", ThisX, "storyThread", false, DataSourceUpdateMode.OnPropertyChanged);
             //BoxHeading.BindData("Value", storyStage, "stageNumber");
-            BoxHeading.InputControls[1].DataBindings.Add("Value", ThisX, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);*/
+            BoxHeading.InputControls[1].DataBindings.Add("Value", ThisX, "stageNumber", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         /*public override StoryStage ReturnX()
@@ -36,6 +38,6 @@ namespace WindowsFormsApplication1
             ConversationStage[] cStages = ChildTable.ReturnContents;
             ThisX.conversationStages = cStages;
             return base.ReturnX();
-        }*/
-    }
+        }
+    }*/
 }

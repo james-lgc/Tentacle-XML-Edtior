@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    class RepliesBox : UIBox<WrappedReply, ReplyString>
+    /*class RepliesBox : BoxInformation<WrappedReplyBox>
     {
         public override int Fields { get { return 1; } }
         public override string[] LabelTexts { get { return new string[] { "Reply" }; } }
@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
         /*public override WrappedReply ReturnX()
         {
             return base.ReturnX();
-        }*/
-    }
+        }
+        
+    }*/
 }

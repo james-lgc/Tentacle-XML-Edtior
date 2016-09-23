@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class DialogueBox : UIBox<ConversationStage, Line>
+    /*public class DialogueBox : BoxInformation<LineBox>
     {
         public override int Fields { get { return 1; } }
         public override string[] LabelTexts { get { return new string[] { "Dialogue Id" }; } }
         public override bool IsCollapsable { get { return true; } }
         public override int[] NumFields { get { return new int[] { 0 }; } }
 
+        public override LineBox NextBox { get; }
+
         //public HeadedFixedContainer container;
         //private LineTable Table;
 
-        public DialogueBox(ConversationStage sentX, TentacleDoc form, DialogueTable parentTable, int rowNum, string labelText, int columnCount, string extraText) : base(sentX, form, parentTable, rowNum, labelText, columnCount, extraText)
+        public DialogueBox(ConversationStage sentX, TentacleDoc form, DialogueTable parentTable, int rowNum, string labelText, int columnCount, string extraText)
         {
             //base.SetUp(conversationStage, form, dialogueTable, rowNum, "Dialogue");
             //LineTable table = new LineTable(form, this, ThisX.lines);
@@ -30,6 +32,6 @@ namespace WindowsFormsApplication1
             Line[] lines = ChildTable.ReturnContents;
             ThisX.lines = lines;
             return base.ReturnX();
-        }*/
-    }
+        }
+    }*/
 }

@@ -5,13 +5,14 @@ using System.Xml;
 
 [XmlRoot("ConversationListCollection")]
 [System.Serializable]
-public class ConversationList : IReturnable<Conversation>
+public class ConversationList : IReturnable
 {
 	[XmlArray("Conversations")]
 	[XmlArrayItem("Conversation")]
 	public Conversation[] conversations { get; set; }
 
-    public IReturnable<Conversation>[] Returnables { get { return conversations as IReturnable<Conversation>[]; } set { conversations = value as Conversation[]; } }
+    [XmlIgnore]
+    public IReturnable[] Returnables { get { return conversations as IReturnable[]; } set { conversations = value as Conversation[]; } }
 
     public void Build()
     {

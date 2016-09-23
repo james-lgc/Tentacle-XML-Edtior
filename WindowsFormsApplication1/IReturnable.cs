@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public interface IReturnable<X>
+    public interface IReturnable
     {
-        IReturnable<X>[] Returnables { get; set; }
+        IReturnable[] Returnables { get; set; }
 
         //void Return();
     }

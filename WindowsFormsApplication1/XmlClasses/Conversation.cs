@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 using WindowsFormsApplication1;
 
 [System.Serializable]
-public class Conversation : ConversationList, IReturnable<StoryStage>
+public class Conversation : ConversationList, IReturnable
 {
     [XmlAttribute("name")]
     public string name { get; set; }
@@ -11,7 +11,9 @@ public class Conversation : ConversationList, IReturnable<StoryStage>
     [XmlArray("StoryStages")]
     [XmlArrayItem("StoryStage")]
     public StoryStage[] storyStages { get; set; }
-    public new IReturnable<StoryStage>[] Returnables { get { return storyStages as IReturnable<StoryStage>[]; } set { storyStages = value as StoryStage[]; } }
+
+    [XmlIgnore]
+    public new IReturnable[] Returnables { get { return storyStages as IReturnable[]; } set { storyStages = value as StoryStage[]; } }
 
     public new void Build()
     {
@@ -23,10 +25,11 @@ public class Conversation : ConversationList, IReturnable<StoryStage>
 }
 
 [System.Serializable]
-public class StoryStage : Conversation, IReturnable<ConversationStage>
+public class StoryStage : Conversation, IReturnable
 {
-	[XmlAttribute("id")]
-	public int id { get; set; }
+    //[XmlAttribute("id")]
+    [XmlIgnore]
+    public int id { get; set; }
 
     [XmlElement("StoryThread")]
 	public string storyThread { get; set; }
@@ -39,7 +42,8 @@ public class StoryStage : Conversation, IReturnable<ConversationStage>
 	[XmlArrayItem("ConversationStage")]
 	public ConversationStage[] conversationStages { get; set; }
 
-    public new IReturnable<ConversationStage>[] Returnables{ get { return conversationStages as IReturnable<ConversationStage>[]; } set { } }
+    [XmlIgnore]
+    public new IReturnable[] Returnables{ get { return conversationStages as IReturnable[]; } set { } }
 
     public new void Build()
     {
@@ -51,17 +55,19 @@ public class StoryStage : Conversation, IReturnable<ConversationStage>
 }
 
 [System.Serializable]
-public class ConversationStage : StoryStage, IReturnable<Line>
+public class ConversationStage : StoryStage, IReturnable
 {
-	[XmlElementAttribute("id")]
-	public int id { get; set; }
+    //[XmlElementAttribute("id")]
+    [XmlIgnore]
+    public new int id { get; set; }
 
     [XmlArray("Lines")]
 	[XmlArrayItem("Line")]
 
 	public Line[] lines { get; set; }
 
-    public new IReturnable<Line>[] Returnables { get { return lines as IReturnable<Line>[]; } set { } }
+    [XmlIgnore]
+    public new IReturnable[] Returnables { get { return lines as IReturnable[]; } set { } }
 
     public new void Build()
     {
@@ -72,10 +78,11 @@ public class ConversationStage : StoryStage, IReturnable<Line>
 }
 
 [System.Serializable]
-public class Line : ConversationStage, IReturnable<Reply>
+public class Line : ConversationStage, IReturnable
 {
-	[XmlElementAttribute("id")]
-	public int id { get; set; }
+    //[XmlElementAttribute("id")]
+    [XmlIgnore]
+    public new int id { get; set; }
 
     [XmlElement("LineText")]
 	public string lineText { get; set; }
@@ -84,7 +91,8 @@ public class Line : ConversationStage, IReturnable<Reply>
 	[XmlArrayItem("Reply")]
 	public Reply[] replies { get; set; }
 
-    public new IReturnable<Reply>[] Returnables { get { return replies as IReturnable<Reply>[]; } set { } }
+    [XmlIgnore]
+    public new IReturnable[] Returnables { get { return replies as IReturnable[]; } set { } }
 
     public new void Build()
     {
@@ -93,15 +101,23 @@ public class Line : ConversationStage, IReturnable<Reply>
     }
 }
 
-public class Reply : Line, IReturnable<WrappedReply>
+[System.Serializable]
+public class Reply : Line, IReturnable
 {
     [XmlElement("Reply")]
     public string replyText { get; set; }
 
-    public new IReturnable<WrappedReply>[] Returnables { get { return null; } set { } }
+    private WrappedReply[] wrappedReplies;
+
+    [XmlIgnore]
+    public IReturnable[] WrappedReplies { get { Build(); return wrappedReplies; } set { } }
+
+    [XmlIgnore]
+    public new IReturnable[] Returnables { get { return WrappedReplies; } set { } }
 
     public new void Build()
     {
+        wrappedReplies = new WrappedReply[1];
 
     }
 }

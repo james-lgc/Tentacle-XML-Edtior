@@ -88,10 +88,11 @@ namespace WindowsFormsApplication1
                 reader.Close();
 
                 //XmlDocument doc = new XmlDocument();
-
-                mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
+                BoxInformationContainer boxInfos = new BoxInformationContainer();
+                UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
+                //mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
                 AutoScroll = true;
-                Application.DoEvents();
+                //Application.DoEvents();
             }
         }
 
@@ -99,8 +100,10 @@ namespace WindowsFormsApplication1
         {
             ConversationList cList = new ConversationList();
             cList.Build();
-            mainDisplay = null;
-            mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
+            BoxInformationContainer boxInfos = new BoxInformationContainer();
+            UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
+            //mainDisplay = null;
+            //mainDisplay = new MainDisplay(cList, this, null, );
         }
 
         private void SaveFile(object sender, EventArgs e)

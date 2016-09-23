@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class UIBoxHeading<X, Y> where Y : X, IReturnable<Y> where X : IReturnable<Y>
+    public class UIBoxHeading
     {
-        private UIBox<X, Y> ParentBox { get; set; }
+        private UIBox ParentBox { get; set; }
         private CollapsableTable HeadingTable { get; set; }
         public Control[] InputControls { get; set; }
         //public TentacleTextBox[] TextBoxes { get; set; }
@@ -19,30 +19,32 @@ namespace WindowsFormsApplication1
         private TentacleButton RemoveButton1 { get; set; }
         private TentaclePanel ButtonPanel { get; set; }
 
-        public UIBoxHeading(UIBox<X, Y> sentBox)
+        public UIBoxHeading(UIBox sentBox)
         {
             ParentBox = sentBox;
 
-            int fields = ParentBox.Fields;
-            string [] labelTexts = ParentBox.LabelTexts;
-            bool isCollapsable = ParentBox.IsCollapsable;
-            int[] numFields = ParentBox.NumFields;
+            //string boxText = ParentBox.BoxInfo.BoxLabel;
+            int fields = ParentBox.BoxInfo.Fields;
+            string [] labelTexts = ParentBox.BoxInfo.LabelTexts;
+            bool isCollapsable = ParentBox.BoxInfo.IsCollapsable;
+            int[] numFields = ParentBox.BoxInfo.NumFields;
+            int ColumnCount = ParentBox.BoxInfo.ColumnCount;
 
             //TextBoxes = new TentacleTextBox[Fields];
-            ParentBox.ColumnCount = 1;
+            ColumnCount = 1;
             if (fields > 0)
             {
                 if (fields > 1 || labelTexts != null || isCollapsable == true)
                 {
                     if (isCollapsable == true)
                     {
-                        ParentBox.ColumnCount++;
+                        ColumnCount++;
                     }
                     if (labelTexts != null)
                     {
-                        ParentBox.ColumnCount++;
+                        ColumnCount++;
                     }
-                    HeadingTable = new CollapsableTable(null, ParentBox.GroupBox1, rowCount: fields, columnCount: ParentBox.ColumnCount);
+                    HeadingTable = new CollapsableTable(null, ParentBox.GroupBox1, rowCount: fields, columnCount: ColumnCount);
                     HeadingTable.panel.Dock = DockStyle.Top;
                     InputControls = new Control[fields];
                     for (int i = 0; i < fields; i++)
@@ -94,7 +96,7 @@ namespace WindowsFormsApplication1
                 ExpandButton1 = new TentacleButton(ParentBox.GroupBox1, "Expand", ColourManager.expandButtonColours);
                 ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
                 //ParentBox.ChildTable.cTable.IsExpanded = false;
-                ParentBox.ChildCTable.panel.Visible = false;
+                ParentBox.ChildTable.cTable.panel.Visible = false;
             }
 
         }
@@ -149,9 +151,18 @@ namespace WindowsFormsApplication1
             ExpandButton1 = new TentacleButton(ButtonPanel, "Expand", ColourManager.expandButtonColours);
             ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
             //IsExpanded = false;
-            ParentBox.ChildCTable.panel.Visible = false;
+            ParentBox.ChildTable.cTable.panel.Visible = false;
 
             //RemoveButton1.Click += new EventHandler(this.ToggleExpansion);
+        }
+
+        public void BindData(IReturnable ThisX)
+        {
+            for (int i = 0; i < InputControls.Length; i++)
+            {
+                InputControls[i].DataBindings.Add("Value", ThisX, "id", false, DataSourceUpdateMode.OnPropertyChanged);
+            }
+
         }
 
         private void Remove()
@@ -163,16 +174,16 @@ namespace WindowsFormsApplication1
         {
             Cursor.Current = Cursors.WaitCursor;
             ParentBox.GroupBox1.SuspendLayout();
-            if (ParentBox.ChildCTable.panel.Visible == true)
+            if (ParentBox.ChildTable.cTable.panel.Visible == true)
             {
                 //IsExpanded = false;
-                ParentBox.ChildCTable.panel.Visible = false;
+                ParentBox.ChildTable.cTable.panel.Visible = false;
                 ExpandButton1.Text = "Expand";
             }
             else
             {
                 //IsExpanded = true;
-                ParentBox.ChildCTable.panel.Visible = true;
+                ParentBox.ChildTable.cTable.panel.Visible = true;
                 ExpandButton1.Text = "Collapse";
             }
             ParentBox.GroupBox1.ResumeLayout();
