@@ -18,6 +18,8 @@ namespace WindowsFormsApplication1
         public UITable ParentTable { get; set; }
         protected bool IsExpanded { get; set; }
 
+        private BoxInformationContainer BoxInfos { get; set; }
+        private int BoxIndex { get; set; }
         public BoxInformation BoxInfo { get; private set; }
 
         
@@ -29,6 +31,7 @@ namespace WindowsFormsApplication1
         {
             ThisX = sentX;
             ParentTable = parentTable;
+            BoxIndex = boxIndex;
             if (boxIndex < boxInfos.BoxInfos.Length)
             {
                 BoxInfo = boxInfos.BoxInfos[boxIndex];
@@ -58,8 +61,26 @@ namespace WindowsFormsApplication1
             if (yArray != null)
             {
                 ChildTable = new UITable(GroupBox1, yArray as IReturnable[], BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
+                TentacleButton addButton = new TentacleButton(ChildTable.cTable, "Add" + BoxInfo.ExtraText, ColourManager.addButtonColours);
+                addButton.Click += new EventHandler(this.AddRow);
                 BoxHeading = new UIBoxHeading(this);
             }
+        }
+
+        public virtual void AddRow(Object sender, EventArgs e)
+        {
+            CollapsableTable cTable = ChildTable.cTable;
+            Cursor.Current = Cursors.WaitCursor;
+            //form1.SuspendLayout();
+            //cTable.panel.SuspendLayout();
+            cTable.panel.RowCount++;
+            ChildTable.MoveButton();
+            TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
+            //Type X = XArray.
+            UIBox uiBox = new UIBox(, this, i, BoxInfos, BoxIndex);
+            //form1.ResumeLayout();
+            Cursor.Current = Cursors.Default;
+            //cTable.panel.ResumeLayout();
         }
 
         public void SaveContents()

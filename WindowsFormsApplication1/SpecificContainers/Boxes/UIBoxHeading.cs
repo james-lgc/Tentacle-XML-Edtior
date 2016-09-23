@@ -98,12 +98,7 @@ namespace WindowsFormsApplication1
                 //ParentBox.ChildTable.cTable.IsExpanded = false;
                 ParentBox.ChildTable.cTable.panel.Visible = false;
             }
-
-        }
-
-        public void BindData(string name, object obj, string prop)
-        {
-            //NumberBoxes[0].DataBindings.Add(name, obj, prop, false, DataSourceUpdateMode.OnPropertyChanged);
+            BindData(ParentBox.ThisX);
         }
 
         private void BuildButtons(CollapsableTable sentTable, int i)
@@ -158,11 +153,20 @@ namespace WindowsFormsApplication1
 
         public void BindData(IReturnable ThisX)
         {
-            for (int i = 0; i < InputControls.Length; i++)
+            if (InputControls != null && InputControls.Length > 0 && ParentBox.BoxInfo.BindingInfo != null)
             {
-                InputControls[i].DataBindings.Add("Value", ThisX, "id", false, DataSourceUpdateMode.OnPropertyChanged);
+                for (int i = 0; i < InputControls.Length; i++)
+                {
+                    if (ParentBox.BoxInfo.BindingInfo[i].IsText == true)
+                    {
+                        InputControls[i].DataBindings.Add("Text", ThisX, ParentBox.BoxInfo.BindingInfo[i].BindingProperty, false, DataSourceUpdateMode.OnPropertyChanged);
+                    }
+                    else
+                    {
+                        InputControls[i].DataBindings.Add("Value", ThisX, ParentBox.BoxInfo.BindingInfo[i].BindingProperty, false, DataSourceUpdateMode.OnPropertyChanged);
+                    }
+                }
             }
-
         }
 
         private void Remove()

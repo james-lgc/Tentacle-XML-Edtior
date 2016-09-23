@@ -17,9 +17,10 @@ namespace WindowsFormsApplication1
         public bool IsCollapsable { get; }
         public string ExtraText { get; }
         public DataBindingInfo[] BindingInfo { get; }
+        public bool IsScrollable { get; }
         //public virtual X NextBox { get; }
 
-        public BoxInformation(string boxLabel = null, int fields = 0, int columnCount = 1, int[] numFields = null, string[] labelTexts = null, bool isCollapsable = true, string extraText = null, DataBindingInfo[] bindingInfo = null)
+        public BoxInformation(string boxLabel = null, int fields = 0, int columnCount = 1, int[] numFields = null, string[] labelTexts = null, bool isCollapsable = true, string extraText = null, DataBindingInfo[] bindingInfo = null, bool isScrollable = false)
         {
             BoxLabel = boxLabel;
             Fields = fields;
@@ -29,6 +30,7 @@ namespace WindowsFormsApplication1
             IsCollapsable = isCollapsable;
             ExtraText = extraText;
             BindingInfo = bindingInfo;
+            IsScrollable = isScrollable;
         }
     }
 }

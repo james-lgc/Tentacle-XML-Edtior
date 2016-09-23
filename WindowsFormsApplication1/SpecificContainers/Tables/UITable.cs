@@ -16,12 +16,24 @@ namespace WindowsFormsApplication1
         public CollapsableTable cTable;
         public IReturnable[] XArray { get; set; }
 
+        private BoxInformationContainer BoxInfos;
+        private int InfoIndex;
+
         public UITable(GroupBox groupBox, IReturnable[] sentXArray, int columnCount, string extraText, BoxInformationContainer boxInfos, int boxIndex)
         {
             cTable = new CollapsableTable(null, groupBox, sentXArray.Length + 1, columnCount);
             //boxes = new List<SpecificContainer<X>>();
             boxIndex++;
+            InfoIndex = boxIndex;
+            BoxInfos = boxInfos;
             XArray = sentXArray;
+            addButton = new TentacleButton(cTable, "Add" + extraText, ColourManager.addButtonColours);
+            addButton.Click += new EventHandler(this.AddRow);
+        }
+
+        public void SetUp<sentX>(IReturnable[] sentXArray) where sentX : IReturnable, new()
+        {
+            X = typeof(sentX);
             for (int i = 0; i < sentXArray.Length; i++)
             {
                 if (labelTexts != null)
@@ -34,12 +46,8 @@ namespace WindowsFormsApplication1
                     }
                     TentacleLabel tLabel = new TentacleLabel(labelTexts[j], i, cTable.panel);
                 }
-                //UIBox<X> uiBox = new UIBox<X>();
-                UIBox uiBox = new UIBox(sentXArray[i], this, i, boxInfos, boxIndex);
+                UIBox uiBox = new UIBox(sentXArray[i], this, i, BoxInfos, InfoIndex);
             }
-            addButton = new TentacleButton(cTable, "Add" + extraText, ColourManager.addButtonColours);
-            addButton.Click += new EventHandler(this.AddRow);
-            TableSizer.AutoSize(cTable.panel);
         }
 
         protected void MoveButton()
@@ -55,7 +63,11 @@ namespace WindowsFormsApplication1
             //cTable.panel.SuspendLayout();
             cTable.panel.RowCount++;
             MoveButton();
-            //TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
+            TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
+            //Type X = XArray.
+            Type X = XArray[0].GetType();
+            typeof(X) newX = new X();
+            UIBox uiBox = new UIBox(new typeof(XArray[0].GetType()(), this, i, boxInfos, boxIndex);
             //form1.ResumeLayout();
             Cursor.Current = Cursors.Default;
             //cTable.panel.ResumeLayout();

@@ -91,8 +91,9 @@ namespace WindowsFormsApplication1
                 BoxInformationContainer boxInfos = new BoxInformationContainer();
                 UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
                 //mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
-                AutoScroll = true;
-                //Application.DoEvents();
+                mainDisplay.ChildTable.cTable.panel.AutoScroll = true;
+                //AutoScroll = true;
+                Application.DoEvents();
             }
         }
 
@@ -102,6 +103,8 @@ namespace WindowsFormsApplication1
             cList.Build();
             BoxInformationContainer boxInfos = new BoxInformationContainer();
             UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
+            mainDisplay.ChildTable.cTable.panel.AutoScroll = true;
+            AutoScroll = true;
             //mainDisplay = null;
             //mainDisplay = new MainDisplay(cList, this, null, );
         }

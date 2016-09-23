@@ -8,8 +8,10 @@ namespace WindowsFormsApplication1
 {
     public struct DataBindingInfo
     {
-        public string bindingProperty { get; }
-        public bool isText { get; }
+        private string bindingProperty;
+        private bool isText;
+        public string BindingProperty { get { return bindingProperty; } }
+        public bool IsText { get { return isText; } }
 
         public DataBindingInfo(string sentBind, bool sentIsText)
         {
