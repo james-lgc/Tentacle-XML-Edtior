@@ -15,7 +15,6 @@ namespace WindowsFormsApplication1
 {
     public partial class TentacleDoc : Form
     {
-        private MainDisplay mainDisplay;
         MenuStrip menuStrip;
         public LoadingPanel loadingPanel;
 
@@ -52,29 +51,6 @@ namespace WindowsFormsApplication1
             
         }
 
-        /*private void button1_Click(object sender, EventArgs e)
-        {
-            BypassLoad(sender, e);
-            return;
-
-            DialogResult open = openFileDialog1.ShowDialog();
-            if (open == DialogResult.OK)
-            {
-                string path = openFileDialog1.FileName;
-                FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));
-                ConversationList cList = serializer.Deserialize(reader) as ConversationList;
-                reader.Close();
-
-                //XmlDocument doc = new XmlDocument();
-
-                mainDisplay = new MainDisplay(this, cList);
-                AutoScroll = true;
-                this.AutoScroll = true;
-                Application.DoEvents();
-            }
-        }*/
-
         private void BypassLoad(object sender, EventArgs e)
         {
             //string path = "C:/Users/James/Documents/conversations.xml";
@@ -87,11 +63,16 @@ namespace WindowsFormsApplication1
                 ConversationList cList = serializer.Deserialize(reader) as ConversationList;
                 reader.Close();
 
-                //XmlDocument doc = new XmlDocument();
                 BoxInformationContainer boxInfos = new BoxInformationContainer();
+                loadingPanel = new LoadingPanel(this, cList);
+                loadingPanel.fullAppPanel.BringToFront();
+                Controls.Add(loadingPanel.fullAppPanel);
                 UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
                 //mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
                 mainDisplay.ChildTable.cTable.panel.AutoScroll = true;
+                loadingPanel.fullAppPanel.Visible = false;
+                Controls.Remove(loadingPanel.fullAppPanel);
+                loadingPanel = null;
                 //AutoScroll = true;
                 Application.DoEvents();
             }
@@ -100,13 +81,15 @@ namespace WindowsFormsApplication1
         private void CreateNew(object sender, EventArgs e)
         {
             ConversationList cList = new ConversationList();
-            cList.Build();
             BoxInformationContainer boxInfos = new BoxInformationContainer();
+            loadingPanel = new LoadingPanel(this, cList);
+            loadingPanel.fullAppPanel.BringToFront();
             UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
             mainDisplay.ChildTable.cTable.panel.AutoScroll = true;
             AutoScroll = true;
-            //mainDisplay = null;
-            //mainDisplay = new MainDisplay(cList, this, null, );
+            loadingPanel.fullAppPanel.Visible = false;
+            Controls.Remove(loadingPanel.fullAppPanel);
+            loadingPanel = null;
         }
 
         private void SaveFile(object sender, EventArgs e)
@@ -131,6 +114,14 @@ namespace WindowsFormsApplication1
         private void TentacleDoc_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void IncreaseLoadingProgress()
+        {
+            if (loadingPanel != null)
+            {
+                loadingPanel.IncreaseProgress();
+            }
         }
     }
 

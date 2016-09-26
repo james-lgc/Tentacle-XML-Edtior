@@ -14,10 +14,17 @@ public class ConversationList : IReturnable
     [XmlIgnore]
     public IReturnable[] Returnables { get { return conversations as IReturnable[]; } set { conversations = value as Conversation[]; } }
 
+    public IReturnable GetNewReturnable()
+    {
+        return new ConversationList() as IReturnable;
+    }
+
     public void Build()
     {
-        conversations = new Conversation[1];
-        conversations[0] = new Conversation();
-        conversations[0].Build();
+        if (conversations == null)
+        {
+            conversations = new Conversation[1];
+            conversations[0] = new Conversation();
+        }
     }
 }

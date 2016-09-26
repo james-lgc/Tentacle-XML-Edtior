@@ -10,6 +10,9 @@ namespace WindowsFormsApplication1
     {
         IReturnable[] Returnables { get; set; }
 
+        IReturnable GetNewReturnable();
+
+
         //void Return();
     }
 }

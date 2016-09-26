@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 using WindowsFormsApplication1;
 
 [System.Serializable]
-public class Conversation : ConversationList, IReturnable
+public class Conversation : IReturnable
 {
     [XmlAttribute("name")]
     public string name { get; set; }
@@ -13,19 +13,23 @@ public class Conversation : ConversationList, IReturnable
     public StoryStage[] storyStages { get; set; }
 
     [XmlIgnore]
-    public new IReturnable[] Returnables { get { return storyStages as IReturnable[]; } set { storyStages = value as StoryStage[]; } }
+    public IReturnable[] Returnables { get { return storyStages as IReturnable[]; } set { storyStages = value as StoryStage[]; } }
 
-    public new void Build()
+    public IReturnable GetNewReturnable()
+    {
+        return new Conversation() as IReturnable;
+    }
+
+    public void Build()
     {
         storyStages = new StoryStage[1];
         storyStages[0] = new StoryStage();
-        storyStages[0].Build();
     }
 
 }
 
 [System.Serializable]
-public class StoryStage : Conversation, IReturnable
+public class StoryStage : IReturnable
 {
     //[XmlAttribute("id")]
     [XmlIgnore]
@@ -43,23 +47,27 @@ public class StoryStage : Conversation, IReturnable
 	public ConversationStage[] conversationStages { get; set; }
 
     [XmlIgnore]
-    public new IReturnable[] Returnables{ get { return conversationStages as IReturnable[]; } set { } }
+    public IReturnable[] Returnables{ get { return conversationStages as IReturnable[]; } set { } }
 
-    public new void Build()
+    public IReturnable GetNewReturnable()
+    {
+        return new StoryStage() as IReturnable;
+    }
+
+    public void Build()
     {
         conversationStages = new ConversationStage[1];
         conversationStages[0] = new ConversationStage();
-        conversationStages[0].Build();
     }
 
 }
 
 [System.Serializable]
-public class ConversationStage : StoryStage, IReturnable
+public class ConversationStage : IReturnable
 {
     //[XmlElementAttribute("id")]
     [XmlIgnore]
-    public new int id { get; set; }
+    public int id { get; set; }
 
     [XmlArray("Lines")]
 	[XmlArrayItem("Line")]
@@ -67,42 +75,73 @@ public class ConversationStage : StoryStage, IReturnable
 	public Line[] lines { get; set; }
 
     [XmlIgnore]
-    public new IReturnable[] Returnables { get { return lines as IReturnable[]; } set { } }
+    public IReturnable[] Returnables { get { return lines as IReturnable[]; } set { } }
 
-    public new void Build()
+    public IReturnable GetNewReturnable()
+    {
+        return new ConversationStage() as IReturnable;
+    }
+
+    public void Build()
     {
         lines = new Line[1];
         lines[0] = new Line();
-        lines[0].Build();
     }
 }
 
 [System.Serializable]
-public class Line : ConversationStage, IReturnable
+public class Line : IReturnable
 {
     //[XmlElementAttribute("id")]
     [XmlIgnore]
-    public new int id { get; set; }
+    public int id { get; set; }
 
     [XmlElement("LineText")]
 	public string lineText { get; set; }
 
     [XmlArray("Replies")]
 	[XmlArrayItem("Reply")]
-	public Reply[] replies { get; set; }
+	public string[] replies { get; set; }
+
+    public Reply[] repliesR { get; set; }
 
     [XmlIgnore]
-    public new IReturnable[] Returnables { get { return replies as IReturnable[]; } set { } }
-
-    public new void Build()
+    public IReturnable[] Returnables
     {
-        replies = new Reply[0];
+        get
+        {
+            repliesR = new Reply[replies.Length];
+            for (int i = 0; i < replies.Length; i++)
+            {
+                repliesR[i] = new Reply();
+                repliesR[i].Build(replies[i]);
+            }
+            return repliesR as IReturnable[];
+        }
+        set { }
+    }
+
+    public IReturnable GetNewReturnable()
+    {
+        return new Line() as IReturnable;
+    }
+
+    public void Build()
+    {
+        if (replies != null)
+        {
+            repliesR = new Reply[replies.Length];
+            for (int i = 0; i < replies.Length; i++)
+            {
+                repliesR[i].replyText = replies[i];
+            }
+        }
         //replies[0].Build();
     }
 }
 
 [System.Serializable]
-public class Reply : Line, IReturnable
+public class Reply : IReturnable
 {
     [XmlElement("Reply")]
     public string replyText { get; set; }
@@ -110,14 +149,32 @@ public class Reply : Line, IReturnable
     private WrappedReply[] wrappedReplies;
 
     [XmlIgnore]
-    public IReturnable[] WrappedReplies { get { Build(); return wrappedReplies; } set { } }
+    public IReturnable[] WrappedReplies
+    {
+        get
+        {
+            return wrappedReplies;
+        }
+        set { }
+    }
 
     [XmlIgnore]
-    public new IReturnable[] Returnables { get { return WrappedReplies; } set { } }
+    public IReturnable[] Returnables { get { return wrappedReplies; } set { } }
 
-    public new void Build()
+    public IReturnable GetNewReturnable()
+    {
+        return null;
+    }
+
+    public void Build(string sentText)
+    {
+        replyText = sentText;
+    }
+
+    public void Build()
     {
         wrappedReplies = new WrappedReply[1];
-
+        wrappedReplies[0] = new WrappedReply();
+        wrappedReplies[0].Build(replyText);
     }
 }

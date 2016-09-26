@@ -9,9 +9,11 @@ namespace WindowsFormsApplication1
 {
     public class UIBox
     {
+        public static TentacleDoc TentacleDoc1 { get; set; }
         private BoxInformation BoxInformation1 { get; set; }
 
         public IReturnable ThisX { get; set; }
+        IReturnable[] yArray;
         public GroupBox GroupBox1 { get; set; }
         public UIBoxHeading BoxHeading { get; set; }
 
@@ -29,6 +31,11 @@ namespace WindowsFormsApplication1
 
         public UIBox(IReturnable sentX, UITable parentTable, int rowNum, BoxInformationContainer boxInfos, int boxIndex, TentacleDoc tDoc = null)
         {
+            if (tDoc != null)
+            {
+                TentacleDoc1 = tDoc;
+            }
+            TentacleDoc1.IncreaseLoadingProgress();
             ThisX = sentX;
             ParentTable = parentTable;
             BoxIndex = boxIndex;
@@ -57,30 +64,38 @@ namespace WindowsFormsApplication1
                 GroupBox1.Dock = DockStyle.Fill;
                 tDoc.Controls.Add(GroupBox1);
             }
-            IReturnable[] yArray = ThisX.Returnables as IReturnable[];
+            try
+            {
+                yArray = ThisX.Returnables as IReturnable[];
+            }
+            catch (NullReferenceException e)
+            {
+
+            }
             if (yArray != null)
             {
-                ChildTable = new UITable(GroupBox1, yArray as IReturnable[], BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
-                TentacleButton addButton = new TentacleButton(ChildTable.cTable, "Add" + BoxInfo.ExtraText, ColourManager.addButtonColours);
-                addButton.Click += new EventHandler(this.AddRow);
-                BoxHeading = new UIBoxHeading(this);
+                if (boxIndex < boxInfos.BoxInfos.Length - 1)
+                {
+                    ChildTable = new UITable(GroupBox1, yArray as IReturnable[], BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
+                    BoxHeading = new UIBoxHeading(this);
+                }
+                else
+                {
+                    BoxHeading = new UIBoxHeading(this);
+                }  
             }
-        }
-
-        public virtual void AddRow(Object sender, EventArgs e)
-        {
-            CollapsableTable cTable = ChildTable.cTable;
-            Cursor.Current = Cursors.WaitCursor;
-            //form1.SuspendLayout();
-            //cTable.panel.SuspendLayout();
-            cTable.panel.RowCount++;
-            ChildTable.MoveButton();
-            TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
-            //Type X = XArray.
-            UIBox uiBox = new UIBox(, this, i, BoxInfos, BoxIndex);
-            //form1.ResumeLayout();
-            Cursor.Current = Cursors.Default;
-            //cTable.panel.ResumeLayout();
+            else
+            {
+                if (boxIndex < boxInfos.BoxInfos.Length - 1)
+                {
+                    ChildTable = new UITable(GroupBox1, null, BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
+                    BoxHeading = new UIBoxHeading(this);
+                }
+                else
+                {
+                    BoxHeading = new UIBoxHeading(this);
+                }
+            }
         }
 
         public void SaveContents()

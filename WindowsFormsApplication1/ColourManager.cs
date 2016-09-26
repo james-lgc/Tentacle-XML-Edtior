@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class ColourManager
+    public struct ColourManager
     {
         //public static Color backGroundColour = Color.FromArgb(15, 17, 18);
         public static Color backGroundColour = Color.FromArgb(54, 54, 54);

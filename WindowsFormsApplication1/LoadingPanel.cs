@@ -73,7 +73,10 @@ namespace WindowsFormsApplication1
 
         private void SetProgress()
         {
-            progressBar.Value = currentProgress;
+            if (currentProgress < progressBar.Maximum)
+            {
+                progressBar.Value = currentProgress;
+            }
         }
 
         private void Calculate(ConversationList cList)

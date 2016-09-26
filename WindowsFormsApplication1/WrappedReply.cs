@@ -7,16 +7,21 @@ using System.Threading.Tasks;
 namespace WindowsFormsApplication1
 {
     [System.Serializable]
-    public class WrappedReply : Reply, IReturnable
+    public class WrappedReply : IReturnable
     {
-        public ReplyString[] WrappedReply1 { get; set; }
+        public string Reply1 { get; set; }
 
-        //[XmlIgnore]
-        public new IReturnable[] Returnables { get { return WrappedReply1; } set { } }
-        /*public WrappedReply()
+        public IReturnable GetNewReturnable()
         {
+            return null;
+        }
+        //[XmlIgnore]
+        public IReturnable[] Returnables { get { return null; } set { } }
 
-        }*/
+        public void Build(string replyText)
+        {
+            Reply1 = replyText;
+        }
 
         /*public WrappedReply[] GetReplies(string[] sentReplies)
         {

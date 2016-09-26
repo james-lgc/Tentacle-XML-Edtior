@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SpecificContainers\Boxes\BoxInformationContainer.cs" />
+    <Compile Include="SpecificContainers\BoxInformationContainer.cs" />
     <Compile Include="CoControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -57,27 +57,15 @@
     <Compile Include="DataBindingInfo.cs" />
     <Compile Include="IExpandable.cs" />
     <Compile Include="IReturnable.cs" />
-    <Compile Include="ReplyString.cs" />
-    <Compile Include="SpecificContainers\Boxes\BoxInformation.cs" />
+    <Compile Include="SpecificContainers\BoxInformation.cs" />
     <Compile Include="WrappedReply.cs" />
-    <Compile Include="SpecificContainers\Boxes\LineBox.cs" />
-    <Compile Include="SpecificContainers\Boxes\UIBox.cs" />
+    <Compile Include="SpecificContainers\UIBox.cs" />
     <Compile Include="LoadingPanel.cs" />
-    <Compile Include="SpecificContainers\Boxes\UIBoxHeading.cs" />
+    <Compile Include="SpecificContainers\UIBoxHeading.cs" />
     <Compile Include="SpecificContainers\SpecificContainer.cs" />
-    <Compile Include="SpecificContainers\Tables\CharacterTable.cs" />
-    <Compile Include="SpecificContainers\Boxes\DialogueBox.cs" />
-    <Compile Include="SpecificContainers\Tables\LineTable.cs" />
-    <Compile Include="SpecificContainers\Tables\UITable.cs" />
-    <Compile Include="SpecificContainers\Tables\DialogueTable.cs" />
-    <Compile Include="SpecificContainers\Boxes\MainDisplay.cs" />
-    <Compile Include="SpecificContainers\Boxes\RepliesBox.cs" />
-    <Compile Include="SpecificContainers\Tables\ReplyTable.cs" />
-    <Compile Include="SpecificContainers\Boxes\CharacterBox.cs" />
-    <Compile Include="SpecificContainers\Boxes\StoryStageBox.cs" />
-    <Compile Include="SpecificContainers\Tables\StoryStageTable.cs" />
+    <Compile Include="SpecificContainers\UITable.cs" />
     <Compile Include="TableSizer.cs" />
-    <Compile Include="TentacleUIElements\TentacleButtons\TentacleButton.cs">
+    <Compile Include="TentacleUIElements\TentacleButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TentacleUIElements\TentacleLabel.cs">

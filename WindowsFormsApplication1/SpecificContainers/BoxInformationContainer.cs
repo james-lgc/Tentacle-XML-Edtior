@@ -33,11 +33,11 @@ namespace WindowsFormsApplication1
 
             info = new DataBindingInfo[1];
             info[0] = new DataBindingInfo("lineText", true);
-            boxInfos[4] = new BoxInformation(boxLabel: "Lines", fields: 1, numFields: null, labelTexts: new string[] { "Speech" }, isCollapsable: true, extraText: "Line", bindingInfo: info);
+            boxInfos[4] = new BoxInformation(boxLabel: "Lines", fields: 1, labelTexts: new string[] { "Speech" }, isCollapsable: true, extraText: "Line", bindingInfo: info);
 
             info = new DataBindingInfo[1];
             info[0] = new DataBindingInfo("replyText", true);
-            boxInfos[5] = new BoxInformation(boxLabel: "Replies", fields: 1, numFields: null, labelTexts: new string[] { "Reply" }, isCollapsable: false, extraText: "Reply", bindingInfo: info);
+            boxInfos[5] = new BoxInformation(boxLabel: null, fields: 1, labelTexts: new string[] { "Reply" }, isCollapsable: false, extraText: "Reply", bindingInfo: info);
         }
     }
 }
