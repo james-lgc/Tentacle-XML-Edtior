@@ -16,7 +16,7 @@ public class ConversationList : IReturnable
 
     public IReturnable GetNewReturnable()
     {
-        return new ConversationList() as IReturnable;
+        return new Conversation() as IReturnable;
     }
 
     public void Build()

@@ -17,7 +17,7 @@ public class Conversation : IReturnable
 
     public IReturnable GetNewReturnable()
     {
-        return new Conversation() as IReturnable;
+        return new StoryStage() as IReturnable;
     }
 
     public void Build()
@@ -52,7 +52,7 @@ public class StoryStage : IReturnable
 
     public IReturnable GetNewReturnable()
     {
-        return new StoryStage() as IReturnable;
+        return new ConversationStage() as IReturnable;
     }
 
     public void Build()
@@ -81,7 +81,7 @@ public class ConversationStage : IReturnable
 
     public IReturnable GetNewReturnable()
     {
-        return new ConversationStage() as IReturnable;
+        return new Line() as IReturnable;
     }
 
     public void Build()
@@ -106,6 +106,7 @@ public class Line : IReturnable
 	[XmlArrayItem("Reply")]
 	public string[] replies { get; set; }
 
+    [XmlIgnore]
     public Reply[] repliesR { get; set; }
 
     [XmlIgnore]
@@ -121,7 +122,7 @@ public class Line : IReturnable
 
     public IReturnable GetNewReturnable()
     {
-        return new Line() as IReturnable;
+        return new Reply() as IReturnable;
     }
 
     public void Build()
@@ -149,27 +150,20 @@ public class Line : IReturnable
 [System.Serializable]
 public class Reply : IReturnable
 {
-    [XmlElement("Reply")]
+    [XmlIgnore]
     public string replyText { get; set; }
 
-    private WrappedReply[] wrappedReplies;
-
     [XmlIgnore]
-    public IReturnable[] WrappedReplies
-    {
-        get
-        {
-            return wrappedReplies;
-        }
-        set { }
-    }
-
-    [XmlIgnore]
-    public IReturnable[] Returnables { get { return wrappedReplies; } set { } }
+    public IReturnable[] Returnables { get { return null; } set { } }
 
     public IReturnable GetNewReturnable()
     {
         return null;
+    }
+
+    public Reply()
+    {
+
     }
 
     public void Build(string sentText)

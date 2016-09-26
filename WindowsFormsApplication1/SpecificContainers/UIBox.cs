@@ -64,38 +64,15 @@ namespace WindowsFormsApplication1
                 GroupBox1.Dock = DockStyle.Fill;
                 tDoc.Controls.Add(GroupBox1);
             }
-            try
+            if (boxIndex < boxInfos.BoxInfos.Length - 1)
             {
-                yArray = ThisX.Returnables as IReturnable[];
-            }
-            catch (NullReferenceException e)
-            {
-
-            }
-            if (yArray != null)
-            {
-                if (boxIndex < boxInfos.BoxInfos.Length-1)
-                {
-                    ChildTable = new UITable(GroupBox1, yArray as IReturnable[], BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
-                    BoxHeading = new UIBoxHeading(this);
-                }
-                else
-                {
-                    BoxHeading = new UIBoxHeading(this);
-                }  
+                ChildTable = new UITable(GroupBox1, ThisX as IReturnable, BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
+                BoxHeading = new UIBoxHeading(this);
             }
             else
             {
-                if (boxIndex < boxInfos.BoxInfos.Length-1)
-                {
-                    ChildTable = new UITable(GroupBox1, null, BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
-                    BoxHeading = new UIBoxHeading(this);
-                }
-                else
-                {
-                    BoxHeading = new UIBoxHeading(this);
-                }
-            }
+                BoxHeading = new UIBoxHeading(this);
+            }  
         }
 
         public void SaveContents()
