@@ -24,6 +24,7 @@ public class Conversation : IReturnable
     {
         storyStages = new StoryStage[1];
         storyStages[0] = new StoryStage();
+        storyStages[0].Build();
     }
 
 }
@@ -58,6 +59,7 @@ public class StoryStage : IReturnable
     {
         conversationStages = new ConversationStage[1];
         conversationStages[0] = new ConversationStage();
+        conversationStages[0].Build();
     }
 
 }
@@ -86,6 +88,7 @@ public class ConversationStage : IReturnable
     {
         lines = new Line[1];
         lines[0] = new Line();
+        lines[0].Build();
     }
 }
 
@@ -110,12 +113,7 @@ public class Line : IReturnable
     {
         get
         {
-            repliesR = new Reply[replies.Length];
-            for (int i = 0; i < replies.Length; i++)
-            {
-                repliesR[i] = new Reply();
-                repliesR[i].Build(replies[i]);
-            }
+            Build();
             return repliesR as IReturnable[];
         }
         set { }
@@ -133,8 +131,16 @@ public class Line : IReturnable
             repliesR = new Reply[replies.Length];
             for (int i = 0; i < replies.Length; i++)
             {
+                repliesR[i] = new Reply();
                 repliesR[i].replyText = replies[i];
             }
+        }
+        else
+        {
+            //replies = new string[0];
+            repliesR = new Reply[0];
+            //repliesR[0] = new Reply();
+            //repliesR[0].Build("");
         }
         //replies[0].Build();
     }
@@ -169,12 +175,5 @@ public class Reply : IReturnable
     public void Build(string sentText)
     {
         replyText = sentText;
-    }
-
-    public void Build()
-    {
-        wrappedReplies = new WrappedReply[1];
-        wrappedReplies[0] = new WrappedReply();
-        wrappedReplies[0].Build(replyText);
     }
 }

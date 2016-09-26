@@ -25,6 +25,7 @@ public class ConversationList : IReturnable
         {
             conversations = new Conversation[1];
             conversations[0] = new Conversation();
+            conversations[0].Build();
         }
     }
 }

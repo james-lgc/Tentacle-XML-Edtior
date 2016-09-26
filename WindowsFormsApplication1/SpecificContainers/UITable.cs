@@ -21,6 +21,10 @@ namespace WindowsFormsApplication1
 
         public UITable(GroupBox groupBox, IReturnable[] sentXArray, int columnCount, string extraText, BoxInformationContainer boxInfos, int boxIndex)
         {
+            if (boxIndex == boxInfos.BoxInfos.Length - 2)
+            {
+                bool yesBool = true;
+            }
             boxIndex++;
             InfoIndex = boxIndex;
             BoxInfos = boxInfos;

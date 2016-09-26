@@ -74,7 +74,7 @@ namespace WindowsFormsApplication1
             }
             if (yArray != null)
             {
-                if (boxIndex < boxInfos.BoxInfos.Length - 1)
+                if (boxIndex < boxInfos.BoxInfos.Length-1)
                 {
                     ChildTable = new UITable(GroupBox1, yArray as IReturnable[], BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
                     BoxHeading = new UIBoxHeading(this);
@@ -86,7 +86,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                if (boxIndex < boxInfos.BoxInfos.Length - 1)
+                if (boxIndex < boxInfos.BoxInfos.Length-1)
                 {
                     ChildTable = new UITable(GroupBox1, null, BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
                     BoxHeading = new UIBoxHeading(this);

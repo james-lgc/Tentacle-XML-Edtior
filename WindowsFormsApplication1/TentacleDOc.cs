@@ -82,6 +82,7 @@ namespace WindowsFormsApplication1
         {
             ConversationList cList = new ConversationList();
             BoxInformationContainer boxInfos = new BoxInformationContainer();
+            cList.Build();
             loadingPanel = new LoadingPanel(this, cList);
             loadingPanel.fullAppPanel.BringToFront();
             UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
