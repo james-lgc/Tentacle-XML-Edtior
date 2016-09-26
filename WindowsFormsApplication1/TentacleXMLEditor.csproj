@@ -62,7 +62,6 @@
     <Compile Include="SpecificContainers\UIBox.cs" />
     <Compile Include="LoadingPanel.cs" />
     <Compile Include="SpecificContainers\UIBoxHeading.cs" />
-    <Compile Include="SpecificContainers\SpecificContainer.cs" />
     <Compile Include="SpecificContainers\UITable.cs" />
     <Compile Include="TableSizer.cs" />
     <Compile Include="TentacleUIElements\TentacleButton.cs">

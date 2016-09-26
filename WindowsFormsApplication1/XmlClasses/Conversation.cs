@@ -95,7 +95,6 @@ public class ConversationStage : IReturnable
 
     [XmlArray("Lines")]
 	[XmlArrayItem("Line")]
-
 	public List<Line> lines { get; set; }
 
     [XmlIgnore]
@@ -138,23 +137,13 @@ public class Line : IReturnable
 	public List<Reply> replies { get; set; }
 
     [XmlIgnore]
-    public List<IReturnable> Returnables
-    {
-        get
-        {
-            return replies.Cast<IReturnable>().ToList();
-        }
-        set
-        {
-            replies = value.Cast<Reply>().ToList();
-        }
-    }
+    public List<IReturnable> Returnables { get { return replies.Cast<IReturnable>().ToList(); } set { replies = value.Cast<Reply>().ToList(); } }
 
     public IReturnable GetNewReturnable()
     {
         Reply newReply = new Reply();
         replies.Add(newReply);
-        newReply.Build("");
+        newReply.Build();
         return new Reply() as IReturnable;
     }
 
@@ -188,8 +177,8 @@ public class Reply : IReturnable
 
     }
 
-    public void Build(string sentText)
+    public void Build()
     {
-        replyText = "";
+        //replyText = "";
     }
 }

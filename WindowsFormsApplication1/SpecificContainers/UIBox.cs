@@ -44,6 +44,10 @@ namespace WindowsFormsApplication1
                 BoxInfo = boxInfos.BoxInfos[boxIndex];
             }
             else { return; }
+            if (boxIndex == boxInfos.BoxInfos.Length -1)
+            {
+                bool yesBool = true;
+            }
 
             GroupBox1 = new GroupBox();
             GroupBox1.BackColor = ColourManager.backGroundColour2;
@@ -82,8 +86,11 @@ namespace WindowsFormsApplication1
 
         public void ReturnX()
         {
-            ChildTable.ReturnContents(ThisX.Returnables);
-            ThisX.ReplaceContents(ChildTable.YArray);
+            if (ChildTable != null)
+            {
+                ChildTable.ReturnContents(ThisX.Returnables);
+                ThisX.ReplaceContents(ChildTable.YArray);
+            }
         }
     }
 }

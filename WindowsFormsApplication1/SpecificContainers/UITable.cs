@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1
             {
 
             }
-            if (boxIndex == boxInfos.BoxInfos.Length - 2)
+            if (boxIndex == boxInfos.BoxInfos.Length - 1)
             {
                 bool yesBool = true;
             }
