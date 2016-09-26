@@ -15,7 +15,7 @@ namespace WindowsFormsApplication1
         protected UIContainer parentContainer;
         public CollapsableTable cTable;
         public IReturnable SentX { get; set; }
-        public IReturnable[] YArray { get; set; }
+        public List<IReturnable> YArray { get; set; }
         public List<UIBox> Boxes { get; set; }
 
         private BoxInformationContainer BoxInfos;
@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
             SentX = sentX;
             try
             {
-                YArray = sentX.Returnables as IReturnable[];
+                YArray = sentX.Returnables.Cast<IReturnable>().ToList();
             }
             catch (NullReferenceException e)
             {
@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1
             rowCount = 1;
             if (YArray != null)
             {
-                rowCount = YArray.Length + 1;
+                rowCount = YArray.Count + 1;
             }
             cTable = new CollapsableTable(null, groupBox, rowCount, columnCount);
             addButton = new TentacleButton(cTable, "Add" + extraText, ColourManager.addButtonColours);
@@ -50,7 +50,7 @@ namespace WindowsFormsApplication1
             Boxes = new List<UIBox>();
             if (YArray != null)
             {
-                for (int i = 0; i < YArray.Length; i++)
+                for (int i = 0; i < YArray.Count; i++)
                 {
                     if (labelTexts != null)
                     {
@@ -77,26 +77,26 @@ namespace WindowsFormsApplication1
         public virtual void AddRow(Object sender, EventArgs e)
         {
             IReturnable NewX = SentX.GetNewReturnable();
+            YArray.Add(NewX);
             Cursor.Current = Cursors.WaitCursor;
             cTable.panel.SuspendLayout();
             cTable.panel.RowCount++;
             MoveButton();
             //TentacleLabel tLabel = new TentacleLabel("Name", cTable.panel.RowCount - 2, cTable.panel);
             UIBox uiBox = new UIBox(NewX, this, cTable.panel.RowCount -2, BoxInfos, InfoIndex);
+            Boxes.Add(uiBox);
             //form1.ResumeLayout();
             Cursor.Current = Cursors.Default;
             cTable.panel.ResumeLayout();
         }
 
-        public IReturnable[] ReturnContents()
+        public void ReturnContents(List<IReturnable> sentList)
         {
-             {
-                IReturnable[] newXAraay = new IReturnable[Boxes.Count];
-                for (int i = 0; i < Boxes.Count; i++)
-                {
-                    newXAraay[i] = Boxes[i].ReturnX();
-                }
-                return newXAraay;
+            YArray.Clear();
+            for (int i = 0; i < Boxes.Count; i++)
+            {
+                Boxes[i].ReturnX();
+                YArray.Add(Boxes[i].ThisX);
             }
         }
 

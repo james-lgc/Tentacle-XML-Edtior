@@ -8,11 +8,11 @@ namespace WindowsFormsApplication1
 {
     public interface IReturnable
     {
-        IReturnable[] Returnables { get; set; }
+        List<IReturnable> Returnables { get; set; }
 
         IReturnable GetNewReturnable();
 
-        void Set(IReturnable[] sentReturnables);
+        void ReplaceContents(List<IReturnable> newContents);
         //void Return();
     }
 }

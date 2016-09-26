@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
         private BoxInformation BoxInformation1 { get; set; }
 
         public IReturnable ThisX { get; set; }
-        IReturnable[] yArray;
+        List<IReturnable> yArray;
         public GroupBox GroupBox1 { get; set; }
         public UIBoxHeading BoxHeading { get; set; }
 
@@ -80,13 +80,10 @@ namespace WindowsFormsApplication1
 
         }
 
-        public IReturnable ReturnX()
+        public void ReturnX()
         {
-            IReturnable newX = ThisX;
-            IReturnable[] yArray = ChildTable.ReturnContents();
-            newX.Set(yArray);
-            //newX.Returnables = yArray;
-            return newX;
+            ChildTable.ReturnContents(ThisX.Returnables);
+            ThisX.ReplaceContents(ChildTable.YArray);
         }
     }
 }

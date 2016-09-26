@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    [System.Serializable]
+    /*[System.Serializable]
     public class WrappedReply : IReturnable
     {
         public string Reply1 { get; set; }
@@ -16,12 +16,12 @@ namespace WindowsFormsApplication1
             return null;
         }
 
-        public void Set(IReturnable[] sentReturnables)
+        public void Set(List<IReturnable> sentReturnables)
         {
 
         }
         //[XmlIgnore]
-        public IReturnable[] Returnables { get { return null; } set { } }
+        public List<IReturnable> Returnables { get { return null; } set { } }
 
         public void Build(string replyText)
         {
@@ -36,6 +36,6 @@ namespace WindowsFormsApplication1
                 wrappedReplies[i].WrappedReply1 = sentReplies[i];
             }
             return wrappedReplies;
-        }*/
-    }
+        }
+    }*/
 }

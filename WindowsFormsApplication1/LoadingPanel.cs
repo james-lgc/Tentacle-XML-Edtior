@@ -82,25 +82,25 @@ namespace WindowsFormsApplication1
         private void Calculate(ConversationList cList)
         {
             totalCalculations = 0;
-            for (int i = 0; i < cList.conversations.Length; i++)
+            for (int i = 0; i < cList.conversations.Count; i++)
             {
                 Conversation conversation = cList.conversations[i];
                 totalCalculations++;
-                for (int j = 0; j < conversation.storyStages.Length; j++)
+                for (int j = 0; j < conversation.storyStages.Count; j++)
                 {
                     StoryStage storyStage = conversation.storyStages[j];
                     totalCalculations++;
-                    for (int k = 0; k <storyStage.conversationStages.Length; k++)
+                    for (int k = 0; k <storyStage.conversationStages.Count; k++)
                     {
                         ConversationStage cStage = storyStage.conversationStages[k];
                         totalCalculations++;
-                        for (int m = 0; m < cStage.lines.Length; m++)
+                        for (int m = 0; m < cStage.lines.Count; m++)
                         {
                             Line line = cStage.lines[m];
                             totalCalculations++;
-                            if (line.replies != null && line.replies.Length > 0)
+                            if (line.replies != null && line.replies.Count > 0)
                             {
-                                for (int n = 0; n < line.replies.Length; n++)
+                                for (int n = 0; n < line.replies.Count; n++)
                                 {
                                     totalCalculations++;
                                 }

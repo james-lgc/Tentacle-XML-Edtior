@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using WindowsFormsApplication1;
 using System.Xml.Serialization;
 using System.Xml;
@@ -9,28 +10,33 @@ public class ConversationList : IReturnable
 {
 	[XmlArray("Conversations")]
 	[XmlArrayItem("Conversation")]
-	public Conversation[] conversations { get; set; }
+	public List<Conversation> conversations { get; set; }
 
     [XmlIgnore]
-    public IReturnable[] Returnables { get { return conversations as IReturnable[]; } set { conversations = value as Conversation[]; } }
+    public List<IReturnable> Returnables { get { return conversations.Cast<IReturnable>().ToList(); } set { conversations = value.Cast<Conversation>().ToList(); } }
 
     public IReturnable GetNewReturnable()
     {
-        return new Conversation() as IReturnable;
+        //Build();
+        Conversation newConversation = new Conversation();
+        conversations.Add(newConversation);
+        newConversation.Build();
+        return newConversation as IReturnable;
     }
 
-    public void Set(IReturnable[] sentReturnables)
+    public void ReplaceContents(List<IReturnable> newContents)
     {
-        conversations = sentReturnables as Conversation[];
+        conversations = newContents.Cast<Conversation>().ToList();
     }
 
     public void Build()
     {
         if (conversations == null)
         {
-            conversations = new Conversation[1];
-            conversations[0] = new Conversation();
-            conversations[0].Build();
+            conversations = new List<Conversation>();
+            Conversation conversation = new Conversation();
+            conversations.Add(conversation);
+            conversation.Build();
         }
     }
 }

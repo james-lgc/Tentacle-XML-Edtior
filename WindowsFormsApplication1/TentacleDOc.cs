@@ -104,7 +104,8 @@ namespace WindowsFormsApplication1
                 //ConversationList saveFile = new ConversationList();
                 //saveFile.conversations = mainDisplay.characterTable.ReturnContents;
 
-                ConversationList saveFile = mainDisplay.ReturnX() as ConversationList;
+                mainDisplay.ReturnX();
+                ConversationList saveFile = mainDisplay.ThisX as ConversationList;
 
                 string path = saveFileDialog1.FileName;
                 //string path = "C:/Users/James/Documents/conversationsTestSave.xml";
