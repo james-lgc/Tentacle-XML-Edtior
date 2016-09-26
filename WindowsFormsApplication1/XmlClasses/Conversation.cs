@@ -20,6 +20,11 @@ public class Conversation : IReturnable
         return new StoryStage() as IReturnable;
     }
 
+    public void Set(IReturnable[] sentReturnables)
+    {
+        storyStages = sentReturnables as StoryStage[];
+    }
+
     public void Build()
     {
         storyStages = new StoryStage[1];
@@ -48,11 +53,16 @@ public class StoryStage : IReturnable
 	public ConversationStage[] conversationStages { get; set; }
 
     [XmlIgnore]
-    public IReturnable[] Returnables{ get { return conversationStages as IReturnable[]; } set { } }
+    public IReturnable[] Returnables{ get { return conversationStages as IReturnable[]; } set { conversationStages = value as ConversationStage[]; } }
 
     public IReturnable GetNewReturnable()
     {
         return new ConversationStage() as IReturnable;
+    }
+
+    public void Set(IReturnable[] sentReturnables)
+    {
+        conversationStages = sentReturnables as ConversationStage[];
     }
 
     public void Build()
@@ -77,11 +87,16 @@ public class ConversationStage : IReturnable
 	public Line[] lines { get; set; }
 
     [XmlIgnore]
-    public IReturnable[] Returnables { get { return lines as IReturnable[]; } set { } }
+    public IReturnable[] Returnables { get { return lines as IReturnable[]; } set { lines = value as Line[]; } }
 
     public IReturnable GetNewReturnable()
     {
         return new Line() as IReturnable;
+    }
+
+    public void Set(IReturnable[] sentReturnables)
+    {
+        lines = sentReturnables as Line[];
     }
 
     public void Build()
@@ -117,7 +132,23 @@ public class Line : IReturnable
             Build();
             return repliesR as IReturnable[];
         }
-        set { }
+        set
+        {
+            repliesR = value as Reply[];
+            if (repliesR != null && repliesR.Length > 0)
+            {
+                replies = new string[repliesR.Length];
+                for (int i = 0; i < repliesR.Length; i++)
+                {
+                    replies[i] = repliesR[i].replyText;
+                }
+            }
+       }
+    }
+
+    public void Set(IReturnable[] sentReturnables)
+    {
+        repliesR = sentReturnables as Reply[];
     }
 
     public IReturnable GetNewReturnable()
@@ -159,6 +190,11 @@ public class Reply : IReturnable
     public IReturnable GetNewReturnable()
     {
         return null;
+    }
+
+    public void Set(IReturnable[] sentReturnables)
+    {
+
     }
 
     public Reply()

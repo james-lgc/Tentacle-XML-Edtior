@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
     {
         MenuStrip menuStrip;
         public LoadingPanel loadingPanel;
+        UIBox mainDisplay;
 
         public TentacleDoc()
         {
@@ -85,7 +86,7 @@ namespace WindowsFormsApplication1
             cList.Build();
             loadingPanel = new LoadingPanel(this, cList);
             loadingPanel.fullAppPanel.BringToFront();
-            UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
+            mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
             mainDisplay.ChildTable.cTable.panel.AutoScroll = true;
             AutoScroll = true;
             loadingPanel.fullAppPanel.Visible = false;
@@ -100,8 +101,10 @@ namespace WindowsFormsApplication1
 
             if (save == DialogResult.OK)
             {
-                ConversationList saveFile = new ConversationList();
+                //ConversationList saveFile = new ConversationList();
                 //saveFile.conversations = mainDisplay.characterTable.ReturnContents;
+
+                ConversationList saveFile = mainDisplay.ReturnX() as ConversationList;
 
                 string path = saveFileDialog1.FileName;
                 //string path = "C:/Users/James/Documents/conversationsTestSave.xml";

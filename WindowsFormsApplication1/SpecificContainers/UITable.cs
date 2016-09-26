@@ -16,6 +16,7 @@ namespace WindowsFormsApplication1
         public CollapsableTable cTable;
         public IReturnable SentX { get; set; }
         public IReturnable[] YArray { get; set; }
+        public List<UIBox> Boxes { get; set; }
 
         private BoxInformationContainer BoxInfos;
         private int InfoIndex;
@@ -46,6 +47,7 @@ namespace WindowsFormsApplication1
             cTable = new CollapsableTable(null, groupBox, rowCount, columnCount);
             addButton = new TentacleButton(cTable, "Add" + extraText, ColourManager.addButtonColours);
             addButton.Click += new EventHandler(this.AddRow);
+            Boxes = new List<UIBox>();
             if (YArray != null)
             {
                 for (int i = 0; i < YArray.Length; i++)
@@ -61,6 +63,7 @@ namespace WindowsFormsApplication1
                         TentacleLabel tLabel = new TentacleLabel(labelTexts[j], i, cTable.panel);
                     }
                     UIBox uiBox = new UIBox(YArray[i], this, i, BoxInfos, InfoIndex);
+                    Boxes.Add(uiBox);
                 }
             }
         }
@@ -85,19 +88,17 @@ namespace WindowsFormsApplication1
             cTable.panel.ResumeLayout();
         }
 
-       /* public X[] ReturnContents
+        public IReturnable[] ReturnContents()
         {
-            get
-            {
-                X[] newXAraay = new X[boxes.Count];
-                for (int i = 0; i < boxes.Count; i++)
+             {
+                IReturnable[] newXAraay = new IReturnable[Boxes.Count];
+                for (int i = 0; i < Boxes.Count; i++)
                 {
-                    boxes[i].ReturnX();
-                    //newXAraay[i] = boxes[i].thisX;
+                    newXAraay[i] = Boxes[i].ReturnX();
                 }
                 return newXAraay;
             }
-        }*/
+        }
 
         private void Remove()
         {

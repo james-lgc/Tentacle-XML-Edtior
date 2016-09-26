@@ -12,7 +12,7 @@ namespace WindowsFormsApplication1
 
         IReturnable GetNewReturnable();
 
-
+        void Set(IReturnable[] sentReturnables);
         //void Return();
     }
 }

@@ -19,6 +19,11 @@ public class ConversationList : IReturnable
         return new Conversation() as IReturnable;
     }
 
+    public void Set(IReturnable[] sentReturnables)
+    {
+        conversations = sentReturnables as Conversation[];
+    }
+
     public void Build()
     {
         if (conversations == null)

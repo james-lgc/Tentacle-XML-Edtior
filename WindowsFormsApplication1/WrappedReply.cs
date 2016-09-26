@@ -15,6 +15,11 @@ namespace WindowsFormsApplication1
         {
             return null;
         }
+
+        public void Set(IReturnable[] sentReturnables)
+        {
+
+        }
         //[XmlIgnore]
         public IReturnable[] Returnables { get { return null; } set { } }
 

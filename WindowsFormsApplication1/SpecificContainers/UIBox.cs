@@ -79,5 +79,14 @@ namespace WindowsFormsApplication1
         {
 
         }
+
+        public IReturnable ReturnX()
+        {
+            IReturnable newX = ThisX;
+            IReturnable[] yArray = ChildTable.ReturnContents();
+            newX.Set(yArray);
+            //newX.Returnables = yArray;
+            return newX;
+        }
     }
 }
