@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class TentacleGroupBox : GroupBox
+    public class TentacleGroupBox : GroupBox, IColourable
     {
+        public TwoToneColour TTColour { get; set; }
+
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            BackColor = ColourManager.backGroundColour2;
-            ForeColor = ColourManager.textColour;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Dock = DockStyle.Fill;
@@ -22,6 +22,13 @@ namespace WindowsFormsApplication1
         public TentacleGroupBox(string labelText)
         {
             Text = labelText;
+            SetColours();
+        }
+
+        public void SetColours()
+        {
+            TTColour = ColourManager.CurrentTheme.LightBackGround;
+            Colourizer.Colourize(this, TTColour);
         }
     }
 }

@@ -6,43 +6,19 @@ using WindowsFormsApplication1;
 using System;
 
 [System.Serializable]
-public class Conversation : IReturnable
+public class Conversation : ConversationBase<StoryStage>, IReturnable
 {
     [XmlAttribute("name")]
     public string name { get; set; }
 
     [XmlArray("StoryStages")]
     [XmlArrayItem("StoryStage")]
-    public List<StoryStage> storyStages { get; set; }
-
-    [XmlIgnore]
-    public List<IReturnable> Returnables { get { return storyStages.Cast<IReturnable>().ToList(); } set { storyStages = value.Cast<StoryStage>().ToList(); } }
-
-    public IReturnable GetNewReturnable()
-    {
-        StoryStage newStoryStage = new StoryStage();
-        storyStages.Add(newStoryStage);
-        newStoryStage.Build();
-        return newStoryStage as IReturnable;
-    }
-
-    public void ReplaceContents(List<IReturnable> newContents)
-    {
-        storyStages = newContents.Cast<StoryStage>().ToList();
-    }
-
-    public void Build()
-    {
-        storyStages = new List<StoryStage>();
-        StoryStage newStoryStage = new StoryStage();
-        storyStages.Add(newStoryStage);
-        newStoryStage.Build();
-    }
+    protected override List<StoryStage> returnables { get; set; }
 
 }
 
 [System.Serializable]
-public class StoryStage : IReturnable
+public class StoryStage : ConversationBase<ConversationStage>, IReturnable
 {
     //[XmlAttribute("id")]
     [XmlIgnore]
@@ -57,37 +33,12 @@ public class StoryStage : IReturnable
 
     [XmlArray("ConversationStages")]
 	[XmlArrayItem("ConversationStage")]
-	public List<ConversationStage> conversationStages { get; set; }
-
-    [XmlIgnore]
-    public List<IReturnable> Returnables{ get { return conversationStages.Cast<IReturnable>().ToList(); } set { conversationStages = value.Cast<ConversationStage>().ToList(); } }
-
-    public IReturnable GetNewReturnable()
-    {
-        //Build();
-        ConversationStage newConversationStage = new ConversationStage();
-        conversationStages.Add(newConversationStage);
-        newConversationStage.Build();
-        return newConversationStage as IReturnable;
-    }
-
-    public void ReplaceContents(List<IReturnable> newContents)
-    {
-        conversationStages = newContents.Cast<ConversationStage>().ToList();
-    }
-
-    public void Build()
-    {
-        conversationStages = new List<ConversationStage>();
-        ConversationStage newConversationStage = new ConversationStage();
-        conversationStages.Add(newConversationStage);
-        newConversationStage.Build();
-    }
+	protected override List<ConversationStage> returnables { get; set; }
 
 }
 
 [System.Serializable]
-public class ConversationStage : IReturnable
+public class ConversationStage : ConversationBase<Line>, IReturnable
 {
     //[XmlElementAttribute("id")]
     [XmlIgnore]
@@ -95,35 +46,12 @@ public class ConversationStage : IReturnable
 
     [XmlArray("Lines")]
 	[XmlArrayItem("Line")]
-	public List<Line> lines { get; set; }
+	protected override List<Line> returnables { get; set; }
 
-    [XmlIgnore]
-    public List<IReturnable> Returnables { get { return lines.Cast<IReturnable>().ToList(); } set { lines = value.Cast<Line>().ToList(); } }
-
-    public IReturnable GetNewReturnable()
-    {
-        Line newLine = new Line();
-        lines.Add(newLine);
-        newLine.Build();
-        return newLine as IReturnable;
-    }
-
-    public void ReplaceContents(List<IReturnable> newContents)
-    {
-        lines = newContents.Cast<Line>().ToList();
-    }
-
-    public void Build()
-    {
-        lines = new List<Line>();
-        Line newLine = new Line();
-        lines.Add(newLine);
-        newLine.Build();
-    }
 }
 
 [System.Serializable]
-public class Line : IReturnable
+public class Line : ConversationBase<Reply>, IReturnable
 {
     //[XmlElementAttribute("id")]
     [XmlIgnore]
@@ -134,51 +62,35 @@ public class Line : IReturnable
 
     [XmlArray("Replies")]
 	[XmlArrayItem("Reply")]
-	public List<Reply> replies { get; set; }
+	protected override List<Reply> returnables { get; set; }
 
-    [XmlIgnore]
-    public List<IReturnable> Returnables { get { return replies.Cast<IReturnable>().ToList(); } set { replies = value.Cast<Reply>().ToList(); } }
-
-    public IReturnable GetNewReturnable()
+    public override void Build()
     {
-        Reply newReply = new Reply();
-        replies.Add(newReply);
-        newReply.Build();
-        return new Reply() as IReturnable;
-    }
-
-    public void ReplaceContents(List<IReturnable> newContents)
-    {
-        replies = newContents.Cast<Reply>().ToList();
-    }
-
-    public void Build()
-    {
-        replies = new List<Reply>();
+        returnables = new List<Reply>();
     }
 }
 
 [System.Serializable]
-public class Reply : IReturnable
+public class Reply : ConversationBase<Reply>, IReturnable
 {
     [XmlElement("ReplyText")]
     public string replyText { get; set; }
 
     [XmlIgnore]
-    public List<IReturnable> Returnables { get { return null; } set { } }
+    public override List<IReturnable> Returnables { get { return null; } set { } }
 
-    public IReturnable GetNewReturnable()
+    public override IReturnable GetNewReturnable()
     {
         return null;
     }
 
-    public void ReplaceContents(List<IReturnable> newContents)
+    public override void ReplaceContents(List<IReturnable> newContents)
     {
-
+        return;
     }
 
-    public void Build()
+    public override void Build()
     {
-        //replyText = "";
+        return;
     }
 }

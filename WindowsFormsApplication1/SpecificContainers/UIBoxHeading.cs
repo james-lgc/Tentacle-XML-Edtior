@@ -99,12 +99,12 @@ namespace WindowsFormsApplication1
 
         private void AddButtonsToPanel()
         {
-            RemoveButton1 = new TentacleButton(ButtonPanel, "Remove", ColourManager.removeButtonColours);
+            RemoveButton1 = new TentacleButton(ButtonPanel, "Remove");
             RemoveButton1.Click += new EventHandler(this.Remove);
 
             if (BoxInfo.IsCollapsable == true)
             {
-                ExpandButton1 = new TentacleButton(ButtonPanel, "Expand", ColourManager.expandButtonColours);
+                ExpandButton1 = new TentacleButton(ButtonPanel, "Expand");
                 ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
                 ParentBox.ChildTable.TentacleTable1.panel.Visible = false;
             }

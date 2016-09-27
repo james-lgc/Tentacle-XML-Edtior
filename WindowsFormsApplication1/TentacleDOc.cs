@@ -13,8 +13,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class TentacleDoc : Form
+    public partial class TentacleDoc : Form, IColourable
     {
+        public TwoToneColour TTColour { get; set; }
         MenuStrip menuStrip;
         public LoadingPanel loadingPanel;
         UIBox mainDisplay;
@@ -22,7 +23,9 @@ namespace WindowsFormsApplication1
         public TentacleDoc()
         {
             InitializeComponent();
-            this.BackColor = ColourManager.backGroundColour;
+            ColourManager.SetNightTheme();
+            SetColours();
+            //this.BackColor = ColourScheme.DarkBackGround.Colours[0];
             //WindowState = FormWindowState.Maximized;
             menuStrip = new MenuStrip();
             menuStrip.Dock = DockStyle.Top;
@@ -127,6 +130,12 @@ namespace WindowsFormsApplication1
             {
                 loadingPanel.IncreaseProgress();
             }
+        }
+
+        public void SetColours()
+        {
+            TTColour = ColourManager.CurrentTheme.DarkBackGround;
+            Colourizer.Colourize(this, TTColour);
         }
     }
 

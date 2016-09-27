@@ -69,14 +69,5 @@ namespace WindowsFormsApplication1
             }
             else { BoxHeading = new UIBoxHeading(this, sentX); }
         }
-
-        /*public void ReturnX()
-        {
-            if (ChildTable != null)
-            {
-                ChildTable.ReturnContents(ThisX.Returnables);
-                ThisX.ReplaceContents(ChildTable.YArray);
-            }
-        }*/
     }
 }

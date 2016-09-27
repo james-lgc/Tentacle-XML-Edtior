@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class UIContainer
+    public interface IColourable
     {
-        public virtual void SetChildControls(CollapsableTable cTable)
-        {
+        TwoToneColour TTColour { get; set; }
 
-        }
+        void SetColours();
     }
 }

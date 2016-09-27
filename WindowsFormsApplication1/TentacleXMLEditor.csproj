@@ -46,13 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Colours\Colourizer.cs" />
+    <Compile Include="IColourable.cs" />
+    <Compile Include="Colours\ColourScheme.cs" />
+    <Compile Include="Colours\TwoToneColour.cs" />
     <Compile Include="MoveButtonBuilder.cs" />
     <Compile Include="Parenter.cs" />
     <Compile Include="SpecificContainers\BoxInformationContainer.cs" />
     <Compile Include="CoControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ColourManager.cs" />
+    <Compile Include="Colours\ColourManager.cs" />
     <Compile Include="CoTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -85,8 +89,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="UIContainers\CollapsableTable.cs" />
-    <Compile Include="UIContainers\HeadedFixedContainer.cs" />
-    <Compile Include="UIContainers\UIContainer.cs" />
     <Compile Include="XmlClasses\Conversation.cs" />
     <Compile Include="XmlClasses\ConversationBase.cs" />
     <Compile Include="XmlClasses\ConversationList.cs" />

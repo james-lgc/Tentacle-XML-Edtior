@@ -7,21 +7,26 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class TentacleNumberBox : NumericUpDown
+    public class TentacleNumberBox : NumericUpDown, IColourable
     {
+        public TwoToneColour TTColour { get; set; }
+
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            ForeColor = ColourManager.backGroundColour;
-            BackColor = ColourManager.textColour;
             Dock = DockStyle.Top;
         }
 
         public TentacleNumberBox(int i, TableLayoutPanel panel) : base()
         {
-            panel.SetRow(this, i);
-            panel.SetColumn(this, panel.ColumnCount - 1);
-            panel.Controls.Add(this);
+            SetColours();
+            Parenter.Parent(this, panel, i, panel.ColumnCount - 1);
+        }
+
+        public void SetColours()
+        {
+            TTColour = ColourManager.CurrentTheme.TextBox;
+            Colourizer.Colourize(this, TTColour);
         }
 
     }

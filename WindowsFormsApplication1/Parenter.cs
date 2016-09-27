@@ -9,6 +9,13 @@ namespace WindowsFormsApplication1
 {
     public class Parenter
     {
+
+        static public void Parent(Control control, Control parentControl)
+        {
+            control.Parent = parentControl;
+            parentControl.Controls.Add(control);
+        }
+
         static public void Parent(Control control, TableLayoutPanel parentPanel, int rowNum, int columnNum)
         {
             control.Parent = parentPanel;

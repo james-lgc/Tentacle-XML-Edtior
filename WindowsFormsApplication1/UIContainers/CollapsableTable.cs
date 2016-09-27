@@ -7,26 +7,33 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class CollapsableTable : UIContainer
+    public class CollapsableTable : IColourable
     {
+        public TwoToneColour TTColour { get; set; }
+
         public TableLayoutPanel panel;
 
         public CollapsableTable(Control parent, int rowCount, int columnCount, DockStyle dockStyle)
         {
             panel = new TableLayoutPanel();
-            panel.Parent = parent;
-            parent.Controls.Add(panel);
+            SetColours();
+            Parenter.Parent(panel, parent);
             panel.Dock = dockStyle;
-            panel.BackColor = ColourManager.backGroundColour;
             panel.ColumnCount = columnCount;
             panel.RowCount = rowCount;
             TableSizer.AutoSize(panel);
         }
 
-        public override void SetChildControls(CollapsableTable cTable)
+        public void SetChildControls(CollapsableTable cTable)
         {
             cTable.panel.Parent = panel;
             panel.Controls.Add(cTable.panel);
+        }
+
+        public void SetColours()
+        {
+            TTColour = ColourManager.CurrentTheme.DarkBackGround;
+            Colourizer.Colourize(panel, TTColour);
         }
     }
 }

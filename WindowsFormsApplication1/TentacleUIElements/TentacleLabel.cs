@@ -7,28 +7,33 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class TentacleLabel : Label
+    public class TentacleLabel : Label, IColourable
     {
+        public TwoToneColour TTColour { get; set; }
+
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            ForeColor = ColourManager.textColour;
             TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         }
 
         public TentacleLabel (string labelText, int i, TableLayoutPanel panel) : base()
         {
             Text = labelText;
-            panel.SetRow(this, i);
-            panel.SetColumn(this, panel.ColumnCount - 2);
-            panel.Controls.Add(this);
+            SetColours();
+            Parenter.Parent(this, panel, i, panel.ColumnCount - 2);
         }
 
         public TentacleLabel (string labelText, GroupBox groupBox) : base()
         {
             Text = labelText;
-            Parent = groupBox;
-            groupBox.Controls.Add(this);
+            Parenter.Parent(this, groupBox);
+        }
+
+        public void SetColours()
+        {
+            TTColour = ColourManager.CurrentTheme.DarkBackGround;
+            Colourizer.Colourize(this, TTColour);
         }
     }
 }

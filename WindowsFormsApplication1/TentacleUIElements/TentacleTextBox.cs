@@ -7,31 +7,32 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class TentacleTextBox : TextBox
+    public class TentacleTextBox : TextBox, IColourable
     {
+        public TwoToneColour TTColour { get; set; }
+
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            ForeColor = ColourManager.backGroundColour;
-            BackColor = ColourManager.textColour;
+            SetColours();
             Dock = DockStyle.Top;
         }
 
         public TentacleTextBox(int i, TableLayoutPanel panel) : base()
         {
-            Parent = panel;
-            ForeColor = ColourManager.backGroundColour;
-            BackColor = ColourManager.textColour;
-            panel.SetRow(this, i);
-            panel.SetColumn(this, panel.ColumnCount - 1);
-            panel.Controls.Add(this);
+            Parenter.Parent(this, panel, i, panel.ColumnCount - 1);
             BringToFront();
         }
 
         public TentacleTextBox(GroupBox groupBox) : base()
         {
-            Parent = groupBox;
-            groupBox.Controls.Add(this);
+            Parenter.Parent(this, groupBox);
+        }
+
+        public void SetColours()
+        {
+            TTColour = ColourManager.CurrentTheme.TextBox;
+            Colourizer.Colourize(this, TTColour);
         }
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class TentacleButton : Button
+    public class TentacleButton : Button, IColourable
     {
-        //public virtual string Text { get; set; }
+        public TwoToneColour TTColour { get; set; }
         protected Color baseColour;
         protected Color textColour;
 
@@ -20,24 +20,49 @@ namespace WindowsFormsApplication1
             AutoSize = true;
         }
 
-        public TentacleButton(Control control, string text, Color[] colours)
+        public TentacleButton(Control control, string text)
         {
-            Text = text;
-            BackColor = colours[0];
-            ForeColor = colours[1];
-            Parent = control;
-            control.Controls.Add(this);
+            SetUp(text);
+            DetermineColour(text);
+            SetColours();
+            Parenter.Parent(this, control);
         }
 
-        public TentacleButton(CollapsableTable cTable, string text, Color[] colours)
+        public TentacleButton(CollapsableTable cTable, string text)
+        {
+            SetUp(text);
+            DetermineColour(text);
+            SetColours();
+            Parenter.Parent(this, cTable.panel, cTable.panel.RowCount - 1, 0);
+        }
+        private void SetUp(string text)
         {
             Text = text;
-            BackColor = colours[0];
-            ForeColor = colours[1];
-            Parent = cTable.panel;
-            cTable.panel.SetRow(this, cTable.panel.RowCount - 1);
-            cTable.panel.SetColumn(this, 0);
-            cTable.panel.Controls.Add(this);
+        }
+
+        private void DetermineColour(string text)
+        {
+            switch (text)
+            {
+                case "Expand":
+                    TTColour = ColourManager.CurrentTheme.ExpandButton;
+                    break;
+                case "Remove":
+                    TTColour = ColourManager.CurrentTheme.RemoveButton;
+                    break;
+                case "Move":
+                    TTColour = ColourManager.CurrentTheme.MoveButton;
+                    break;
+                default:
+                    TTColour = ColourManager.CurrentTheme.AddButton;
+                    break;
+            }
+        }
+
+        public void SetColours()
+        {
+            DetermineColour(Text);
+            Colourizer.Colourize(this, TTColour);
         }
     }
 }

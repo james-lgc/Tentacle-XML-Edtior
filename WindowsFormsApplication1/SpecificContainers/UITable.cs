@@ -14,8 +14,6 @@ namespace WindowsFormsApplication1
         private TentacleButton AddButton { get; set; }
         protected UIBox ParentBox;
         public CollapsableTable TentacleTable1 { get; private set; }
-        //public IReturnable SentX { get; set; }
-        //public List<IReturnable> YArray { get; set; }
         public List<UIBox> Boxes { get; set; }
 
         private BoxInformationContainer BoxInfos { get; set; }
@@ -39,21 +37,12 @@ namespace WindowsFormsApplication1
             {
                 RowCount = yArray.Count + 1;
             }
-            /*SentX = sentX;
-            try
-            {
-                YArray = sentX.Returnables.Cast<IReturnable>().ToList();
-            }
-            catch (NullReferenceException e)
-            {
-
-            }*/
         }
 
         private void Populate(List<IReturnable> yArray)
         {
             TentacleTable1 = new CollapsableTable(ParentBox.GroupBox1, RowCount, ParentBox.BoxInfo.ColumnCount, DockStyle.Fill);
-            AddButton = new TentacleButton(TentacleTable1, "Add" + ParentBox.BoxInfo.ExtraText, ColourManager.addButtonColours);
+            AddButton = new TentacleButton(TentacleTable1, "Add" + ParentBox.BoxInfo.ExtraText);
             AddButton.Click += new EventHandler(this.AddRow);
             if (yArray != null)
             {
@@ -89,7 +78,7 @@ namespace WindowsFormsApplication1
         public virtual void AddRow(Object sender, EventArgs e)
         {
             IReturnable NewX = ParentBox.ThisX.GetNewReturnable();
-            YArray.Add(NewX);
+            ParentBox.ThisX.AddToList(NewX);
             Cursor.Current = Cursors.WaitCursor;
             TentacleTable1.panel.SuspendLayout();
             TentacleTable1.panel.RowCount++;
@@ -98,21 +87,6 @@ namespace WindowsFormsApplication1
             Boxes.Add(uiBox);
             Cursor.Current = Cursors.Default;
             TentacleTable1.panel.ResumeLayout();
-        }
-
-        /*public void ReturnContents(List<IReturnable> sentList)
-        {
-            YArray.Clear();
-            for (int i = 0; i < Boxes.Count; i++)
-            {
-                Boxes[i].ReturnX();
-                YArray.Add(Boxes[i].ThisX);
-            }
-        }*/
-
-        private void Remove()
-        {
-
         }
     }
 }

@@ -20,15 +20,15 @@ namespace WindowsFormsApplication1
         {
             fullAppPanel = new Panel();
             fullAppPanel.Parent = form;
-            fullAppPanel.BackColor = ColourManager.backGroundColour;
+            //fullAppPanel.BackColor = ColourScheme.DarkBackGround.Colours[0];
             form.Controls.Add(fullAppPanel);
             fullAppPanel.Dock = DockStyle.Fill;
             fullAppPanel.BringToFront();
             fullAppPanel.Show();
 
             Panel subPanel = new Panel();
-            subPanel.BackColor = ColourManager.backGroundColour;
-            subPanel.ForeColor = ColourManager.backGroundColour;
+            //subPanel.BackColor = ColourScheme.DarkBackGround.Colours[0];
+            //subPanel.ForeColor = ColourScheme.DarkBackGround.Colours[0];
             subPanel.BringToFront();
             subPanel.Show();
             subPanel.Parent = fullAppPanel;
@@ -44,8 +44,8 @@ namespace WindowsFormsApplication1
             loadingLabel.Dock = DockStyle.Top;
             loadingLabel.Anchor = AnchorStyles.Top;
             subPanel.Controls.Add(loadingLabel);
-            loadingLabel.BackColor = ColourManager.backGroundColour;
-            loadingLabel.ForeColor = ColourManager.textColour;
+            //loadingLabel.BackColor = ColourScheme.DarkBackGround.Colours[0];
+            //loadingLabel.ForeColor = ColourScheme.DarkBackGround.Colours[1];
             loadingLabel.Text = "Loading...";
 
             progressBar = new ProgressBar();
@@ -57,11 +57,11 @@ namespace WindowsFormsApplication1
             subPanel.Controls.Add(progressBar);
             progressBar.Left = (subPanel.ClientSize.Width - progressBar.Width) / 2;
             progressBar.Top = (subPanel.ClientSize.Height - progressBar.Height) / 2;
-            progressBar.ForeColor = ColourManager.textColour;
-            progressBar.BackColor = ColourManager.backGroundColour;
+            //progressBar.ForeColor = ColourScheme.DarkBackGround.Colours[0];
+            //progressBar.BackColor = ColourScheme.DarkBackGround.Colours[0];
 
             //progressBar.Anchor = AnchorStyles.Bottom;
-            Calculate(cList);
+            Calculate(cList.Returnables);
             progressBar.Maximum = totalCalculations;
         }
 
@@ -79,34 +79,17 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private void Calculate(ConversationList cList)
+        private void Calculate(List<IReturnable> returnables)
         {
-            totalCalculations = 0;
-            for (int i = 0; i < cList.conversations.Count; i++)
+            for (int i = 0; i < returnables.Count; i++)
             {
-                Conversation conversation = cList.conversations[i];
-                totalCalculations++;
-                for (int j = 0; j < conversation.storyStages.Count; j++)
+                if (returnables.Count == 0 || returnables[i] == null)
                 {
-                    StoryStage storyStage = conversation.storyStages[j];
-                    totalCalculations++;
-                    for (int k = 0; k <storyStage.conversationStages.Count; k++)
-                    {
-                        ConversationStage cStage = storyStage.conversationStages[k];
-                        totalCalculations++;
-                        for (int m = 0; m < cStage.lines.Count; m++)
-                        {
-                            Line line = cStage.lines[m];
-                            totalCalculations++;
-                            if (line.replies != null && line.replies.Count > 0)
-                            {
-                                for (int n = 0; n < line.replies.Count; n++)
-                                {
-                                    totalCalculations++;
-                                }
-                            }
-                        }
-                    }
+                    break;
+                }
+                if (returnables[i] != null)
+                {
+                    Calculate(returnables[i].Returnables);
                 }
             }
         }

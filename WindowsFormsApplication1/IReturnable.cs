@@ -13,7 +13,7 @@ namespace WindowsFormsApplication1
         IReturnable GetNewReturnable();
 
         void ReplaceContents(List<IReturnable> newContents);
-        //void Return();
-
+        void Build();
+        void AddToList(IReturnable newReturnable);
     }
 }

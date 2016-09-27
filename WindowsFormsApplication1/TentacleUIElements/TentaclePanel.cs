@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1
 {
-    public class TentaclePanel : FlowLayoutPanel
+    public class TentaclePanel : FlowLayoutPanel, IColourable
     {
+        public TwoToneColour TTColour { get; set; }
+
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
@@ -19,20 +21,23 @@ namespace WindowsFormsApplication1
 
         public TentaclePanel(CollapsableTable cTable, int i) : base()
         {
-            BackColor = ColourManager.backGroundColour;
+            SetColours();
             FlowDirection = FlowDirection.LeftToRight;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            Parent = cTable.panel;
-            cTable.panel.SetRow(this, i);
-            cTable.panel.SetColumn(this, 0);
-            cTable.panel.Controls.Add(this);
+            Parenter.Parent(this, cTable.panel, i, 0);
         }
 
         public TentaclePanel(Control control)
         {
-            Parent = control;
-            control.Controls.Add(this);
+            SetColours();
+            Parenter.Parent(this, control);
+        }
+
+        public void SetColours()
+        {
+            TTColour = ColourManager.CurrentTheme.DarkBackGround;
+            Colourizer.Colourize(this, TTColour);
         }
     }
 }
