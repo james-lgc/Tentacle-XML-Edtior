@@ -59,7 +59,7 @@ namespace WindowsFormsApplication1
                     {
                         columnCount++;
                     }
-                    CollapsableTable subTable = new CollapsableTable(form, groupBox, rowCount: fields, columnCount: columnCount);
+                    CollapsableTable subTable = new CollapsableTable(groupBox, fields, columnCount, DockStyle.Top);
                     subTable.panel.Dock = DockStyle.Top;
                     cTable = table;
                     for (int i = 0; i < fields; i++)

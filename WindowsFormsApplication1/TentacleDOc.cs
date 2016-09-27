@@ -70,7 +70,7 @@ namespace WindowsFormsApplication1
                 Controls.Add(loadingPanel.fullAppPanel);
                 UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
                 //mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
-                mainDisplay.ChildTable.cTable.panel.AutoScroll = true;
+                mainDisplay.ChildTable.TentacleTable1.panel.AutoScroll = true;
                 loadingPanel.fullAppPanel.Visible = false;
                 Controls.Remove(loadingPanel.fullAppPanel);
                 loadingPanel = null;
@@ -87,7 +87,7 @@ namespace WindowsFormsApplication1
             loadingPanel = new LoadingPanel(this, cList);
             loadingPanel.fullAppPanel.BringToFront();
             mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
-            mainDisplay.ChildTable.cTable.panel.AutoScroll = true;
+            mainDisplay.ChildTable.TentacleTable1.panel.AutoScroll = true;
             AutoScroll = true;
             loadingPanel.fullAppPanel.Visible = false;
             Controls.Remove(loadingPanel.fullAppPanel);

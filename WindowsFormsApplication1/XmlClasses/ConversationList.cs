@@ -29,6 +29,11 @@ public class ConversationList : IReturnable
         conversations = newContents.Cast<Conversation>().ToList();
     }
 
+    public void AddToList(IReturnable)
+    {
+
+    }
+
     public void Build()
     {
         if (conversations == null)

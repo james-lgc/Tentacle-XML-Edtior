@@ -27,8 +27,6 @@ namespace WindowsFormsApplication1
             info[1] = new DataBindingInfo("stageNumber", false);
             boxInfos[2] = new BoxInformation(boxLabel: "StoryStages", fields: 2, numFields: new int[] { 1 }, labelTexts: new string[] { "StoryThread", "StageNumber" }, extraText: "Dialogue", bindingInfo: info);
 
-            //info = new DataBindingInfo[1];
-            //info[0] = new DataBindingInfo("", true);
             boxInfos[3] = new BoxInformation(boxLabel: "Dialogue", fields: 1, numFields: new int[] { 0 }, labelTexts:  new string[] { "Dialogue Id" }, extraText: "Line");
 
             info = new DataBindingInfo[1];

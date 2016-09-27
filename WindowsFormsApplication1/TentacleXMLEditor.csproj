@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MoveButtonBuilder.cs" />
+    <Compile Include="Parenter.cs" />
     <Compile Include="SpecificContainers\BoxInformationContainer.cs" />
     <Compile Include="CoControl.cs">
       <SubType>Component</SubType>
@@ -58,6 +60,9 @@
     <Compile Include="IExpandable.cs" />
     <Compile Include="IReturnable.cs" />
     <Compile Include="SpecificContainers\BoxInformation.cs" />
+    <Compile Include="TentacleUIElements\TentacleGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WrappedReply.cs" />
     <Compile Include="SpecificContainers\UIBox.cs" />
     <Compile Include="LoadingPanel.cs" />
@@ -83,6 +88,7 @@
     <Compile Include="UIContainers\HeadedFixedContainer.cs" />
     <Compile Include="UIContainers\UIContainer.cs" />
     <Compile Include="XmlClasses\Conversation.cs" />
+    <Compile Include="XmlClasses\ConversationBase.cs" />
     <Compile Include="XmlClasses\ConversationList.cs" />
     <Compile Include="TentacleDoc.cs">
       <SubType>Form</SubType>

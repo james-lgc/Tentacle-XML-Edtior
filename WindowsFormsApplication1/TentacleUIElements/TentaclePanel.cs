@@ -10,6 +10,13 @@ namespace WindowsFormsApplication1
 {
     public class TentaclePanel : FlowLayoutPanel
     {
+        protected override void OnCreateControl()
+        {
+            base.OnCreateControl();
+            Margin = Padding.Empty;
+            Dock = DockStyle.Left;
+        }
+
         public TentaclePanel(CollapsableTable cTable, int i) : base()
         {
             BackColor = ColourManager.backGroundColour;
@@ -20,7 +27,6 @@ namespace WindowsFormsApplication1
             cTable.panel.SetRow(this, i);
             cTable.panel.SetColumn(this, 0);
             cTable.panel.Controls.Add(this);
-
         }
 
         public TentaclePanel(Control control)

@@ -8,7 +8,6 @@ namespace WindowsFormsApplication1
 {
     public struct BoxInformation
     {
-        //private BoxInformation box;
         public string BoxLabel { get; }
         public int Fields { get; }
         public int ColumnCount { get; }
@@ -18,7 +17,6 @@ namespace WindowsFormsApplication1
         public string ExtraText { get; }
         public DataBindingInfo[] BindingInfo { get; }
         public bool IsScrollable { get; }
-        //public virtual X NextBox { get; }
 
         public BoxInformation(string boxLabel = null, int fields = 0, int columnCount = 1, int[] numFields = null, string[] labelTexts = null, bool isCollapsable = true, string extraText = null, DataBindingInfo[] bindingInfo = null, bool isScrollable = false)
         {

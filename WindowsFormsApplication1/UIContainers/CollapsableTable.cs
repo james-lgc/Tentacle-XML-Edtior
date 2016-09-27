@@ -11,23 +11,21 @@ namespace WindowsFormsApplication1
     {
         public TableLayoutPanel panel;
 
-        public CollapsableTable(TentacleDoc form, Control parent, int rowCount, int columnCount)
+        public CollapsableTable(Control parent, int rowCount, int columnCount, DockStyle dockStyle)
         {
             panel = new TableLayoutPanel();
             panel.Parent = parent;
             parent.Controls.Add(panel);
-            panel.Dock = DockStyle.Fill;
+            panel.Dock = dockStyle;
             panel.BackColor = ColourManager.backGroundColour;
             panel.ColumnCount = columnCount;
             panel.RowCount = rowCount;
-            //parent.SetChildControls(this);
             TableSizer.AutoSize(panel);
         }
 
         public override void SetChildControls(CollapsableTable cTable)
         {
             cTable.panel.Parent = panel;
-            //panel.SetColumn(cTable.panel, 1);
             panel.Controls.Add(cTable.panel);
         }
     }

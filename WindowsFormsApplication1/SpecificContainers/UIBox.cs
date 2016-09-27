@@ -10,87 +10,73 @@ namespace WindowsFormsApplication1
     public class UIBox
     {
         public static TentacleDoc TentacleDoc1 { get; set; }
-        private BoxInformation BoxInformation1 { get; set; }
+        public UITable ParentTable { get; set; }
+        public UITable ChildTable { get; set; }
+        public UIBoxHeading BoxHeading { get; set; }
+        public TentacleGroupBox GroupBox1 { get; set; }
 
         public IReturnable ThisX { get; set; }
-        List<IReturnable> yArray;
-        public GroupBox GroupBox1 { get; set; }
-        public UIBoxHeading BoxHeading { get; set; }
-
-        public UITable ParentTable { get; set; }
         protected bool IsExpanded { get; set; }
 
+        private BoxInformation BoxInformation1 { get; set; }
         private BoxInformationContainer BoxInfos { get; set; }
-        private int BoxIndex { get; set; }
         public BoxInformation BoxInfo { get; private set; }
-
-        
-
-        public UITable ChildTable { get; set; }
+        private int BoxIndex { get; set; }
 
 
         public UIBox(IReturnable sentX, UITable parentTable, int rowNum, BoxInformationContainer boxInfos, int boxIndex, TentacleDoc tDoc = null)
         {
-            if (tDoc != null)
-            {
-                TentacleDoc1 = tDoc;
-            }
+            SetProperties(sentX, parentTable, boxInfos, boxIndex, tDoc);
             TentacleDoc1.IncreaseLoadingProgress();
+            DebugReplies();
+            ParentGroupBox(parentTable, rowNum, tDoc);
+            Populate(sentX);
+        }
+
+        private void SetProperties(IReturnable sentX, UITable parentTable, BoxInformationContainer boxInfos, int boxIndex, TentacleDoc tDoc = null)
+        {
+            if (tDoc != null) { TentacleDoc1 = tDoc; }
             ThisX = sentX;
             ParentTable = parentTable;
             BoxIndex = boxIndex;
-            if (boxIndex < boxInfos.BoxInfos.Length)
-            {
-                BoxInfo = boxInfos.BoxInfos[boxIndex];
-            }
-            else { return; }
-            if (boxIndex == boxInfos.BoxInfos.Length -1)
-            {
-                bool yesBool = true;
-            }
+            BoxInfo = boxInfos.BoxInfos[boxIndex];
+            GroupBox1 = new TentacleGroupBox(BoxInfo.BoxLabel);
+        }
 
-            GroupBox1 = new GroupBox();
-            GroupBox1.BackColor = ColourManager.backGroundColour2;
-            GroupBox1.ForeColor = ColourManager.textColour;
-            GroupBox1.AutoSize = true;
-            GroupBox1.Text = BoxInfo.BoxLabel;
-            GroupBox1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            GroupBox1.Dock = DockStyle.Fill;
+        private void DebugReplies()
+        {
+            if (BoxIndex == BoxInfos.BoxInfos.Length - 1) { bool yesBool = true; }
+        }
+
+        private void ParentGroupBox(UITable parentTable, int rowNum, TentacleDoc tDoc)
+        {
             if (ParentTable != null)
             {
-                GroupBox1.Parent = ParentTable.cTable.panel;
-                ParentTable.cTable.panel.SetCellPosition(GroupBox1, new TableLayoutPanelCellPosition(rowNum, ParentTable.cTable.panel.ColumnCount - 1));
-                ParentTable.cTable.panel.Controls.Add(GroupBox1);
+                Parenter.Parent(GroupBox1, parentTable.TentacleTable1.panel, rowNum, ParentTable.TentacleTable1.panel.ColumnCount - 1);
             }
             else if (tDoc != null)
             {
-                GroupBox1.Parent = tDoc;
-                GroupBox1.Dock = DockStyle.Fill;
-                tDoc.Controls.Add(GroupBox1);
+                Parenter.Parent(GroupBox1, tDoc);
             }
-            if (boxIndex < boxInfos.BoxInfos.Length - 1)
-            {
-                ChildTable = new UITable(GroupBox1, ThisX as IReturnable, BoxInfo.ColumnCount, BoxInfo.ExtraText, boxInfos, boxIndex);
-                BoxHeading = new UIBoxHeading(this);
-            }
-            else
-            {
-                BoxHeading = new UIBoxHeading(this);
-            }  
         }
 
-        public void SaveContents()
+        private void Populate(IReturnable sentX)
         {
-
+            if (BoxIndex < BoxInfos.BoxInfos.Length - 1)
+            {
+                ChildTable = new UITable(this, sentX as IReturnable, sentX.Returnables, BoxInfos, BoxIndex);
+                BoxHeading = new UIBoxHeading(this, sentX);
+            }
+            else { BoxHeading = new UIBoxHeading(this, sentX); }
         }
 
-        public void ReturnX()
+        /*public void ReturnX()
         {
             if (ChildTable != null)
             {
                 ChildTable.ReturnContents(ThisX.Returnables);
                 ThisX.ReplaceContents(ChildTable.YArray);
             }
-        }
+        }*/
     }
 }
