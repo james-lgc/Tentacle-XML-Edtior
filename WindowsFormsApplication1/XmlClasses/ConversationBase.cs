@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 [XmlInclude(typeof(ConversationStage))]
 [XmlInclude(typeof(Line))]
 [XmlInclude(typeof(Reply))]
-public abstract class ConversationBase<X> : IReturnable
+public abstract class ConversationBase<X> : IReturnable where X : IReturnable, new()
 {
 
     [XmlIgnore]
@@ -37,12 +37,18 @@ public abstract class ConversationBase<X> : IReturnable
 
     public virtual IReturnable GetNewReturnable()
     {
-        return null;
+        X newX = new X();
+        returnables.Add(newX);
+        newX.Build();
+        return newX as IReturnable;
     }
 
     public virtual void Build()
     {
-
+        returnables = new List<X>();
+        X newX = new X();
+        returnables.Add(newX);
+        newX.Build();
     }
 
 }

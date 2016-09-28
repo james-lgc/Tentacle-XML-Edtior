@@ -16,23 +16,6 @@ public class Conversation : ConversationBase<StoryStage>, IReturnable
     [XmlArray("StoryStages")]
     [XmlArrayItem("StoryStage", typeof(StoryStage))]
     public override List<StoryStage> returnables { get; set; }
-
-    public override IReturnable GetNewReturnable()
-    {
-        StoryStage newT = new StoryStage();
-        returnables.Add(newT);
-        newT.Build();
-        return newT as IReturnable;
-    }
-
-    public override void Build()
-    {
-        returnables = new List<StoryStage>();
-        StoryStage newT = new StoryStage();
-        returnables.Add(newT);
-        newT.Build();
-    }
-
 }
 
 [System.Serializable]
@@ -54,22 +37,6 @@ public class StoryStage : ConversationBase<ConversationStage>, IReturnable
     [XmlArrayItem("ConversationStage", typeof(ConversationStage))]
     public override List<ConversationStage> returnables { get; set; }
 
-    public override IReturnable GetNewReturnable()
-    {
-        ConversationStage newT = new ConversationStage();
-        returnables.Add(newT);
-        newT.Build();
-        return newT as IReturnable;
-    }
-
-    public override void Build()
-    {
-        returnables = new List<ConversationStage>();
-        ConversationStage newT = new ConversationStage();
-        returnables.Add(newT);
-        newT.Build();
-    }
-
 }
 
 [System.Serializable]
@@ -83,23 +50,6 @@ public class ConversationStage : ConversationBase<Line>, IReturnable
     [XmlArray("Lines")]
     [XmlArrayItem("Line", typeof(Line))]
     public override List<Line> returnables { get; set; }
-
-    public override IReturnable GetNewReturnable()
-    {
-        Line newT = new Line();
-        returnables.Add(newT);
-        newT.Build();
-        return newT as IReturnable;
-    }
-
-    public override void Build()
-    {
-        returnables = new List<Line>();
-        Line newT = new Line();
-        returnables.Add(newT);
-        newT.Build();
-    }
-
 
 }
 
@@ -118,14 +68,6 @@ public class Line : ConversationBase<Reply>, IReturnable
     [XmlArrayItem("Reply", typeof(Reply))]
     public override List<Reply> returnables { get; set; }
 
-    public override IReturnable GetNewReturnable()
-    {
-        Reply newT = new Reply();
-        returnables.Add(newT);
-        newT.Build();
-        return newT as IReturnable;
-    }
-
     public override void Build()
     {
         returnables = new List<Reply>();
@@ -134,7 +76,7 @@ public class Line : ConversationBase<Reply>, IReturnable
 
 [System.Serializable]
 [XmlType("Reply")]
-public class Reply : ConversationBase<string>, IReturnable
+public class Reply : ConversationBase<Reply>, IReturnable
 {
     [XmlElement("ReplyText")]
     public string replyText { get; set; }
