@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace TentacleXMLEditor
 {
     partial class TentacleDoc
     {
