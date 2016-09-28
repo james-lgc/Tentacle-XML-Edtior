@@ -25,7 +25,7 @@ namespace WindowsFormsApplication1
             SetProperties(sentBox);
             BuildColumns();
             Populate();
-            BuildButtons(HeadingTable);
+            BuildButtons();
             BindData(sentReturnable);
         }
 
@@ -42,7 +42,9 @@ namespace WindowsFormsApplication1
         {
             if (BoxInfo.Fields > 0)
             {
+                UseHeaderTable = true;
                 HeadingTable = new CollapsableTable(ParentBox.GroupBox1, BoxInfo.Fields, ColumnCount, DockStyle.Top);
+                HeadingTable.panel.SendToBack();
                 for (int i = 0; i < BoxInfo.Fields; i++)
                 {
                     BuildLabel(i);
@@ -53,8 +55,8 @@ namespace WindowsFormsApplication1
 
         private void BuildColumns()
         {
-            if (BoxInfo.IsCollapsable == true) { ColumnCount++; }
-            if (BoxInfo.LabelTexts != null) { ColumnCount++; }
+            //if (BoxInfo.IsCollapsable == true) { ColumnCount++; }
+            if (BoxInfo.LabelTexts != null) { ColumnCount++; ColumnCount++; }
         }
 
         private void BuildLabel(int i)
@@ -83,12 +85,12 @@ namespace WindowsFormsApplication1
             InputControls[i] = textBox;
         }
 
-        private void BuildButtons(CollapsableTable sentTable)
+        private void BuildButtons()
         {
             switch (UseHeaderTable)
             {
                 case true:
-                    ButtonPanel = new TentaclePanel(sentTable, sentTable.panel.RowCount - 1);
+                    ButtonPanel = new TentaclePanel(HeadingTable, HeadingTable.panel.RowCount - 1);
                     break;
                 case false:
                     ButtonPanel = new TentaclePanel(ParentBox.GroupBox1);

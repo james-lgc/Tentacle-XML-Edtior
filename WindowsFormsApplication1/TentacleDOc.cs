@@ -63,20 +63,20 @@ namespace WindowsFormsApplication1
             {
                 string path = openFileDialog1.FileName;
                 FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));
-                ConversationList cList = serializer.Deserialize(reader) as ConversationList;
+                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList), new Type[] {typeof(Conversation), typeof(StoryStage), typeof(ConversationStage), typeof(Line), typeof(Reply) });
+                ConversationList cList = (ConversationList)serializer.Deserialize(reader) as ConversationList;
                 reader.Close();
 
                 BoxInformationContainer boxInfos = new BoxInformationContainer();
-                loadingPanel = new LoadingPanel(this, cList);
-                loadingPanel.fullAppPanel.BringToFront();
-                Controls.Add(loadingPanel.fullAppPanel);
+                //loadingPanel = new LoadingPanel(this, cList);
+                //loadingPanel.fullAppPanel.BringToFront();
+                //Controls.Add(loadingPanel.fullAppPanel);
                 UIBox mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
                 //mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
                 mainDisplay.ChildTable.TentacleTable1.panel.AutoScroll = true;
-                loadingPanel.fullAppPanel.Visible = false;
-                Controls.Remove(loadingPanel.fullAppPanel);
-                loadingPanel = null;
+                //loadingPanel.fullAppPanel.Visible = false;
+                //Controls.Remove(loadingPanel.fullAppPanel);
+                //loadingPanel = null;
                 //AutoScroll = true;
                 Application.DoEvents();
             }
@@ -113,7 +113,7 @@ namespace WindowsFormsApplication1
                 string path = saveFileDialog1.FileName;
                 //string path = "C:/Users/James/Documents/conversationsTestSave.xml";
                 FileStream stream = new FileStream(path, FileMode.Create);
-                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList));
+                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList), new Type[] {typeof(Conversation), typeof(StoryStage), typeof(ConversationStage), typeof(Line), typeof(Reply) });
                 serializer.Serialize(stream, saveFile);
                 stream.Close();
             }

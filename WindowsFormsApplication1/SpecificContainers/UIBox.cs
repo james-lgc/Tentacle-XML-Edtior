@@ -39,6 +39,7 @@ namespace WindowsFormsApplication1
             ThisX = sentX;
             ParentTable = parentTable;
             BoxIndex = boxIndex;
+            BoxInfos = boxInfos;
             BoxInfo = boxInfos.BoxInfos[boxIndex];
             GroupBox1 = new TentacleGroupBox(BoxInfo.BoxLabel);
         }
@@ -62,7 +63,11 @@ namespace WindowsFormsApplication1
 
         private void Populate(IReturnable sentX)
         {
-            if (BoxIndex < BoxInfos.BoxInfos.Length - 1)
+            if (BoxIndex == 0)
+            {
+                ChildTable = new UITable(this, sentX as IReturnable, sentX.Returnables, BoxInfos, BoxIndex);
+            }
+            else if (BoxIndex < BoxInfos.BoxInfos.Length - 1)
             {
                 ChildTable = new UITable(this, sentX as IReturnable, sentX.Returnables, BoxInfos, BoxIndex);
                 BoxHeading = new UIBoxHeading(this, sentX);

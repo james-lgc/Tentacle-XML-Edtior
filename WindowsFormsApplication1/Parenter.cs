@@ -19,7 +19,9 @@ namespace WindowsFormsApplication1
         static public void Parent(Control control, TableLayoutPanel parentPanel, int rowNum, int columnNum)
         {
             control.Parent = parentPanel;
-            parentPanel.SetCellPosition(control, new TableLayoutPanelCellPosition(rowNum, columnNum));
+            parentPanel.SetRow(control, rowNum);
+            parentPanel.SetColumn(control, columnNum);
+            //parentPanel.SetCellPosition(control, new TableLayoutPanelCellPosition(rowNum, columnNum));
             parentPanel.Controls.Add(control);
         }
 

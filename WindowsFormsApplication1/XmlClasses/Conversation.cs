@@ -5,19 +5,38 @@ using System.Linq;
 using WindowsFormsApplication1;
 using System;
 
+
 [System.Serializable]
+[XmlType("Conversation")]
 public class Conversation : ConversationBase<StoryStage>, IReturnable
 {
     [XmlAttribute("name")]
     public string name { get; set; }
 
     [XmlArray("StoryStages")]
-    [XmlArrayItem("StoryStage")]
-    protected override List<StoryStage> returnables { get; set; }
+    [XmlArrayItem("StoryStage", typeof(StoryStage))]
+    public override List<StoryStage> returnables { get; set; }
+
+    public override IReturnable GetNewReturnable()
+    {
+        StoryStage newT = new StoryStage();
+        returnables.Add(newT);
+        newT.Build();
+        return newT as IReturnable;
+    }
+
+    public override void Build()
+    {
+        returnables = new List<StoryStage>();
+        StoryStage newT = new StoryStage();
+        returnables.Add(newT);
+        newT.Build();
+    }
 
 }
 
 [System.Serializable]
+[XmlType("StoryStage")]
 public class StoryStage : ConversationBase<ConversationStage>, IReturnable
 {
     //[XmlAttribute("id")]
@@ -25,19 +44,36 @@ public class StoryStage : ConversationBase<ConversationStage>, IReturnable
     public int id { get; set; }
 
     [XmlElement("StoryThread")]
-	public string storyThread { get; set; }
+    public string storyThread { get; set; }
 
     [XmlElement("StageNumber")]
-	public int stageNumber { get; set; }
+    public int stageNumber { get; set; }
 
 
     [XmlArray("ConversationStages")]
-	[XmlArrayItem("ConversationStage")]
-	protected override List<ConversationStage> returnables { get; set; }
+    [XmlArrayItem("ConversationStage", typeof(ConversationStage))]
+    public override List<ConversationStage> returnables { get; set; }
+
+    public override IReturnable GetNewReturnable()
+    {
+        ConversationStage newT = new ConversationStage();
+        returnables.Add(newT);
+        newT.Build();
+        return newT as IReturnable;
+    }
+
+    public override void Build()
+    {
+        returnables = new List<ConversationStage>();
+        ConversationStage newT = new ConversationStage();
+        returnables.Add(newT);
+        newT.Build();
+    }
 
 }
 
 [System.Serializable]
+[XmlType("ConversationStage")]
 public class ConversationStage : ConversationBase<Line>, IReturnable
 {
     //[XmlElementAttribute("id")]
@@ -45,12 +81,30 @@ public class ConversationStage : ConversationBase<Line>, IReturnable
     public int id { get; set; }
 
     [XmlArray("Lines")]
-	[XmlArrayItem("Line")]
-	protected override List<Line> returnables { get; set; }
+    [XmlArrayItem("Line", typeof(Line))]
+    public override List<Line> returnables { get; set; }
+
+    public override IReturnable GetNewReturnable()
+    {
+        Line newT = new Line();
+        returnables.Add(newT);
+        newT.Build();
+        return newT as IReturnable;
+    }
+
+    public override void Build()
+    {
+        returnables = new List<Line>();
+        Line newT = new Line();
+        returnables.Add(newT);
+        newT.Build();
+    }
+
 
 }
 
 [System.Serializable]
+[XmlType("Line")]
 public class Line : ConversationBase<Reply>, IReturnable
 {
     //[XmlElementAttribute("id")]
@@ -58,11 +112,19 @@ public class Line : ConversationBase<Reply>, IReturnable
     public int id { get; set; }
 
     [XmlElement("LineText")]
-	public string lineText { get; set; }
+    public string lineText { get; set; }
 
     [XmlArray("Replies")]
-	[XmlArrayItem("Reply")]
-	protected override List<Reply> returnables { get; set; }
+    [XmlArrayItem("Reply", typeof(Reply))]
+    public override List<Reply> returnables { get; set; }
+
+    public override IReturnable GetNewReturnable()
+    {
+        Reply newT = new Reply();
+        returnables.Add(newT);
+        newT.Build();
+        return newT as IReturnable;
+    }
 
     public override void Build()
     {
@@ -71,7 +133,8 @@ public class Line : ConversationBase<Reply>, IReturnable
 }
 
 [System.Serializable]
-public class Reply : ConversationBase<Reply>, IReturnable
+[XmlType("Reply")]
+public class Reply : ConversationBase<string>, IReturnable
 {
     [XmlElement("ReplyText")]
     public string replyText { get; set; }

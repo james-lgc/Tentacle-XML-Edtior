@@ -1,40 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using WindowsFormsApplication1;
+using System.Xml;
+using System.Xml.Serialization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApplication1
+
+//[System.Serializable]
+[Serializable()]
+[XmlInclude(typeof(ConversationList))]
+[XmlInclude(typeof(Conversation))]
+[XmlInclude(typeof(StoryStage))]
+[XmlInclude(typeof(ConversationStage))]
+[XmlInclude(typeof(Line))]
+[XmlInclude(typeof(Reply))]
+public abstract class ConversationBase<X> : IReturnable
 {
-    [System.Serializable]
-    public abstract class ConversationBase
+
+    [XmlIgnore]
+    public virtual List<X> returnables { get; set; }
+
+    [XmlIgnore]
+    public virtual List<IReturnable> Returnables { get { return returnables.Cast<IReturnable>().ToList(); } set { returnables = value.Cast<X>().ToList(); } }
+
+    public virtual void AddToList(IReturnable newReturnable)
     {
-        protected virtual List<T> returnables { get; set; }
-        public virtual List<IReturnable> Returnables { get { return returnables.Cast<IReturnable>().ToList(); } set { returnables = value.Cast<T>().ToList(); } }
-
-        public virtual void AddToList(IReturnable newReturnable)
-        {
-            returnables.Cast<IReturnable>().ToList().Add(newReturnable);
-        }
-
-        public virtual void ReplaceContents(List<IReturnable> newContents)
-        {
-            returnables = newContents.Cast<T>().ToList();
-        }
-
-        public virtual IReturnable GetNewReturnable()
-        {
-            T newT = new T();
-            returnables.Add(newT);
-            newT.Build();
-            return newT as IReturnable;
-        }
-
-        public virtual void Build()
-        {
-            T newT = new T();
-            returnables.Add(newT);
-            newT.Build();
-        }
+        Returnables.Cast<IReturnable>().ToList().Add(newReturnable);
     }
+
+    public virtual void ReplaceContents(List<IReturnable> newContents)
+    {
+        returnables = newContents.Cast<X>().ToList();
+    }
+
+    public virtual IReturnable GetNewReturnable()
+    {
+        return null;
+    }
+
+    public virtual void Build()
+    {
+
+    }
+
 }
+

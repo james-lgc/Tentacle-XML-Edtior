@@ -4,13 +4,23 @@ using WindowsFormsApplication1;
 using System.Xml.Serialization;
 using System.Xml;
 
-[XmlRoot("ConversationListCollection")]
-[System.Serializable]
+
+
+[System.Serializable()]
+[XmlRoot("ConversationList")]
 public class ConversationList : ConversationBase<Conversation>, IReturnable
 {
-	[XmlArray("Conversations")]
-	[XmlArrayItem("Conversation")]
-	protected override List<Conversation> returnables { get; set; }
+    [XmlArray("Conversations")]
+    [XmlArrayItem("Conversation", typeof(Conversation))]
+    public override List<Conversation> returnables { get; set; }
+
+    public override IReturnable GetNewReturnable()
+    {
+        Conversation newT = new Conversation();
+        returnables.Add(newT);
+        newT.Build();
+        return newT as IReturnable;
+    }
 
     public override void Build()
     {

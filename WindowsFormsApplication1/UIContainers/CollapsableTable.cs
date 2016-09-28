@@ -24,12 +24,6 @@ namespace WindowsFormsApplication1
             TableSizer.AutoSize(panel);
         }
 
-        public void SetChildControls(CollapsableTable cTable)
-        {
-            cTable.panel.Parent = panel;
-            panel.Controls.Add(cTable.panel);
-        }
-
         public void SetColours()
         {
             TTColour = ColourManager.CurrentTheme.DarkBackGround;
