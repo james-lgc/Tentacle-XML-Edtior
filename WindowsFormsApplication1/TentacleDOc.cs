@@ -68,6 +68,10 @@ namespace TentacleXMLEditor
             {
                 SaveFile(CurrentFilePath);
             }
+            else
+            {
+                SaveAs(sender, e);
+            }
         }
 
         private void SaveFile(string path)
