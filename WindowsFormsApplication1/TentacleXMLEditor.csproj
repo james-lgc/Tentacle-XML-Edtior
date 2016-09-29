@@ -64,7 +64,7 @@
     <Compile Include="IExpandable.cs" />
     <Compile Include="IReturnable.cs" />
     <Compile Include="SpecificContainers\BoxInformation.cs" />
-    <Compile Include="TentacleMenuStrip.cs">
+    <Compile Include="TentacleUIElements\TentacleMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TentacleUIElements\MoveButton.cs">
