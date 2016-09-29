@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace TentacleXMLEditor
 {
@@ -16,11 +17,16 @@ namespace TentacleXMLEditor
         public MoveButton(Control control, string text = null) : base(control, text)
         {
             Menu1 = new ContextMenuStrip();
-            Parenter.Parent(Menu1, this);
             UpButton = new ToolStripMenuItem("Up");
             Menu1.Items.Add(UpButton);
             DownButton = new ToolStripMenuItem("Down");
             Menu1.Items.Add(DownButton);
+            Click += new EventHandler(ShowMenu);
+        }
+
+        private void ShowMenu(Object sender, EventArgs e)
+        {
+            Menu1.Show(this.PointToScreen(new Point(0, Height)));
         }
     }
 }

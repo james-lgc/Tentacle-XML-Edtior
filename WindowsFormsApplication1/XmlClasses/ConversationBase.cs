@@ -40,9 +40,33 @@ public abstract class ConversationBase<X> : IReturnable where X : IReturnable, n
         returnables.RemoveAt(i);
     }
 
-    public void MoveAt(bool isUp, int index)
+    public virtual void MoveAt(int change, int index)
     {
-        //returnables.
+        List<X> tempList = new List<X>();
+        for (int i = 0; i < returnables.Count; i++)
+        {
+            tempList.Add(returnables[i]);
+        }
+        returnables[index] = tempList[index + change];
+        returnables[index + change] = tempList[index];
+        /*X selectedX = returnables[index];
+        tempList.RemoveAt(index);
+        returnables.Clear();
+        for (int i = 0; i < tempList.Count + 1; i++)
+        {
+            if (i < index + change)
+            {
+                returnables.Add(tempList[i]);
+            }
+            else if (i == index + change)
+            {
+                returnables.Add(selectedX);
+            }
+            else if (i > index + change)
+            {
+                returnables.Add(tempList[i]);
+            }
+        }*/
     }
 
     public virtual IReturnable GetNewReturnable()

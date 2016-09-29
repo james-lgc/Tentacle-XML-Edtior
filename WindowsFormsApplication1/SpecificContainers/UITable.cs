@@ -105,11 +105,23 @@ namespace TentacleXMLEditor
             panel.RowCount = panel.RowCount - 1;
         }
 
-        public void Move(bool isUp, UIBox box)
+        public void Move(int change, UIBox box)
         {
             Control control = box.GroupBox1;
             TableLayoutPanel panel = TentacleTable1.panel;
             int index = panel.GetRow(control);
+            ParentBox.ThisX.MoveAt(change, index);
+
+            List<UIBox> tempList = new List<UIBox>();
+            for (int i = 0; i < Boxes.Count; i++)
+            {
+                tempList.Add(Boxes[i]);
+            }
+            Boxes[index] = tempList[index + change];
+            Boxes[index + change] = tempList[index];
+            Control swappedControl = panel.GetControlFromPosition(0, index + change);
+            panel.SetRow(control, index + change);
+            panel.SetRow(swappedControl, index);
         }
     }
 }

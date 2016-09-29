@@ -105,7 +105,7 @@ namespace TentacleXMLEditor
             RemoveButton1 = new TentacleButton(ButtonPanel, "Remove");
             RemoveButton1.Click += new EventHandler(this.Remove);
 
-            MoveButton1 = new MoveButton(ButtonPanel);
+            MoveButton1 = new MoveButton(ButtonPanel, "Move");
             MoveButton1.Menu1.Items[0].Click += (sender, e) => Move(sender, e, true);
             MoveButton1.Menu1.Items[1].Click += (sender, e) => Move(sender, e, false);
 
@@ -143,7 +143,17 @@ namespace TentacleXMLEditor
 
         private void Move(Object sender, EventArgs e, bool isUp)
         {
-            ParentBox.ParentTable.Move(isUp, ParentBox);
+            int change = 0;
+            switch (isUp)
+            {
+                case true:
+                    change = -1;
+                    break;
+                case false:
+                    change = 1;
+                    break;
+            }
+            ParentBox.ParentTable.Move(change, ParentBox);
         }
 
         private void ToggleExpansion(Object sender, EventArgs e)
