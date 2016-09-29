@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colours\Colourizer.cs" />
+    <Compile Include="FileManager.cs" />
     <Compile Include="IColourable.cs" />
     <Compile Include="Colours\ColourScheme.cs" />
     <Compile Include="Colours\TwoToneColour.cs" />

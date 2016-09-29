@@ -30,10 +30,10 @@ namespace TentacleXMLEditor
             fileMenu.DropDownItems.Add(saveButton);
             fileMenu.DropDownItems.Add(loadButton);
 
-            newButton.Click += tDoc.CreateNew;
-            saveAsButton.Click += tDoc.SaveAs;
-            saveButton.Click += tDoc.Save;
-            loadButton.Click += tDoc.BypassLoad;
+            newButton.Click += (sender, e) => tDoc.Build(sender, e, new ProcessFile(tDoc.FileManager1.New));
+            saveAsButton.Click += tDoc.FileManager1.SaveAs;
+            saveButton.Click += tDoc.FileManager1.Save;
+            loadButton.Click += (sender, e) => tDoc.Build(sender, e, new ProcessFile(tDoc.FileManager1.Load));
         }
     }
 }

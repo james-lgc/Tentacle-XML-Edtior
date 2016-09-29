@@ -10,7 +10,7 @@ namespace TentacleXMLEditor
 {
     class XMLHandler
     {
-        public XmlSerializer Serializer { get; private set; }
+        public static XmlSerializer Serializer { get; private set; }
 
         public XMLHandler()
         {
