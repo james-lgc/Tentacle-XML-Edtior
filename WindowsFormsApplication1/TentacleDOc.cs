@@ -32,7 +32,7 @@ namespace TentacleXMLEditor
         public TentacleDoc()
         {
             InitializeComponent();
-            FileManager1 = new FileManager();
+            FileManager1 = new FileManager(this);
             ColourManager.SetNightTheme();
             SetColours();
             //WindowState = FormWindowState.Maximized;

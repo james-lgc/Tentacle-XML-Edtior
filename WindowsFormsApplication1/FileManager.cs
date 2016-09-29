@@ -15,6 +15,11 @@ namespace TentacleXMLEditor
         private string CurrentFilePath { get; set; }
         private XmlSerializer serializer;
 
+        public FileManager(TentacleDoc tDoc)
+        {
+            TentacleDoc1 = tDoc;
+        }
+
         public ConversationList New()
         {
             CurrentFilePath = null;
