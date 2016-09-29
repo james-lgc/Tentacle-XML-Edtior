@@ -67,6 +67,9 @@
     <Compile Include="TentacleMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TentacleUIElements\MoveButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TentacleUIElements\TentacleGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>

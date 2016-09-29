@@ -40,6 +40,11 @@ public abstract class ConversationBase<X> : IReturnable where X : IReturnable, n
         returnables.RemoveAt(i);
     }
 
+    public void MoveAt(bool isUp, int index)
+    {
+        //returnables.
+    }
+
     public virtual IReturnable GetNewReturnable()
     {
         X newX = new X();

@@ -18,6 +18,7 @@ namespace TentacleXMLEditor
 
         private TentacleButton ExpandButton1 { get; set; }
         private TentacleButton RemoveButton1 { get; set; }
+        private MoveButton MoveButton1 { get; set; }
         private TentaclePanel ButtonPanel { get; set; }
 
         public UIBoxHeading(UIBox sentBox, IReturnable sentReturnable)
@@ -104,6 +105,10 @@ namespace TentacleXMLEditor
             RemoveButton1 = new TentacleButton(ButtonPanel, "Remove");
             RemoveButton1.Click += new EventHandler(this.Remove);
 
+            MoveButton1 = new MoveButton(ButtonPanel);
+            MoveButton1.Menu1.Items[0].Click += (sender, e) => Move(sender, e, true);
+            MoveButton1.Menu1.Items[1].Click += (sender, e) => Move(sender, e, false);
+
             if (BoxInfo.IsCollapsable == true)
             {
                 ExpandButton1 = new TentacleButton(ButtonPanel, "Expand");
@@ -134,6 +139,11 @@ namespace TentacleXMLEditor
         private void Remove(object sender, EventArgs e)
         {
             ParentBox.ParentTable.RemoveAt(ParentBox);
+        }
+
+        private void Move(Object sender, EventArgs e, bool isUp)
+        {
+            ParentBox.ParentTable.Move(isUp, ParentBox);
         }
 
         private void ToggleExpansion(Object sender, EventArgs e)

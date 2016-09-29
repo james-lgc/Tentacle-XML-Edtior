@@ -119,10 +119,8 @@ namespace TentacleXMLEditor
         public void SetColours()
         {
             TTColour = ColourManager.CurrentTheme.DarkBackGround;
-            BackColor = TTColour.Colours[0];
-            ForeColor = TTColour.Colours[1];
-            SubPanel.BackColor = TTColour.Colours[0];
-            SubPanel.ForeColor = TTColour.Colours[1];
+            Colourizer.Colourize(this, TTColour);
+            Colourizer.Colourize(SubPanel, TTColour);
         }
     }
 }

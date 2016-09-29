@@ -16,5 +16,6 @@ namespace TentacleXMLEditor
         void Build();
         void AddToList(IReturnable newReturnable);
         void RemoveAt(int index);
+        void MoveAt(bool isUp, int index);
     }
 }

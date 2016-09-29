@@ -104,5 +104,12 @@ namespace TentacleXMLEditor
             }
             panel.RowCount = panel.RowCount - 1;
         }
+
+        public void Move(bool isUp, UIBox box)
+        {
+            Control control = box.GroupBox1;
+            TableLayoutPanel panel = TentacleTable1.panel;
+            int index = panel.GetRow(control);
+        }
     }
 }

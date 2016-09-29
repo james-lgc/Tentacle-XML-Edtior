@@ -43,5 +43,10 @@ namespace TentacleXMLEditor
             tDoc.Parent = null;
             tDoc.Controls.Remove(control);
         }
+
+        static public void Parent(ToolStripMenuItem item, ContextMenu menu)
+        {
+            menu.MenuItems.Add(item.Text);
+        }
     }
 }

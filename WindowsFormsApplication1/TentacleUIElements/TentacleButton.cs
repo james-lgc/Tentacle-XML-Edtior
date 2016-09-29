@@ -20,7 +20,7 @@ namespace TentacleXMLEditor
             AutoSize = true;
         }
 
-        public TentacleButton(Control control, string text)
+        public TentacleButton(Control control, string text = null)
         {
             SetUp(text);
             DetermineColour(text);
