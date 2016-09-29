@@ -31,5 +31,17 @@ namespace TentacleXMLEditor
             control.Dock = DockStyle.Fill;
             tDoc.Controls.Add(control);
         }
+
+        static public void DeParent(Control control, Control parentControl)
+        {
+            control.Parent = null;
+            parentControl.Controls.Remove(control);
+        }
+
+        static public void DeParent(Control control, TentacleDoc tDoc)
+        {
+            tDoc.Parent = null;
+            tDoc.Controls.Remove(control);
+        }
     }
 }

@@ -24,10 +24,10 @@ namespace TentacleXMLEditor
             Parenter.Parent(this, panel, i, panel.ColumnCount - 2);
         }
 
-        public TentacleLabel (string labelText, GroupBox groupBox) : base()
+        public TentacleLabel (string labelText, Control control) : base()
         {
             Text = labelText;
-            Parenter.Parent(this, groupBox);
+            Parenter.Parent(this, control);
         }
 
         public void SetColours()

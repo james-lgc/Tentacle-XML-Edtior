@@ -13,120 +13,95 @@ using System.Windows.Forms;
 
 namespace TentacleXMLEditor
 {
+    public delegate void LoadingHandler(object sender, EventArgs e);
+
     public partial class TentacleDoc : Form, IColourable
     {
+        private XMLHandler Handler { get; set; }
         public TwoToneColour TTColour { get; set; }
-        MenuStrip menuStrip;
-        public LoadingPanel loadingPanel;
+        TentacleMenuStrip MenuStrip1 { get; set; }
+        public TentacleLoadingPanel loadingPanel;
         UIBox mainDisplay;
+
+        public event LoadingHandler BeginLoading;
+        public event LoadingHandler EndLoading;
 
         public TentacleDoc()
         {
             InitializeComponent();
             ColourManager.SetNightTheme();
             SetColours();
-            //this.BackColor = ColourScheme.DarkBackGround.Colours[0];
             //WindowState = FormWindowState.Maximized;
-            menuStrip = new MenuStrip();
-            menuStrip.Dock = DockStyle.Top;
-            menuStrip.SendToBack();
-            this.Controls.Add(menuStrip);
-
-            ToolStripMenuItem fileMenu = new ToolStripMenuItem();
-            fileMenu.Text = "File";
-
-            ToolStripMenuItem newButton = new ToolStripMenuItem();
-            newButton.Text = "New";
-            ToolStripMenuItem saveButton = new ToolStripMenuItem();
-            saveButton.Text = "Save";
-            ToolStripMenuItem loadButton = new ToolStripMenuItem();
-            loadButton.Text = "Load";
-            
-
-            menuStrip.Items.Add(fileMenu);
-
-            fileMenu.DropDownItems.Add(newButton);
-            fileMenu.DropDownItems.Add(saveButton);
-            fileMenu.DropDownItems.Add(loadButton);
-            
-            newButton.Click += CreateNew;
-            saveButton.Click += SaveFile;
-            loadButton.Click += BypassLoad;
-            
+            MenuStrip1 = new TentacleMenuStrip(this);
+            Handler = new XMLHandler();
         }
 
-        private void BypassLoad(object sender, EventArgs e)
+        public void BypassLoad(object sender, EventArgs e)
         {
-            //string path = "C:/Users/James/Documents/conversations.xml";
             DialogResult open = openFileDialog1.ShowDialog();
             if (open == DialogResult.OK)
             {
                 string path = openFileDialog1.FileName;
                 FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList), new Type[] {typeof(Conversation), typeof(StoryStage), typeof(ConversationStage), typeof(Line), typeof(Reply) });
-                ConversationList cList = (ConversationList)serializer.Deserialize(reader) as ConversationList;
+                ConversationList cList = (ConversationList)Handler.Serializer.Deserialize(reader) as ConversationList;
                 reader.Close();
-
                 BoxInformationContainer boxInfos = new BoxInformationContainer();
-                //loadingPanel = new LoadingPanel(this, cList);
-                //loadingPanel.fullAppPanel.BringToFront();
-                //Controls.Add(loadingPanel.fullAppPanel);
+                //BuildLoadingPanel(cList);
                 mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
-                //mainDisplay = new MainDisplay(cList, this, null, 0, "Conversations", 1, "Conversation");
                 mainDisplay.ChildTable.TentacleTable1.panel.AutoScroll = true;
-                //loadingPanel.fullAppPanel.Visible = false;
-                //Controls.Remove(loadingPanel.fullAppPanel);
-                //loadingPanel = null;
-                //AutoScroll = true;
+                AutoScroll = true;
                 Application.DoEvents();
+                //EndLoad();
             }
         }
 
-        private void CreateNew(object sender, EventArgs e)
+        public void CreateNew(object sender, EventArgs e)
         {
             ConversationList cList = new ConversationList();
             BoxInformationContainer boxInfos = new BoxInformationContainer();
             cList.Build();
-            loadingPanel = new LoadingPanel(this, cList);
-            loadingPanel.fullAppPanel.BringToFront();
+            //BuildLoadingPanel(cList);
             mainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
             mainDisplay.ChildTable.TentacleTable1.panel.AutoScroll = true;
             AutoScroll = true;
-            loadingPanel.fullAppPanel.Visible = false;
-            Controls.Remove(loadingPanel.fullAppPanel);
-            loadingPanel = null;
+            //EndLoad();
         }
 
-        private void SaveFile(object sender, EventArgs e)
+        public void SaveFile(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             DialogResult save = saveFileDialog1.ShowDialog();
 
             if (save == DialogResult.OK)
             {
-                //ConversationList saveFile = new ConversationList();
-                //saveFile.conversations = mainDisplay.characterTable.ReturnContents;
-
-                //mainDisplay.ReturnX();
                 ConversationList saveFile = mainDisplay.ThisX as ConversationList;
-
                 string path = saveFileDialog1.FileName;
-                //string path = "C:/Users/James/Documents/conversationsTestSave.xml";
                 FileStream stream = new FileStream(path, FileMode.Create);
-                XmlSerializer serializer = new XmlSerializer(typeof(ConversationList), new Type[] {typeof(Conversation), typeof(StoryStage), typeof(ConversationStage), typeof(Line), typeof(Reply) });
-                serializer.Serialize(stream, saveFile);
+                Handler.Serializer.Serialize(stream, saveFile);
                 stream.Close();
             }
         }
 
-        private void TentacleDoc_Load(object sender, EventArgs e)
+        private void BuildLoadingPanel(ConversationList cList)
         {
+            loadingPanel = new TentacleLoadingPanel(this, cList);
+            if (BeginLoading != null)
+            {
+                BeginLoading(this, new EventArgs());
+            }
+        }
 
+        private void EndLoad()
+        {
+            if (EndLoading != null)
+            {
+                EndLoading(this, new EventArgs());
+            }
         }
 
         public void IncreaseLoadingProgress()
         {
-            if (loadingPanel != null)
+            if (loadingPanel != null && loadingPanel.Visible == true)
             {
                 loadingPanel.IncreaseProgress();
             }

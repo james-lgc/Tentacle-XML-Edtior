@@ -43,7 +43,7 @@
             this.ClientSize = new System.Drawing.Size(775, 496);
             this.Name = "TentacleDoc";
             this.Text = "TentacleDoc";
-            this.Load += new System.EventHandler(this.TentacleDoc_Load);
+            //this.Load += new System.EventHandler(this.TentacleDoc_Load);
             this.ResumeLayout(false);
 
         }

@@ -23,6 +23,7 @@ namespace TentacleXMLEditor
         {
             Text = labelText;
             SetColours();
+            Visible = false;
         }
 
         public void SetColours()

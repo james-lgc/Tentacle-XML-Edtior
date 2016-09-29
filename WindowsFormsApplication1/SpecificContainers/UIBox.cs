@@ -31,6 +31,7 @@ namespace TentacleXMLEditor
             DebugReplies();
             ParentGroupBox(parentTable, rowNum, tDoc);
             Populate(sentX);
+            GroupBox1.Visible = true;
         }
 
         private void SetProperties(IReturnable sentX, UITable parentTable, BoxInformationContainer boxInfos, int boxIndex, TentacleDoc tDoc = null)
