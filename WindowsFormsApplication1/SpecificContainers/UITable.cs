@@ -88,5 +88,21 @@ namespace TentacleXMLEditor
             Cursor.Current = Cursors.Default;
             TentacleTable1.panel.ResumeLayout();
         }
+
+        public void RemoveAt(UIBox unwatedBox)
+        {
+            Control control = unwatedBox.GroupBox1;
+            TableLayoutPanel panel = TentacleTable1.panel;
+            int index = panel.GetRow(control);
+            ParentBox.ThisX.RemoveAt(index);
+            control.Dispose();
+            Boxes.RemoveAt(index);
+            for (int i = index + 1; i < panel.RowCount; i++)
+            {
+                Control moveControl = panel.GetControlFromPosition(0, i);
+                panel.SetRow(moveControl, i - 1);
+            }
+            panel.RowCount = panel.RowCount - 1;
+        }
     }
 }

@@ -35,6 +35,11 @@ public abstract class ConversationBase<X> : IReturnable where X : IReturnable, n
         returnables = newContents.Cast<X>().ToList();
     }
 
+    public void RemoveAt(int i)
+    {
+        returnables.RemoveAt(i);
+    }
+
     public virtual IReturnable GetNewReturnable()
     {
         X newX = new X();

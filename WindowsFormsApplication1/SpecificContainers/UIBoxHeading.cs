@@ -133,7 +133,7 @@ namespace TentacleXMLEditor
 
         private void Remove(object sender, EventArgs e)
         {
-
+            ParentBox.ParentTable.RemoveAt(ParentBox);
         }
 
         private void ToggleExpansion(Object sender, EventArgs e)

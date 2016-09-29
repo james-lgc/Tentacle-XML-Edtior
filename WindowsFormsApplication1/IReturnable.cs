@@ -15,5 +15,6 @@ namespace TentacleXMLEditor
         void ReplaceContents(List<IReturnable> newContents);
         void Build();
         void AddToList(IReturnable newReturnable);
+        void RemoveAt(int index);
     }
 }

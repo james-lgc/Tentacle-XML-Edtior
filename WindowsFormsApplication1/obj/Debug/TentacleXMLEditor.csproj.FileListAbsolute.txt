@@ -1,9 +1,9 @@
 C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\TentacleXMLEditor.csprojResolveAssemblyReference.cache
 C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\TentacleXMLEditor.csproj.GenerateResource.Cache
-C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\bin\Debug\TentacleXMLEdiotr.exe.config
-C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\bin\Debug\TentacleXMLEdiotr.exe
-C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\bin\Debug\TentacleXMLEdiotr.pdb
 C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\TentacleXMLEditor.TentacleDoc.resources
 C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\TentacleXMLEditor.Properties.Resources.resources
-C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\TentacleXMLEdiotr.exe
-C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\TentacleXMLEdiotr.pdb
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\bin\Debug\TentacleXMLEditor.exe.config
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\bin\Debug\TentacleXMLEditor.exe
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\bin\Debug\TentacleXMLEditor.pdb
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\TentacleXMLEditor.exe
+C:\Users\James\Documents\Git\TentacleXmlEditor\WindowsFormsApplication1\obj\Debug\TentacleXMLEditor.pdb
