@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace TentacleXMLEditor
+namespace TentacleXMLEditor.UIElements
 {
     public class MoveButton : TentacleButton
     {

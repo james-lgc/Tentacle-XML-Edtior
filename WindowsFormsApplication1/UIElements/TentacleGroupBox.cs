@@ -6,29 +6,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentacleXMLEditor
+namespace TentacleXMLEditor.UIElements
 {
-    public class TentacleNumberBox : NumericUpDown, IColourable
+    public class TentacleGroupBox : GroupBox, IColourable
     {
         public TwoToneColour TTColour { get; set; }
 
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            Dock = DockStyle.Top;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            Dock = DockStyle.Fill;
         }
 
-        public TentacleNumberBox(int i, TableLayoutPanel panel) : base()
+        public TentacleGroupBox(string labelText)
         {
+            Text = labelText;
             SetColours();
-            Parenter.Parent(this, panel, i, panel.ColumnCount - 1);
+            Visible = false;
         }
 
         public void SetColours()
         {
-            TTColour = ColourManager.CurrentTheme.TextBox;
+            TTColour = ColourManager.CurrentTheme.LightBackGround;
             Colourizer.Colourize(this, TTColour);
         }
-
     }
 }

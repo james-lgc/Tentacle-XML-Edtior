@@ -6,29 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentacleXMLEditor
+namespace TentacleXMLEditor.UIElements
 {
-    public class TentacleLabel : Label, IColourable
+    public class TentacleTable : TableLayoutPanel, IColourable
     {
         public TwoToneColour TTColour { get; set; }
 
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-        }
-
-        public TentacleLabel (string labelText, int i, TableLayoutPanel panel) : base()
-        {
-            Text = labelText;
             SetColours();
-            Parenter.Parent(this, panel, i, panel.ColumnCount - 2);
+            TableSizer.AutoSize(this);
         }
 
-        public TentacleLabel (string labelText, Control control) : base()
+        public TentacleTable(Control parent, int rowCount, int columnCount, DockStyle dockStyle)
         {
-            Text = labelText;
-            Parenter.Parent(this, control);
+            Parenter.Parent(this, parent);
+            Dock = dockStyle;
+            ColumnCount = columnCount;
+            RowCount = rowCount;
         }
 
         public void SetColours()

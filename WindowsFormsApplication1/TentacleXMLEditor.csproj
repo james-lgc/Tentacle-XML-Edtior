@@ -61,38 +61,38 @@
     <Compile Include="IExpandable.cs" />
     <Compile Include="IReturnable.cs" />
     <Compile Include="SpecificContainers\BoxInformation.cs" />
-    <Compile Include="TentacleUIElements\TentacleMenuStrip.cs">
+    <Compile Include="UIElements\TentacleMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TentacleUIElements\MoveButton.cs">
+    <Compile Include="UIElements\MoveButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TentacleUIElements\TentacleGroupBox.cs">
+    <Compile Include="UIElements\TentacleGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SpecificContainers\UIBox.cs" />
-    <Compile Include="TentacleUIElements\TentacleLoadingPanel.cs">
+    <Compile Include="UIElements\TentacleLoadingPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SpecificContainers\UIBoxHeading.cs" />
     <Compile Include="SpecificContainers\UITable.cs" />
     <Compile Include="TableSizer.cs" />
-    <Compile Include="TentacleUIElements\TentacleButton.cs">
+    <Compile Include="UIElements\TentacleButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TentacleUIElements\TentacleLabel.cs">
+    <Compile Include="UIElements\TentacleLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TentacleUIElements\TentacleNumberBox.cs">
+    <Compile Include="UIElements\TentacleNumberBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TentacleUIElements\TentaclePanel.cs">
+    <Compile Include="UIElements\TentaclePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TentacleUIElements\TentacleTextBox.cs">
+    <Compile Include="UIElements\TentacleTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TentacleUIElements\TentacleTable.cs">
+    <Compile Include="UIElements\TentacleTable.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="XmlClasses\ConversationList.cs" />

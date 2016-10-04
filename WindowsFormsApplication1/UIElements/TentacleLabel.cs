@@ -1,37 +1,33 @@
 ﻿using System;
 using TentacleXMLEditor.Colours;
 using System.Windows.Forms;
-using System.Drawing;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentacleXMLEditor
+namespace TentacleXMLEditor.UIElements
 {
-    public class TentaclePanel : FlowLayoutPanel, IColourable
+    public class TentacleLabel : Label, IColourable
     {
         public TwoToneColour TTColour { get; set; }
 
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            Margin = Padding.Empty;
-            Dock = DockStyle.Left;
+            TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         }
 
-        public TentaclePanel(TentacleTable cTable, int i) : base()
+        public TentacleLabel (string labelText, int i, TableLayoutPanel panel) : base()
         {
+            Text = labelText;
             SetColours();
-            FlowDirection = FlowDirection.LeftToRight;
-            AutoSize = true;
-            AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            Parenter.Parent(this, cTable, i, 0);
+            Parenter.Parent(this, panel, i, panel.ColumnCount - 2);
         }
 
-        public TentaclePanel(Control control)
+        public TentacleLabel (string labelText, Control control) : base()
         {
-            SetColours();
+            Text = labelText;
             Parenter.Parent(this, control);
         }
 
