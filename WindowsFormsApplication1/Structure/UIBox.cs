@@ -26,7 +26,6 @@ namespace TentacleXMLEditor.Structure
         {
             SetProperties(sentX, parentTable, boxInfos, boxIndex, tDoc);
             TentacleDoc1.IncreaseLoadingProgress();
-            DebugReplies();
             ParentGroupBox(parentTable, rowNum, tDoc);
             Populate(sentX);
             GroupBox1.Visible = true;
@@ -41,11 +40,6 @@ namespace TentacleXMLEditor.Structure
             BoxInfos = boxInfos;
             BoxInfo = boxInfos.BoxInfos[boxIndex];
             GroupBox1 = new TentacleGroupBox(BoxInfo.BoxLabel);
-        }
-
-        private void DebugReplies()
-        {
-            if (BoxIndex == BoxInfos.BoxInfos.Length - 1) { bool yesBool = true; }
         }
 
         private void ParentGroupBox(UITable parentTable, int rowNum, TentacleDoc tDoc)
