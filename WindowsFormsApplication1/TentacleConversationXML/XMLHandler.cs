@@ -2,7 +2,7 @@
 using TentacleConversationXML;
 using System.Xml.Serialization;
 
-namespace TentacleXMLEditor.Processors
+namespace TentacleConversationXML
 {
     class XMLHandler
     {

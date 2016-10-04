@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TentacleXMLEditor.Interfaces
+namespace TentacleConversationXML
 {
     public interface IReturnable
     {

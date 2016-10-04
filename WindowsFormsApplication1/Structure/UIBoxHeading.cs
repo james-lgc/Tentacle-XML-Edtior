@@ -1,4 +1,5 @@
 ﻿using System;
+using TentacleConversationXML;
 using TentacleXMLEditor.Interfaces;
 using TentacleXMLEditor.UIElements;
 using System.Windows.Forms;
