@@ -1,12 +1,8 @@
 ﻿using System;
 using TentacleXMLEditor.Interfaces;
 using System.Collections.Generic;
-using System.Xml;
 using System.Xml.Serialization;
 using System.Linq;
-using TentacleXMLEditor;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TentacleXMLEditor.ConversationSystem
 {

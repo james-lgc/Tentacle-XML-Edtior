@@ -3,9 +3,6 @@ using TentacleXMLEditor.Interfaces;
 using TentacleXMLEditor.UIElements;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TentacleXMLEditor.Structure
 {
@@ -61,7 +58,6 @@ namespace TentacleXMLEditor.Structure
         {
             if (labelTexts != null)
             {
-                Label label = new Label();
                 int j = 0;
                 if (labelTexts.Length > 1)
                 {
@@ -110,8 +106,7 @@ namespace TentacleXMLEditor.Structure
         public void Move(int change, UIBox box)
         {
             Control control = box.GroupBox1;
-            TableLayoutPanel panel = TentacleTable1;
-            int index = panel.GetRow(control);
+            int index = TentacleTable1.GetRow(control);
             if (index + change >= 0 & index + change < Boxes.Count)
             {
                 ParentBox.ThisX.MoveAt(change, index);
@@ -123,9 +118,9 @@ namespace TentacleXMLEditor.Structure
                 }
                 Boxes[index] = tempList[index + change];
                 Boxes[index + change] = tempList[index];
-                Control swappedControl = panel.GetControlFromPosition(0, index + change);
-                panel.SetRow(control, index + change);
-                panel.SetRow(swappedControl, index);
+                Control swappedControl = TentacleTable1.GetControlFromPosition(0, index + change);
+                TentacleTable1.SetRow(control, index + change);
+                TentacleTable1.SetRow(swappedControl, index);
             }
         }
     }
