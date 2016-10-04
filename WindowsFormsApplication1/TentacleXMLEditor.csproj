@@ -47,20 +47,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Colours\Colourizer.cs" />
-    <Compile Include="FileManager.cs" />
-    <Compile Include="IColourable.cs" />
+    <Compile Include="Processors\FileManager.cs" />
+    <Compile Include="Interfaces\IColourable.cs" />
     <Compile Include="Colours\ColourScheme.cs" />
     <Compile Include="Colours\TwoToneColour.cs" />
-    <Compile Include="Parenter.cs" />
-    <Compile Include="SpecificContainers\BoxInformationContainer.cs" />
+    <Compile Include="Processors\Parenter.cs" />
+    <Compile Include="Structure\BoxInformationContainer.cs" />
     <Compile Include="Colours\ColourManager.cs" />
     <Compile Include="CoTableLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DataBindingInfo.cs" />
-    <Compile Include="IExpandable.cs" />
-    <Compile Include="IReturnable.cs" />
-    <Compile Include="SpecificContainers\BoxInformation.cs" />
+    <Compile Include="Structure\DataBindingInfo.cs" />
+    <Compile Include="Interfaces\IExpandable.cs" />
+    <Compile Include="Interfaces\IReturnable.cs" />
+    <Compile Include="Structure\BoxInformation.cs" />
     <Compile Include="UIElements\TentacleMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -70,13 +70,13 @@
     <Compile Include="UIElements\TentacleGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SpecificContainers\UIBox.cs" />
+    <Compile Include="Structure\UIBox.cs" />
     <Compile Include="UIElements\TentacleLoadingPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SpecificContainers\UIBoxHeading.cs" />
-    <Compile Include="SpecificContainers\UITable.cs" />
-    <Compile Include="TableSizer.cs" />
+    <Compile Include="Structure\UIBoxHeading.cs" />
+    <Compile Include="Structure\UITable.cs" />
+    <Compile Include="Processors\TableSizer.cs" />
     <Compile Include="UIElements\TentacleButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -95,8 +95,8 @@
     <Compile Include="UIElements\TentacleTable.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="XmlClasses\ConversationList.cs" />
-    <Compile Include="XmlClasses\ConversationBase.cs" />
+    <Compile Include="ConversationSystem\ConversationList.cs" />
+    <Compile Include="ConversationSystem\ConversationBase.cs" />
     <Compile Include="TentacleDoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,7 +105,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XMLHandler.cs" />
+    <Compile Include="Processors\XMLHandler.cs" />
     <EmbeddedResource Include="TentacleDoc.resx">
       <DependentUpon>TentacleDoc.cs</DependentUpon>
     </EmbeddedResource>

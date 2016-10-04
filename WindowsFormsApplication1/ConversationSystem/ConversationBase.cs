@@ -1,4 +1,5 @@
 ﻿using System;
+using TentacleXMLEditor.Interfaces;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Serialization;
@@ -7,9 +8,8 @@ using TentacleXMLEditor;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentacleXMLEditor
+namespace TentacleXMLEditor.ConversationSystem
 {
-    //[System.Serializable]
     [Serializable()]
     [XmlInclude(typeof(ConversationList))]
     [XmlInclude(typeof(Conversation))]

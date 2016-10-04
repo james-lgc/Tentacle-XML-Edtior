@@ -1,11 +1,12 @@
 ﻿using System;
+using TentacleXMLEditor.Interfaces;
 using System.Xml;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 using TentacleXMLEditor;
 using System.Linq;
 
-namespace TentacleXMLEditor
+namespace TentacleXMLEditor.ConversationSystem
 {
     [System.Serializable()]
     [XmlRoot("ConversationList")]

@@ -1,4 +1,6 @@
 ﻿using System;
+using TentacleXMLEditor.Interfaces;
+using TentacleXMLEditor.Processors;
 using TentacleXMLEditor.UIElements;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -6,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentacleXMLEditor
+namespace TentacleXMLEditor.Structure
 {
     public class UIBox
     {

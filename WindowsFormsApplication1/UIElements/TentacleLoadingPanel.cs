@@ -1,5 +1,8 @@
 ﻿using System;
+using TentacleXMLEditor.ConversationSystem;
 using TentacleXMLEditor.Colours;
+using TentacleXMLEditor.Interfaces;
+using TentacleXMLEditor.Processors;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,5 +1,10 @@
 ﻿using System;
+using TentacleXMLEditor.ConversationSystem;
 using TentacleXMLEditor.Colours;
+using TentacleXMLEditor.Interfaces;
+using TentacleXMLEditor.Processors;
+using TentacleXMLEditor.Structure;
+using TentacleXMLEditor.UIElements;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;

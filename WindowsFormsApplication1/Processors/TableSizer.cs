@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentacleXMLEditor
+namespace TentacleXMLEditor.Processors
 {
     public class TableSizer
     {
@@ -30,7 +30,6 @@ namespace TentacleXMLEditor
         public static void SetSize(TableLayoutPanel panel)
         {
             panel.CellBorderStyle = TableLayoutPanelCellBorderStyle.Inset;
-
         }
     }
 }
