@@ -1,5 +1,5 @@
 ﻿using System;
-using TentacleXMLEditor.ConversationSystem;
+using TentacleConversationXML;
 using TentacleXMLEditor.Colours;
 using TentacleXMLEditor.Interfaces;
 using TentacleXMLEditor.Processors;

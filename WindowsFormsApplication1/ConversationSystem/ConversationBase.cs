@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using System.Linq;
 
-namespace TentacleXMLEditor.ConversationSystem
+//using the TentacleConversationXML namespace shared with Unity projects
+namespace TentacleConversationXML
 {
     [Serializable()]
     [XmlInclude(typeof(ConversationList))]
@@ -17,10 +18,10 @@ namespace TentacleXMLEditor.ConversationSystem
     {
 
         [XmlIgnore]
-        public virtual List<X> returnables { get; set; }
+        public virtual List<X> xList { get; set; }
 
         [XmlIgnore]
-        public virtual List<IReturnable> Returnables { get { return returnables.Cast<IReturnable>().ToList(); } set { returnables = value.Cast<X>().ToList(); } }
+        public virtual List<IReturnable> Returnables { get { return xList.Cast<IReturnable>().ToList(); } set { xList = value.Cast<X>().ToList(); } }
 
         public virtual void AddToList(IReturnable newReturnable)
         {
@@ -29,38 +30,38 @@ namespace TentacleXMLEditor.ConversationSystem
 
         public virtual void ReplaceContents(List<IReturnable> newContents)
         {
-            returnables = newContents.Cast<X>().ToList();
+            xList = newContents.Cast<X>().ToList();
         }
 
         public void RemoveAt(int i)
         {
-            returnables.RemoveAt(i);
+            xList.RemoveAt(i);
         }
 
         public virtual void MoveAt(int change, int index)
         {
             List<X> tempList = new List<X>();
-            for (int i = 0; i < returnables.Count; i++)
+            for (int i = 0; i < xList.Count; i++)
             {
-                tempList.Add(returnables[i]);
+                tempList.Add(xList[i]);
             }
-            returnables[index] = tempList[index + change];
-            returnables[index + change] = tempList[index];
+            xList[index] = tempList[index + change];
+            xList[index + change] = tempList[index];
         }
 
         public virtual IReturnable GetNewReturnable()
         {
             X newX = new X();
-            returnables.Add(newX);
+            xList.Add(newX);
             newX.Build();
             return newX as IReturnable;
         }
 
         public virtual void Build()
         {
-            returnables = new List<X>();
+            xList = new List<X>();
             X newX = new X();
-            returnables.Add(newX);
+            xList.Add(newX);
             newX.Build();
         }
 

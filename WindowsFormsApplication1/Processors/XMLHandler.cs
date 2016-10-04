@@ -1,5 +1,5 @@
 ﻿using System;
-using TentacleXMLEditor.ConversationSystem;
+using TentacleConversationXML;
 using System.Xml.Serialization;
 
 namespace TentacleXMLEditor.Processors

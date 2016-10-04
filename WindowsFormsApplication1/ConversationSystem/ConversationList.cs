@@ -4,7 +4,8 @@ using System.Xml;
 using System.Xml.Serialization;
 using System.Collections.Generic;
 
-namespace TentacleXMLEditor.ConversationSystem
+//using the TentacleConversationXML namespace shared with Unity projects
+namespace TentacleConversationXML
 {
     [System.Serializable()]
     [XmlRoot("ConversationList")]
@@ -12,11 +13,11 @@ namespace TentacleXMLEditor.ConversationSystem
     {
         [XmlArray("Conversations")]
         [XmlArrayItem("Conversation", typeof(Conversation))]
-        public override List<Conversation> returnables { get; set; }
+        public override List<Conversation> xList { get; set; }
 
         public override void Build()
         {
-            if (returnables == null)
+            if (xList == null)
             {
                 base.Build();
             }
@@ -32,7 +33,7 @@ namespace TentacleXMLEditor.ConversationSystem
 
         [XmlArray("StoryStages")]
         [XmlArrayItem("StoryStage", typeof(StoryStage))]
-        public override List<StoryStage> returnables { get; set; }
+        public override List<StoryStage> xList { get; set; }
     }
 
     [System.Serializable]
@@ -51,7 +52,7 @@ namespace TentacleXMLEditor.ConversationSystem
 
         [XmlArray("ConversationStages")]
         [XmlArrayItem("ConversationStage", typeof(ConversationStage))]
-        public override List<ConversationStage> returnables { get; set; }
+        public override List<ConversationStage> xList { get; set; }
 
     }
 
@@ -65,7 +66,7 @@ namespace TentacleXMLEditor.ConversationSystem
 
         [XmlArray("Lines")]
         [XmlArrayItem("Line", typeof(Line))]
-        public override List<Line> returnables { get; set; }
+        public override List<Line> xList { get; set; }
 
     }
 
@@ -81,11 +82,11 @@ namespace TentacleXMLEditor.ConversationSystem
 
         [XmlArray("Replies")]
         [XmlArrayItem("Reply", typeof(Reply))]
-        public override List<Reply> returnables { get; set; }
+        public override List<Reply> xList { get; set; }
 
         public override void Build()
         {
-            returnables = new List<Reply>();
+            xList = new List<Reply>();
         }
     }
 

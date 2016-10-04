@@ -1,5 +1,5 @@
 ﻿using System;
-using TentacleXMLEditor.ConversationSystem;
+using TentacleConversationXML;
 using TentacleXMLEditor.Structure;
 using System.IO;
 using System.Windows.Forms;
