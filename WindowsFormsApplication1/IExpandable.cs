@@ -9,7 +9,7 @@ namespace TentacleXMLEditor
     public interface IExpandable
     {
         bool isExpanded { get; set; }
-        CollapsableTable cTable { get; set; }
+        TentacleTable cTable { get; set; }
 
         void ToggleExpansion();
     }

@@ -11,7 +11,7 @@ namespace TentacleXMLEditor
     {
         private UIBox ParentBox { get; set; }
         private BoxInformation BoxInfo { get; set; }
-        private CollapsableTable HeadingTable { get; set; }
+        private TentacleTable HeadingTable { get; set; }
         public Control[] InputControls { get; set; }
         private int ColumnCount { get; set; }
         private bool UseHeaderTable { get; set; }
@@ -44,8 +44,8 @@ namespace TentacleXMLEditor
             if (BoxInfo.Fields > 0)
             {
                 UseHeaderTable = true;
-                HeadingTable = new CollapsableTable(ParentBox.GroupBox1, BoxInfo.Fields, ColumnCount, DockStyle.Top);
-                HeadingTable.panel.SendToBack();
+                HeadingTable = new TentacleTable(ParentBox.GroupBox1, BoxInfo.Fields, ColumnCount, DockStyle.Top);
+                HeadingTable.SendToBack();
                 for (int i = 0; i < BoxInfo.Fields; i++)
                 {
                     BuildLabel(i);
@@ -56,7 +56,6 @@ namespace TentacleXMLEditor
 
         private void BuildColumns()
         {
-            //if (BoxInfo.IsCollapsable == true) { ColumnCount++; }
             if (BoxInfo.LabelTexts != null) { ColumnCount++; ColumnCount++; }
         }
 
@@ -64,7 +63,7 @@ namespace TentacleXMLEditor
         {
             if (BoxInfo.LabelTexts != null)
             {
-                TentacleLabel tLabel = new TentacleLabel(BoxInfo.LabelTexts[i], i, HeadingTable.panel);
+                TentacleLabel tLabel = new TentacleLabel(BoxInfo.LabelTexts[i], i, HeadingTable);
             }
         }
 
@@ -76,13 +75,13 @@ namespace TentacleXMLEditor
                 {
                     if (i == BoxInfo.NumFields[j])
                     {
-                        TentacleNumberBox numberBox = new TentacleNumberBox(i, HeadingTable.panel);
+                        TentacleNumberBox numberBox = new TentacleNumberBox(i, HeadingTable);
                         InputControls[i] = numberBox;
                         return;
                     }
                 }
             }
-            TentacleTextBox textBox = new TentacleTextBox(i, HeadingTable.panel);
+            TentacleTextBox textBox = new TentacleTextBox(i, HeadingTable);
             InputControls[i] = textBox;
         }
 
@@ -91,7 +90,7 @@ namespace TentacleXMLEditor
             switch (UseHeaderTable)
             {
                 case true:
-                    ButtonPanel = new TentaclePanel(HeadingTable, HeadingTable.panel.RowCount - 1);
+                    ButtonPanel = new TentaclePanel(HeadingTable, HeadingTable.RowCount - 1);
                     break;
                 case false:
                     ButtonPanel = new TentaclePanel(ParentBox.GroupBox1);
@@ -113,7 +112,7 @@ namespace TentacleXMLEditor
             {
                 ExpandButton1 = new TentacleButton(ButtonPanel, "Expand");
                 ExpandButton1.Click += new EventHandler(this.ToggleExpansion);
-                ParentBox.ChildTable.TentacleTable1.panel.Visible = false;
+                ParentBox.ChildTable.TentacleTable1.Visible = false;
             }
         }
 
@@ -164,14 +163,14 @@ namespace TentacleXMLEditor
         {
             Cursor.Current = Cursors.WaitCursor;
             ParentBox.GroupBox1.SuspendLayout();
-            if (ParentBox.ChildTable.TentacleTable1.panel.Visible == true)
+            if (ParentBox.ChildTable.TentacleTable1.Visible == true)
             {
-                ParentBox.ChildTable.TentacleTable1.panel.Visible = false;
+                ParentBox.ChildTable.TentacleTable1.Visible = false;
                 ExpandButton1.Text = "Expand";
             }
             else
             {
-                ParentBox.ChildTable.TentacleTable1.panel.Visible = true;
+                ParentBox.ChildTable.TentacleTable1.Visible = true;
                 ExpandButton1.Text = "Collapse";
             }
             ParentBox.GroupBox1.ResumeLayout();

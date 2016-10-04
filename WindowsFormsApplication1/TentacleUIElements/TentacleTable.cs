@@ -8,27 +8,29 @@ using System.Threading.Tasks;
 
 namespace TentacleXMLEditor
 {
-    public class TentacleNumberBox : NumericUpDown, IColourable
+    public class TentacleTable : TableLayoutPanel, IColourable
     {
         public TwoToneColour TTColour { get; set; }
 
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            Dock = DockStyle.Top;
+            SetColours();
+            TableSizer.AutoSize(this);
         }
 
-        public TentacleNumberBox(int i, TableLayoutPanel panel) : base()
+        public TentacleTable(Control parent, int rowCount, int columnCount, DockStyle dockStyle)
         {
-            SetColours();
-            Parenter.Parent(this, panel, i, panel.ColumnCount - 1);
+            Parenter.Parent(this, parent);
+            Dock = dockStyle;
+            ColumnCount = columnCount;
+            RowCount = rowCount;
         }
 
         public void SetColours()
         {
-            TTColour = ColourManager.CurrentTheme.TextBox;
+            TTColour = ColourManager.CurrentTheme.DarkBackGround;
             Colourizer.Colourize(this, TTColour);
         }
-
     }
 }

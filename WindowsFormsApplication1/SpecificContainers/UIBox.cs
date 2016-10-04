@@ -54,7 +54,7 @@ namespace TentacleXMLEditor
         {
             if (ParentTable != null)
             {
-                Parenter.Parent(GroupBox1, parentTable.TentacleTable1.panel, rowNum, ParentTable.TentacleTable1.panel.ColumnCount - 1);
+                Parenter.Parent(GroupBox1, parentTable.TentacleTable1, rowNum, ParentTable.TentacleTable1.ColumnCount - 1);
             }
             else if (tDoc != null)
             {

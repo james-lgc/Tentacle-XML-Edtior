@@ -12,8 +12,8 @@ namespace TentacleXMLEditor
         protected string[] labelTexts { get; set; }
         private int RowCount { get; set; }
         private TentacleButton AddButton { get; set; }
-        protected UIBox ParentBox;
-        public CollapsableTable TentacleTable1 { get; private set; }
+        protected UIBox ParentBox { get; set; }
+        public TentacleTable TentacleTable1 { get; private set; }
         public List<UIBox> Boxes { get; set; }
 
         private BoxInformationContainer BoxInfos { get; set; }
@@ -41,7 +41,7 @@ namespace TentacleXMLEditor
 
         private void Populate(List<IReturnable> yArray)
         {
-            TentacleTable1 = new CollapsableTable(ParentBox.GroupBox1, RowCount, ParentBox.BoxInfo.ColumnCount, DockStyle.Fill);
+            TentacleTable1 = new TentacleTable(ParentBox.GroupBox1, RowCount, ParentBox.BoxInfo.ColumnCount, DockStyle.Fill);
             AddButton = new TentacleButton(TentacleTable1, "Add" + ParentBox.BoxInfo.ExtraText);
             AddButton.Click += new EventHandler(this.AddRow);
             if (yArray != null)
@@ -65,14 +65,14 @@ namespace TentacleXMLEditor
                 {
                     j = i;
                 }
-                TentacleLabel tLabel = new TentacleLabel(labelTexts[j], i, TentacleTable1.panel);
+                TentacleLabel tLabel = new TentacleLabel(labelTexts[j], i, TentacleTable1);
             }
         }
 
         protected void MoveButton()
         {
-            int columnNum = TentacleTable1.panel.GetColumn(AddButton);
-            TentacleTable1.panel.SetRow(AddButton, TentacleTable1.panel.RowCount - 1);
+            int columnNum = TentacleTable1.GetColumn(AddButton);
+            TentacleTable1.SetRow(AddButton, TentacleTable1.RowCount - 1);
         }
 
         public virtual void AddRow(Object sender, EventArgs e)
@@ -80,19 +80,19 @@ namespace TentacleXMLEditor
             IReturnable NewX = ParentBox.ThisX.GetNewReturnable();
             ParentBox.ThisX.AddToList(NewX);
             Cursor.Current = Cursors.WaitCursor;
-            TentacleTable1.panel.SuspendLayout();
-            TentacleTable1.panel.RowCount++;
+            TentacleTable1.SuspendLayout();
+            TentacleTable1.RowCount++;
             MoveButton();
-            UIBox uiBox = new UIBox(NewX, this, TentacleTable1.panel.RowCount -2, BoxInfos, InfoIndex);
+            UIBox uiBox = new UIBox(NewX, this, TentacleTable1.RowCount -2, BoxInfos, InfoIndex);
             Boxes.Add(uiBox);
             Cursor.Current = Cursors.Default;
-            TentacleTable1.panel.ResumeLayout();
+            TentacleTable1.ResumeLayout();
         }
 
         public void RemoveAt(UIBox unwatedBox)
         {
             Control control = unwatedBox.GroupBox1;
-            TableLayoutPanel panel = TentacleTable1.panel;
+            TableLayoutPanel panel = TentacleTable1;
             int index = panel.GetRow(control);
             ParentBox.ThisX.RemoveAt(index);
             control.Dispose();
@@ -108,7 +108,7 @@ namespace TentacleXMLEditor
         public void Move(int change, UIBox box)
         {
             Control control = box.GroupBox1;
-            TableLayoutPanel panel = TentacleTable1.panel;
+            TableLayoutPanel panel = TentacleTable1;
             int index = panel.GetRow(control);
             if (index + change >= 0 & index + change < Boxes.Count)
             {

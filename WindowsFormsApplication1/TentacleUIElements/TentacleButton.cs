@@ -1,4 +1,5 @@
 ﻿using System;
+using TentacleXMLEditor.Colours;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -28,12 +29,12 @@ namespace TentacleXMLEditor
             Parenter.Parent(this, control);
         }
 
-        public TentacleButton(CollapsableTable cTable, string text)
+        public TentacleButton(TentacleTable cTable, string text)
         {
             SetUp(text);
             DetermineColour(text);
             SetColours();
-            Parenter.Parent(this, cTable.panel, cTable.panel.RowCount - 1, 0);
+            Parenter.Parent(this, cTable, cTable.RowCount - 1, 0);
         }
         private void SetUp(string text)
         {

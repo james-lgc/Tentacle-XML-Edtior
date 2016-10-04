@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TentacleXMLEditor
+namespace TentacleXMLEditor.Colours
 {
     public class ColourManager
     {
@@ -25,8 +25,6 @@ namespace TentacleXMLEditor
         private static TwoToneColour remove;
         private static TwoToneColour move;
         private static TwoToneColour[] buttons;
-
-        private static ColourScheme nightTheme;
 
         public static void SetNightTheme()
         {

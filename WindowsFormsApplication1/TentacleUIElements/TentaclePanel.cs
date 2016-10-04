@@ -1,4 +1,5 @@
 ﻿using System;
+using TentacleXMLEditor.Colours;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
@@ -19,13 +20,13 @@ namespace TentacleXMLEditor
             Dock = DockStyle.Left;
         }
 
-        public TentaclePanel(CollapsableTable cTable, int i) : base()
+        public TentaclePanel(TentacleTable cTable, int i) : base()
         {
             SetColours();
             FlowDirection = FlowDirection.LeftToRight;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            Parenter.Parent(this, cTable.panel, i, 0);
+            Parenter.Parent(this, cTable, i, 0);
         }
 
         public TentaclePanel(Control control)

@@ -92,7 +92,9 @@
     <Compile Include="TentacleUIElements\TentacleTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="UIContainers\CollapsableTable.cs" />
+    <Compile Include="TentacleUIElements\TentacleTable.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="XmlClasses\ConversationList.cs" />
     <Compile Include="XmlClasses\ConversationBase.cs" />
     <Compile Include="TentacleDoc.cs">
@@ -133,6 +135,7 @@
   <ItemGroup>
     <Content Include="BTPconversations.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

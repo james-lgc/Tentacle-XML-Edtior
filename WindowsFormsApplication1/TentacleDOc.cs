@@ -1,4 +1,5 @@
 ﻿using System;
+using TentacleXMLEditor.Colours;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
@@ -49,7 +50,7 @@ namespace TentacleXMLEditor
             {
                 Cursor.Current = Cursors.WaitCursor;
                 MainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
-                MainDisplay.ChildTable.TentacleTable1.panel.AutoScroll = true;
+                MainDisplay.ChildTable.TentacleTable1.AutoScroll = true;
                 AutoScroll = true;
                 Application.DoEvents();
                 Cursor.Current = Cursors.Default;
