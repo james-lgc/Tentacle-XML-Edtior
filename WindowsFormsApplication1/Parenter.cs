@@ -21,7 +21,6 @@ namespace TentacleXMLEditor
             control.Parent = parentPanel;
             parentPanel.SetRow(control, rowNum);
             parentPanel.SetColumn(control, columnNum);
-            //parentPanel.SetCellPosition(control, new TableLayoutPanelCellPosition(rowNum, columnNum));
             parentPanel.Controls.Add(control);
         }
 

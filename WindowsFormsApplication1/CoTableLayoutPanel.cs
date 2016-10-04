@@ -8,12 +8,15 @@ using System.Runtime.InteropServices;
 
 namespace TentacleXMLEditor
 {
+    //Due to poor performance during early testing, script was taken from http://stackoverflow.com/questions/8900099/tablelayoutpanel-responds-very-slowly-to-events
+    //Credited to User NET3, I plan investigate my own performance increases at a later date
+    //All other files in the project are my own work.
+
     public class CoTableLayoutPanel : TableLayoutPanel
     {
         protected override void OnCreateControl()
         {
             base.OnCreateControl();
-            //this.BackColor =
             this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.CacheText, true);
         }
 
