@@ -138,11 +138,14 @@ namespace TentacleXMLEditor
 
         private void Remove(object sender, EventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             ParentBox.ParentTable.RemoveAt(ParentBox);
+            Cursor.Current = Cursors.Default;
         }
 
         private void Move(Object sender, EventArgs e, bool isUp)
         {
+            Cursor.Current = Cursors.WaitCursor;
             int change = 0;
             switch (isUp)
             {
@@ -154,6 +157,7 @@ namespace TentacleXMLEditor
                     break;
             }
             ParentBox.ParentTable.Move(change, ParentBox);
+            Cursor.Current = Cursors.Default;
         }
 
         private void ToggleExpansion(Object sender, EventArgs e)

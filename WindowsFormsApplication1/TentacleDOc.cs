@@ -47,10 +47,12 @@ namespace TentacleXMLEditor
             ConversationList cList = processFile();
             if (cList != null)
             {
+                Cursor.Current = Cursors.WaitCursor;
                 MainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
                 MainDisplay.ChildTable.TentacleTable1.panel.AutoScroll = true;
                 AutoScroll = true;
                 Application.DoEvents();
+                Cursor.Current = Cursors.Default;
             }
         }
 
