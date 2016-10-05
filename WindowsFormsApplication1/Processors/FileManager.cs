@@ -36,6 +36,7 @@ namespace TentacleXMLEditor.Processors
             {
                 SaveFile(saveFileDialog1.FileName);
             }
+            saveFileDialog1.Dispose();
         }
 
         public void Save(object sender, EventArgs e)
@@ -60,18 +61,31 @@ namespace TentacleXMLEditor.Processors
 
         public ConversationList Load()
         {
+            string oldPath = CurrentFilePath;
+            CurrentFilePath = null;
+            Open();
+            if (CurrentFilePath != null)
+            {
+                FileStream reader = new FileStream(CurrentFilePath, FileMode.Open, FileAccess.Read/*, FileShare.ReadWrite*/);
+                ConversationList cList = (ConversationList)GetSerializer().Deserialize(reader) as ConversationList;
+                reader.Close();
+                return cList;
+            }
+            else
+            {
+                CurrentFilePath = oldPath;
+                return null;
+            }
+        }
+
+        public void Open()
+        {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             DialogResult open = openFileDialog1.ShowDialog();
             if (open == DialogResult.OK)
             {
-                string path = openFileDialog1.FileName;
-                FileStream reader = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                ConversationList cList = (ConversationList)GetSerializer().Deserialize(reader) as ConversationList;
-                reader.Close();
-                CurrentFilePath = path;
-                return cList;
+                CurrentFilePath = openFileDialog1.FileName;
             }
-            return null;
         }
 
         private XmlSerializer GetSerializer()

@@ -48,11 +48,11 @@ namespace TentacleXMLEditor
 
         public void Build(Object sender, EventArgs e, ProcessFile processFile)
         {
-            DisposeMainDisplay();
             BoxInformationContainer boxInfos = new BoxInformationContainer();
             ConversationList cList = processFile();
             if (cList != null)
             {
+                DisposeMainDisplay();
                 Cursor.Current = Cursors.WaitCursor;
                 MainDisplay = new UIBox(cList, null, 0, boxInfos, 0, this);
                 MainDisplay.ChildTable.TentacleTable1.AutoScroll = true;
